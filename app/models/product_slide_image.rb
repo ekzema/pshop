@@ -1,0 +1,2 @@
+class ProductSlideImage < ApplicationRecord
+end

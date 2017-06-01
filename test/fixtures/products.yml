@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  twocategory_id: 1
+  name: MyString
+  description: MyText
+  price: 1
+  visible: 1
+  meta_desc: MyText
+  meta_key: MyText
+
+two:
+  twocategory_id: 1
+  name: MyString
+  description: MyText
+  price: 1
+  visible: 1
+  meta_desc: MyText
+  meta_key: MyText

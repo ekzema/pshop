@@ -1,0 +1,2 @@
+class SiteSlideImage < ApplicationRecord
+end

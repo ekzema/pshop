@@ -1,0 +1,37 @@
+<%= form_with(model: twocategory, local: true) do |form| %>
+  <% if twocategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(twocategory.errors.count, "error") %> prohibited this twocategory from being saved:</h2>
+
+      <ul>
+      <% twocategory.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.number_field :category_id, id: :twocategory_category_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :twocategory_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :meta_desc %>
+    <%= form.text_area :meta_desc, id: :twocategory_meta_desc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :meta_key %>
+    <%= form.text_area :meta_key, id: :twocategory_meta_key %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

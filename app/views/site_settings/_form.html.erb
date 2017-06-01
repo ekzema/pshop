@@ -1,0 +1,42 @@
+<%= form_with(model: site_setting, local: true) do |form| %>
+  <% if site_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(site_setting.errors.count, "error") %> prohibited this site_setting from being saved:</h2>
+
+      <ul>
+      <% site_setting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :meta_title %>
+    <%= form.text_field :meta_title, id: :site_setting_meta_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :meta_desc %>
+    <%= form.text_area :meta_desc, id: :site_setting_meta_desc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :meta_key %>
+    <%= form.text_area :meta_key, id: :site_setting_meta_key %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment_visible %>
+    <%= form.number_field :comment_visible, id: :site_setting_comment_visible %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sliders_visible %>
+    <%= form.number_field :sliders_visible, id: :site_setting_sliders_visible %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

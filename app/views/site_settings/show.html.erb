@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Meta title:</strong>
+  <%= @site_setting.meta_title %>
+</p>
+
+<p>
+  <strong>Meta desc:</strong>
+  <%= @site_setting.meta_desc %>
+</p>
+
+<p>
+  <strong>Meta key:</strong>
+  <%= @site_setting.meta_key %>
+</p>
+
+<p>
+  <strong>Comment visible:</strong>
+  <%= @site_setting.comment_visible %>
+</p>
+
+<p>
+  <strong>Sliders visible:</strong>
+  <%= @site_setting.sliders_visible %>
+</p>
+
+<%= link_to 'Edit', edit_site_setting_path(@site_setting) %> |
+<%= link_to 'Back', site_settings_path %>

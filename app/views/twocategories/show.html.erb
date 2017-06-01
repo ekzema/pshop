@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @twocategory.category_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @twocategory.name %>
+</p>
+
+<p>
+  <strong>Meta desc:</strong>
+  <%= @twocategory.meta_desc %>
+</p>
+
+<p>
+  <strong>Meta key:</strong>
+  <%= @twocategory.meta_key %>
+</p>
+
+<%= link_to 'Edit', edit_twocategory_path(@twocategory) %> |
+<%= link_to 'Back', twocategories_path %>

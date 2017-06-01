@@ -1,0 +1,2 @@
+class Twocategory < ApplicationRecord
+end

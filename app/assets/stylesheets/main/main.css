@@ -1,0 +1,208 @@
+
+/* цвет фона и рамки навигационного меню */
+.navbar-default {
+    background-color: #386ccd;
+    border-color: #1417ae;
+}
+/* цвет текста, содержащий название сайта или бренда */
+.navbar-default .navbar-brand {
+    color: #bbc6e7;
+}
+/* цвет текста (название сайта или бренда), при поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #fff;
+}
+/* Цвет пунктов навигационного меню */
+.navbar-default .navbar-nav > li > a {
+    color: #bbc6e7;
+}
+/* Цвет пункта меню, при поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #fff;
+}
+/* Цвет и фон активного пункта меню, а также поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #1417ae;
+}
+/* Цвет и фон открытого пункта меню, а также поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #1417ae;
+}
+/* Цвет стрелочки (треугольничка) у раскрывающихся пунктов меню */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #bbc6e7;
+    border-bottom-color: #bbc6e7;
+}
+/* Цвет стрелочки (треугольничка) при поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+/* Цвет стрелочки (треугольничка), открывшегося пункта меню */
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open > a:hover .caret,
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+/* CSS стили для мобильных устройств */
+/* Цвет рамки у кнопки, которая открывает меню */
+.navbar-default .navbar-toggle {
+    border-color: #1417ae;
+}
+/* Цвет фона кнопки (которая открывает меню) при поднесении к ней курсора мышки или при нахождении её в фокусе */
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #1417ae;
+}
+/* Цвет полосочек в кнопочке, которая открывает меню */
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #bbc6e7;
+}
+/* Цвет пунктов меню в раскрывающихся списках */
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #bbc6e7;
+    }
+    /* Цвет и фон пункта меню в раскрывающихся списках, при поднесении к нему курсора мышки или при нахождении его в фокусе */
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #fff;
+        background-color: #1417ae;
+    }
+}
+
+
+body {
+    background: #b9c7f6!important;
+    font-size: 12px!important;
+}
+.color{
+    border: 1px solid #1417ae;
+    background: #f0f3fb!important;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.header{
+    margin: 15px;
+}
+.header img{
+    margin: 15px auto ;
+}
+.menu1{
+    height: 50px!important;
+}
+@media only screen and (mix-width: 500px) {
+    .navbar-collapse, .collapse{
+        height: 40px!important;
+    }
+}
+.navbar, .navbar-default{
+    margin-bottom: 0px!important;
+    min-height: 30px!important;
+}
+p{
+    margin: 0px!important;
+}
+/*.menu5>li>a {*/
+/*padding-top: 15px!important;*/
+/*padding-bottom: 15px!important;*/
+/*}*/
+.menu ul li{
+    list-style-type: none;
+}
+.menu li{
+    list-style-type: none;
+    background: #1417ae;
+    padding: 5px 5px 5px 15px;
+}
+.menu ul{
+    list-style-type: none;
+    background: #386ccd;
+    padding-bottom: 1px;
+
+}
+.menu2 ul{
+    padding-left: 20px!important;
+}
+.menu2 li{
+    background: #386ccd;
+    padding-left: 15px;
+    margin: 1px;
+}
+ul{
+    padding-left: 0px!important;
+}
+/*corzina*/
+.foto img{
+    max-width: 150px!important;
+}
+.table>tbody>tr>td{
+    vertical-align: middle!important;
+}
+/*niz*/
+
+.navbar, .navbar-default{
+    border-radius: 0px!important;
+}
+.paddi p{
+    padding: 15px;
+    font-size: 14px;
+    color: #fff;
+}
+.labsites a{
+    color: #b9c7f6;
+    background-color: transparent;
+    text-decoration: none;
+}
+.labsites a:hover, a:focus {
+    color: #1417ae;
+    background-color: transparent;
+    text-decoration: none;
+}
+.dopmenu >li>a{
+    padding: 5px;
+}
+.dopmenu{
+    height: 30px!important;
+}
+.navbar >.odin{
+    height: 30px!important;
+}
+.dva{
+    margin-bottom: 20px!important;
+}
+.social img{
+    width: 20px;
+    border-radius: 2px;
+
+}
+.cat > .ul{
+    border: 1px solid #1417ae;
+}
+
+.li3{
+    padding: 5px 10px;
+    background: #e2e7f6!important;
+
+}
+.li2{
+    border: 1px solid #1417ae!important;
+    padding: 5px 20px;
+    background: #f0f3fb!important;
+
+}
+
+.li3{
+    border: 1px solid #1417ae!important;
+}

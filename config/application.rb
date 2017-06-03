@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Pshop
   class Application < Rails::Application
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 

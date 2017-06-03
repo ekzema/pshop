@@ -1,19 +1,81 @@
-<p id="notice"><%= notice %></p>
+<section class="navCatalog">
+  <h1><i class="fa fa-angle-double-right" aria-hidden="true"></i> <%= @category.name %><br></h1>
+  <ul>
+    <% @category.twocategories.each do |twocategory| %>
+        <li><%= link_to twocategory.name, showtwocategory_path(@category.translit_url, twocategory.translit_url), title: twocategory.name %></li>
+    <% end %>
+  </ul>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+  <div class="clear"></div>
 
-<p>
-  <strong>Meta desc:</strong>
-  <%= @category.meta_desc %>
-</p>
+</section>
 
-<p>
-  <strong>Meta key:</strong>
-  <%= @category.meta_key %>
-</p>
+<div class="mainWrapBlock">
+  <main class="mainBlock">
+    <% @twocategories.each do |twocategory| %>
+        <% twocategory.posts.paginate(:page => params[:page], :per_page =>10).order(created_at: :desc).each do |post| %>
+            <article class="articlePreview">
+              <header>
+                <h1 class="previewTitle"><%= link_to post.name, showpost_path(post.translit_url), title: post.name %></h1>
+              </header>
+              <%= link_to showpost_path(post.translit_url) do %>
+                  <%= image_tag post.image.url(:preloadMain, timestamp: false), title: post.name, alt: post.name %>
+              <% end %>
+              <div class="wrapBodyArticle">
+                <div class="breadcrumbs"><%= link_to post.twocategory.category.name, showcategory_path(post.twocategory.category.translit_url), title: post.twocategory.category.name %>
+                  <i class="fa fa-long-arrow-right" aria-hidden="true" style="color:#C0C0C0; font-size: 10px;"></i>
+                  <%= link_to post.twocategory.name, showtwocategory_path(post.twocategory.category.translit_url, post.twocategory.translit_url), title: post.twocategory.name %>
+                </div>
+                <p><%= post.description %></p>
+                <%= link_to 'Читать полностью <i class="fa fa-angle-double-right" aria-hidden="true"></i>'.html_safe, showpost_path(post.translit_url), title: post.name %>
+              </div>
+              <footer>
+                <ul class="infoPost">
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+                  <li><%= link_to(('<i class="fa fa-comments" aria-hidden="true"></i>').html_safe, post_path(post)+'#commentBlock', "data-turbolinks" => "false", rel: "nofollow") %> <%= count_comments_post(post) %></li>
+                  <% @post = post %>
+                  <li id="likePost_<%= post.id %>"><%= render 'posts/like', post: @post %></li>
+                  <li><i class="fa fa-eye" aria-hidden="true"></i> <%= post.view_count %></li>
+                </ul>
+              </footer>
+            </article>
+        <% end %>
+        <div class="clear"></div>
+      <%= will_paginate twocategory.posts.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc), previous_label: '<i class="fa fa-chevron-circle-left fa-lg adminPag"></i>'.html_safe, next_label: '<i class="fa fa-chevron-circle-right fa-lg adminPag"></i>'.html_safe %>
+    <% end %>
+  </main>
+
+  <aside class="navRightBlock">
+    <div class="mainMenuRight">
+      <h1>Главное меню</h1>
+      <ul>
+        <li><a href="/" title='Главная'>Главная</a></li>
+        <li><a href="#">Каталог фирм</a></li>
+        <li><a href="#">Реклама на сайте</a></li>
+        <li><%= link_to 'Обратная связь', feedback_url, title: 'Обратная связь' %></li>
+        <li><a href="#">О нас</a></li>
+      </ul>
+    </div>
+    <div class="CategoryRight">
+      <h1>Рубрики сайта</h1>
+      <ul class="parentCategoryRight">
+        <% @categories.each do |category| %>
+            <li>
+              <%= link_to category.name, showcategory_path(category.translit_url), class: 'parentLink' %>
+              <% if category.id == @category.id %>
+                  <ul class="childCategoryRight">
+                    <% category.twocategories.each do |twocategory| %>
+                    <li><%= link_to twocategory.name, showtwocategory_path(category.translit_url, twocategory.translit_url) %></li>
+                    <% end %>
+                  </ul>
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </aside>
+</div>
+
+
+

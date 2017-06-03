@@ -1,37 +1,73 @@
-<%= form_with(model: twocategory, local: true) do |form| %>
-  <% if twocategory.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(twocategory.errors.count, "error") %> prohibited this twocategory from being saved:</h2>
+<%= form_for(twocategory, :html => {'data-parsley-validate' => true, :class => 'form-horizontal', multipart: true}) do |f| %>
+    <% if twocategory.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(twocategory.errors.count, "error") %> prohibited this twocategory from being saved:</h2>
 
-      <ul>
-      <% twocategory.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% twocategory.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <div class="col-sm-2 ">
+        <%= f.label 'Основное фото', class: "control-label" %>
+      </div>
+      <div class="col-sm-10">
+        <ul class="sliderImg imgcat">
+          <li><%= image_tag twocategory.image.url, title: "#{twocategory.name}", id: 'imagePreload', class: "EditImage", height: 100 %></li>
+          <li><%= f.file_field :image, id: 'imgInp' %>
+            <% unless twocategory.image_file_name.nil? %></li>
+                <li><%= link_to("Удалить", {action: :delete_attachment, id: twocategory.id}, method: :delete, data: {confirm: 'Вы уверины что хотите удалить?'}) %></li>
+            <% end %>
+            </ul>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.number_field :category_id, id: :twocategory_category_id %>
-  </div>
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'Имя', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_field :name, autofocus: true, class: "form-control form", "required" => true %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :twocategory_name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :meta_desc %>
-    <%= form.text_area :meta_desc, id: :twocategory_meta_desc %>
-  </div>
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'МЕТА описание', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_area :meta_desc, class: "form-control form" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :meta_key %>
-    <%= form.text_area :meta_key, id: :twocategory_meta_key %>
-  </div>
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'МЕТА ключи', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_area :meta_key, class: "form-control form" %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'Выберите категорию', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.select( "category_id", Category.all.collect {|category| [ category.name, category.id ] }, { :include_blank => '- Категории -' }, :class => 'form-control') %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10 actions">
+        <br>
+        <%= link_to 'Назад', :back, class: 'btn btn-primary' %>
+        <button type="submit" class="btn btn-success editSeller">Сохранить</button>
+      </div>
+    </div>
 <% end %>

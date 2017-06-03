@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require rails-ujs
-//= require turbolinks
+//= require jquery_ujs
+//= require jquery-ui/widgets/autocomplete
 //= require parsley
 //= require twitter/bootstrap
-//= require_tree .
+//= require turbolinks
+//= require jquery_nested_form
+//= require_tree ./main

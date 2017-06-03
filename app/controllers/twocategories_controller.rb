@@ -1,5 +1,6 @@
 class TwocategoriesController < ApplicationController
   before_action :set_twocategory, only: [:show, :edit, :update, :destroy]
+  layout 'adminpanel', only: [:new, :edit]
 
   # GET /twocategories
   # GET /twocategories.json
@@ -28,7 +29,7 @@ class TwocategoriesController < ApplicationController
 
     respond_to do |format|
       if @twocategory.save
-        format.html { redirect_to @twocategory, notice: 'Twocategory was successfully created.' }
+        format.html { redirect_to adminpanel_twocategories_path, notice: "Подкатегория #{@twocategory.name} успешно создана" }
         format.json { render :show, status: :created, location: @twocategory }
       else
         format.html { render :new }
@@ -42,8 +43,8 @@ class TwocategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @twocategory.update(twocategory_params)
-        format.html { redirect_to @twocategory, notice: 'Twocategory was successfully updated.' }
-        format.json { render :show, status: :ok, location: @twocategory }
+        format.html { redirect_to adminpanel_twocategories_path, notice: "Подкатегория #{@twocategory.name} успешно создана" }
+        format.json { render :show, status: :ok, location: adminpanel_twocategories_path }
       else
         format.html { render :edit }
         format.json { render json: @twocategory.errors, status: :unprocessable_entity }
@@ -54,11 +55,16 @@ class TwocategoriesController < ApplicationController
   # DELETE /twocategories/1
   # DELETE /twocategories/1.json
   def destroy
-    @twocategory.destroy
-    respond_to do |format|
-      format.html { redirect_to twocategories_url, notice: 'Twocategory was successfully destroyed.' }
-      format.json { head :no_content }
+    if @twocategory.destroy
+      render text: 'ok'
     end
+  end
+
+  def delete_attachment
+    twocategory = Twocategory.find(params[:id])
+    twocategory.image = nil
+    twocategory.save
+    redirect_to :back
   end
 
   private

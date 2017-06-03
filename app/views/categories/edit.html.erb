@@ -1,6 +1,17 @@
-<h1>Editing Category</h1>
+<section id="main-content">
+  <section class="wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <section class="panel">
+          <header class="panel-heading">
+            Изменить категорию
+          </header>
+          <div class="panel-body">
+            <%= render 'form', category: @category %>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</section>
 
-<%= render 'form', category: @category %>
-
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>

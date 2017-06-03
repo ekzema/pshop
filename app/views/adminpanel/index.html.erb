@@ -1,0 +1,65 @@
+<section id="main-content">
+  <section class="wrapper">
+    <!--overview start-->
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="page-header"><i class="fa fa-laptop"></i> Панель администратора</h3>
+        <ol class="breadcrumb">
+          <li><i class="fa fa-laptop"></i>Панель администратора</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <%= link_to adminpanel_products_path do %>
+            <div class="info-box brown-bg">
+              <i class="icon_document" aria-hidden="true"></i>
+              <div class="count"><%= @product %></div>
+              <div class="title">Товары</div>
+            </div><!--/.info-box-->
+        <% end %>
+      </div><!--/.col-->
+
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <%= link_to adminpanel_categories_path do %>
+            <div class="info-box blue-bg">
+              <i class="icon_folder-open" aria-hidden="true"></i>
+              <div class="count"><%= @category %></div>
+              <div class="title">Категории</div>
+            </div><!--/.info-box-->
+        <% end %>
+      </div><!--/.col-->
+
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <%= link_to adminpanel_twocategories_path do %>
+            <div class="info-box dark-bg">
+              <i class="icon_folder" aria-hidden="true"></i>
+              <div class="count"><%= @twocategory %></div>
+              <div class="title">Подкатегории</div>
+            </div><!--/.info-box-->
+        <% end %>
+      </div><!--/.col-->
+
+
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <a href="#">
+            <div class="info-box blue-bg">
+              <i class="icon_mail" aria-hidden="true"></i>
+              <div class="count">0</div>
+              <div class="title">Письма</div>
+            </div><!--/.info-box-->
+        </a>
+      </div><!--/.col-->
+
+    </div><!--/.row-->
+
+  </section>
+
+
+  <style>
+    .indexMain, .indexMain a{
+      background: #2e3b46;
+      color: white !important;
+    }
+  </style>

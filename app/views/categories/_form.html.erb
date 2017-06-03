@@ -1,4 +1,4 @@
-<%= form_with(model: category, local: true) do |form| %>
+<%= form_for(category, :html => {'data-parsley-validate' => true, :class => 'form-horizontal', multipart: true}) do |f| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -11,22 +11,53 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :category_name %>
-  </div>
+    <div class="form-group">
+      <div class="col-sm-2 ">
+        <%= f.label 'Основное фото', class: "control-label" %>
+      </div>
+      <div class="col-sm-10">
+        <ul class="sliderImg imgcat">
+        <li><%= image_tag category.image.url, title: "#{category.name}", id: 'imagePreload', class: "EditImage", height: 100 %></li>
+        <li><%= f.file_field :image, id: 'imgInp' %>
+          <% unless category.image_file_name.nil? %></li>
+              <li><%= link_to("Удалить", {action: :delete_attachment, id: category.id}, method: :delete, data: {confirm: 'Вы уверины что хотите удалить?'}) %></li>
+          <% end %>
+          </ul>
+    </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :meta_desc %>
-    <%= form.text_area :meta_desc, id: :category_meta_desc %>
-  </div>
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'Название', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_field :name, autofocus: true, class: "form-control form", "required" => true %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :meta_key %>
-    <%= form.text_area :meta_key, id: :category_meta_key %>
-  </div>
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'МЕТА описание', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_area :meta_desc, class: "form-control form" %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'МЕТА ключи', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_area :meta_key, class: "form-control form" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10 actions">
+        <br>
+        <%= link_to 'Назад', adminpanel_categories_path, class: 'btn btn-primary' %>
+        <button type="submit" class="btn btn-success editSeller">Сохранить</button>
+      </div>
+    </div>
 <% end %>

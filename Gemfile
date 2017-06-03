@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'nested_form', '~> 0.3.2'
 gem 'twitter-bootstrap-rails', '~> 4.0'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'russian', '~> 0.6.0'

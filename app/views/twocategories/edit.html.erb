@@ -1,6 +1,17 @@
-<h1>Editing Twocategory</h1>
+<section id="main-content">
+  <section class="wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <section class="panel">
+          <header class="panel-heading">
+            Изменить подкатегорию
+          </header>
+          <div class="panel-body">
+            <%= render 'form', twocategory: @twocategory %>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</section>
 
-<%= render 'form', twocategory: @twocategory %>
-
-<%= link_to 'Show', @twocategory %> |
-<%= link_to 'Back', twocategories_path %>

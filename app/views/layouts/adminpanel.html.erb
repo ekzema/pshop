@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gidremonta</title>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    'adminpanel', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'adminpanel', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+<section id="container">
+  <header class="header dark-bg">
+    <div class="toggle-nav">
+      <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+    </div>
+
+    <!--logo start-->
+    <%= link_to 'Панель <span class="lite">Инструментов</span>'.html_safe, adminpanel_path, class: 'logo' %>
+    <!--logo end-->
+
+    <div class="nav search-row" id="top_menu">
+
+    </div>
+
+    <div class="top-nav notification-row">
+      <!-- notificatoin dropdown start-->
+      <ul class="nav pull-right top-menu">
+
+        <!-- user login dropdown start-->
+        <li class="dropdown">
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <!--<img alt="" src="img/avatar1_small.jpg">-->
+                            </span>
+            <span class="username">Вася</span>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu extended logout">
+            <div class="log-arrow-up"></div>
+            <li class="eborder-top">
+              <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Изменить профиль</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Выход</a>
+            </li>
+          </ul>
+        </li>
+        <!-- user login dropdown end -->
+      </ul>
+      <!-- notificatoin dropdown end-->
+    </div>
+  </header>
+  <!--header end-->
+
+  <!--sidebar start-->
+  <aside>
+    <div id="sidebar"  class="nav-collapse ">
+      <!-- sidebar menu start-->
+      <ul class="sidebar-menu">
+        <li class="indexMain">
+          <%= link_to adminpanel_path do %>
+              <i class="icon_house_alt"></i>
+              <span>Главная</span>
+          <% end %>
+        </li>
+        <li class="cat">
+          <%= link_to adminpanel_categories_path do %>
+              <i class="icon_folder-open_alt" aria-hidden="true"></i>
+              <span>Категории</span>
+          <% end %>
+        </li>
+        <li class="two">
+          <%= link_to adminpanel_twocategories_path do %>
+              <i class="icon_folder-alt" aria-hidden="true"></i>
+              <span>Подкатегории</span>
+          <% end %>
+        </li>
+        <li class="post">
+          <%= link_to adminpanel_products_path do %>
+              <i class=" icon_document_alt" aria-hidden="true"></i>
+              <span>Товары</span>
+          <% end %>
+        </li>
+
+      </ul>
+      <!-- sidebar menu end-->
+    </div>
+  </aside>
+  <!--sidebar end-->
+
+  <%= yield %>
+</section>
+</body>
+</html>

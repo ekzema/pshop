@@ -1,39 +1,148 @@
-<p id="notice"><%= notice %></p>
+<section class="navCatalog">
+  <h1><i class="fa fa-angle-double-right" aria-hidden="true"></i> <%= @category.name %><br></h1>
+  <ul>
+    <% @twocategories.each do |twocategory| %>
+        <li <%= raw("class='selectCat'") if @twocategory.id == twocategory.id %>><%= link_to twocategory.name, showtwocategory_path(twocategory.category.translit_url, twocategory.translit_url), title: twocategory.name %></li>
+    <% end %>
+  </ul>
 
-<p>
-  <strong>Twocategory:</strong>
-  <%= @product.twocategory_id %>
-</p>
+  <div class="clear"></div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+</section>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+<div class="mainWrapBlock">
+  <main class="mainBlock">
+    <article class="fullArticle">
+      <header>
+        <div class="breadcrumbs articleInside"><%= link_to @product.twocategory.category.name, showcategory_path(@product.twocategory.category.translit_url), title: @product.twocategory.category.name %>
+          <i class="fa fa-long-arrow-right" aria-hidden="true" style="color:#C0C0C0; font-size: 10px;"></i>
+          <%= link_to @product.twocategory.name, showtwocategory_path(@product.twocategory.category.translit_url, @product.twocategory.translit_url), title: @product.twocategory.name %>
+        </div>
+        <h1 class="previewTitle"><%= @product.name %></h1>
+      </header>
+      <%= link_to @product.image.url(:original, timestamp: false), id: 'mainproductImage', title: @product.name do %>
+          <%= image_tag @product.image.url(:preloadMain, timestamp: false), class: 'preloadImg', title: @product.name, alt: @product.name %>
+      <% end %>
+      <%= raw @product.body %>
+      <footer>
+        <ul class="infoproduct">
+          <li>
+            <a href="#commentBlock"><i class="fa fa-comments" aria-hidden="true" rel="nofollow"></i></a> <%= count_comments_product(@product) %>
+          </li>
+          <li id="likeproduct_<%= @product.id %>"><%= render 'like', product: @product %></li>
+          <li><i class="fa fa-eye" aria-hidden="true"></i> <%= @product.view_count %></li>
+        </ul>
+      </footer>
+    </article>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+    <section class="relatedproducts">
+      <header>
+        <h2>Похожие статьи</h2>
+      </header>
+      <ul>
+        <% @product_random.each do |product_random| %>
+            <li>
+              <%= link_to showproduct_path(product_random.translit_url) do %>
+                  <%= image_tag product_random.image.url(:preloadMain) %>
+                  <span><%= product_random.name %></span>
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
+      <footer>
+        <%= link_to 'Все похожие темы', showtwocategory_path(@twocategory.category.translit_url, @twocategory.translit_url), class: 'relatedAll', title: 'Все похожие темы' %>
+      </footer>
+    </section>
 
-<p>
-  <strong>Visible:</strong>
-  <%= @product.visible %>
-</p>
+    <section class="productComments">
+      <header>
+        <h2>Комментарии <span><%= @count_comment %></span></h2>
+      </header>
 
-<p>
-  <strong>Meta desc:</strong>
-  <%= @product.meta_desc %>
-</p>
+      <ul id="commentBlock" class="setComentsOne">
+        <li>
+          <%= form_for(Comment.new, :remote => true) do |comment| %>
+              <div class="inputWrap"><%= comment.text_field :name, class: 'commentName', placeholder: 'Ваше имя', required: true %>
+                <span class="areaSpan"></span></div>
+              <div class="inputWrap"><%= comment.text_area :body, placeholder: 'Ваш комментарий', required: true %>
+                <span class="areaSpan"></span></div>
+              <div class="WrapCommitSubmit">
+                <%= comment.hidden_field :product_id, value: @product.id %>
+                <%= button_tag 'Отправить', class: 'commitsSubmit' %>
+              </div>
+          <% end %>
+        </li>
+        <% @comments.each do |comments| %>
+            <li>
+              <article class="productCommentsAll" id="commId_<%= comments.id %>">
+                <header>
+                  <span class="nameUser"><%= comments.name %></span>
+                  <span class="createdComment"><%= comments.created_at.strftime("%d.%m.%Y") %></span>
+                </header>
+                <p><%= comments.body %></p>
+                <footer>
+                  <span class='addForm' id=<%= comments.id %>>Ответить</span>
+                </footer>
+              </article>
+              <ul class="CommentsInside" id='addForm_2'>
+                <% comments.twocomments.each do |twocomment| %>
+                    <% if twocomment.moderation == 1 %>
+                        <li>
+                          <article class="productCommentsAll" id="commId_4">
+                            <header>
+                              <span class="nameUser"><%= twocomment.name %></span>
+                              <span class="createdComment"><%= twocomment.created_at.strftime("%d.%m.%Y") %></span>
+                            </header>
+                            <p><%= twocomment.body %></p>
+                          </article>
+                    <% end %>
+                <% end %>
+                </li>
+              </ul>
+            </li>
+        <% end %>
+      </ul>
+      <!-- 	<footer>
 
-<p>
-  <strong>Meta key:</strong>
-  <%= @product.meta_key %>
-</p>
+        </footer>
+        <div class="wrapForm"></div> -->
+    </section>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+  </main>
+
+  <aside class="navRightBlock">
+    <div class="mainMenuRight">
+      <h1>Главное меню</h1>
+      <ul>
+        <li><a href="/" title='Главная'>Главная</a></li>
+        <li><a href="#">Каталог фирм</a></li>
+        <li><a href="#">Реклама на сайте</a></li>
+        <li><%= link_to 'Обратная связь', feedback_url, title: 'Обратная связь' %></li>
+        <li><a href="#">О нас</a></li>
+      </ul>
+    </div>
+    <div class="CategoryRight">
+      <h1>Рубрики сайта</h1>
+      <ul class="parentCategoryRight">
+        <% @categories.each do |category| %>
+            <li>
+              <%= link_to category.name, category_path(category), class: 'parentLink' %>
+              <% if category.id == @category.id %>
+                  <ul class="childCategoryRight">
+                    <% category.twocategories.each do |twocategory| %>
+                        <li><%= link_to twocategory.name, showtwocategory_path(category.translit_url, twocategory.translit_url) %></li>
+                    <% end %>
+                  </ul>
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </aside>
+
+</div>
+
+
+
+

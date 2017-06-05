@@ -21,6 +21,12 @@ body {
     margin: 0px !important;
     font-size:14px !important;    
 }
+
+.parsley-custom-error-message{
+    color: red;
+    margin-top: 10px;
+}
+
 h1,h2,h3,h4,h5{
     font-weight: 300;
 }

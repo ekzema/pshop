@@ -1,4 +1,9 @@
-<%= form_for(category, :html => {'data-parsley-validate' => true, :class => 'form-horizontal', multipart: true}) do |f| %>
+<script type="text/javascript" charset="utf-8">
+    $( function() {
+        $('form').parsley();
+    } );
+</script>
+<%= form_for(category, multipart: true, :html => { :class => 'form-horizontal'}) do |f| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -31,7 +36,7 @@
         <%= f.label 'Название', class:"control-label" %>
       </div>
       <div class="col-sm-10 ">
-        <%= f.text_field :name, autofocus: true, class: "form-control form", "required" => true %>
+        <%= f.text_field :name, autofocus: true, class: "form-control form", 'data-parsley-required' => true, 'data-parsley-error-message' => 'Введите имя категории' %>
       </div>
     </div>
 

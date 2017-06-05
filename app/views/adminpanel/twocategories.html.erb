@@ -40,7 +40,7 @@
                     <td>
                       <div class="btn-group">
                         <%= link_to '<i class="icon_pencil"></i>'.html_safe, edit_twocategory_path(twocategory.id), class: 'btn btn-success' %>
-                        <span class='btn btn-danger deleteMessage2'accon='twocategories' orr_id='<%= twocategory.id %>'><i class="icon_close_alt2"></i></span>
+                        <span class='btn btn-danger deleteMessage2' onclick="messageDelete(<%= twocategory.id %>, 'twocategories')"><i class="icon_close_alt2"></i></span>
                       </div>
                     </td>
                   </tr>
@@ -48,6 +48,7 @@
               </tbody>
             </table>
           </section>
+
           <p><%= will_paginate @twocategory, previous_label: '<i class="fa fa-chevron-circle-left fa-lg adminPag"></i>'.html_safe, next_label: '<i class="fa fa-chevron-circle-right fa-lg adminPag"></i>'.html_safe %></p>
         </div>
       </div>

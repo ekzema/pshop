@@ -39,16 +39,16 @@
                     <td><%= product.name %></td>
                     <td><%= truncate(product.description, length: 200) %></td>
                     <td>
-                      <%= product.twocategory.category.name %>
+                      <%= product.twocategory.name %>
                     </td>
                     <td>
-                      <%= product.twocategory.name %>
+
                     </td>
                     <td class="lastTd"><%= product.created_at.strftime('%F') %></td>
                     <td>
                       <div class="btn-group tableTools">
                         <%= link_to '<i class="icon_pencil"></i>'.html_safe, edit_product_path(product.id), class: 'btn btn-success' %>
-                        <span class='btn btn-danger deleteMessage2' accon='products' orr_id='<%= product.id %>'><i class="icon_close_alt2"></i></span>
+                        <span class='btn btn-danger deleteMessage2' onclick="messageDelete(<%= product.id %>, 'products')"><i class="icon_close_alt2"></i></span>
                       </div>
                     </td>
                   </tr>

@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   resources :comments
   get 'product_slide_images/create'
 
-  resources :products
+  resources :products do
+    collection do
+      delete 'delete_attachment'
+    end
+  end
 
   resources :twocategories, except: [:index] do
     collection do
@@ -30,7 +34,6 @@ Rails.application.routes.draw do
       delete 'delete_attachment'
     end
   end
-
-
+  post 'products/form_render'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

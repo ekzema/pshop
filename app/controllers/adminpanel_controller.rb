@@ -15,7 +15,7 @@ class AdminpanelController < ApplicationController
     @twocategory = Twocategory.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
   end
 
-  def product
+  def products
     @product = Product.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
   end
 

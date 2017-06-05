@@ -14,12 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery_nested_form
-//= require adminpanel/scripts
 //= require adminpanel/jquery-confirm
+//= require parsley
 //= require twitter/bootstrap
 //= require adminpanel/dynamic-table
-//= require adminpanel/form-component
 //= require adminpanel/jquery.autosize.min
 //= require adminpanel/jquery.customSelect.min
 //= require jquery-ui
-
+//= require adminpanel/scripts

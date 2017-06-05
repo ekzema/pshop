@@ -82,38 +82,28 @@ jQuery(document).ready(function () {
 });
 
 
-$(document).on('ready turbolinks:load', function () {
-
-    $('.deleteMessage2').on("click", function () {
-        var id = $(this).attr("orr_id");
-        var accon = $(this).attr("accon");
-        $.confirm({
-            confirmButton: 'Да',
-            cancelButton: 'Нет',
-            title: 'Подтверждение!',
-            content: 'Вы уверены что хотите удалить эту запись?',
-            confirm: function () {
-                $.ajax({
-                    type: "delete",
-                    url: "/" + accon + "/" + id,
-                    data: "id=" + id,
-                    cache: false,
-                    success: function (data) {
-                        if (data == "ok") {
-                            $('#product_' + id).hide(700);
-                        }
-                    }
-                });
-            }
-        });
+function messageDelete(id, action) {
+    $.confirm({
+        confirmButton: 'Да',
+        cancelButton: 'Нет',
+        title: 'Подтверждение!',
+        content: 'Вы уверены что хотите удалить эту запись?',
+        confirm: function () {
+            $.ajax({
+                type: "delete",
+                url: "/" + action + "/" + id,
+                data: "id=" + id,
+                cache: false,
+                dataType: 'script'
+            });
+        }
     });
-
-});
+}
 
 // BEGIN clipboardjs
-$(document).on('ready turbolinks:load', function () {
-    new Clipboard('.btn');
-});
+// $(document).on('ready turbolinks:load', function () {
+//     new Clipboard('.btn');
+// });
 // END clipboardjs
 
 
@@ -121,10 +111,10 @@ $(document).on('ready turbolinks:load', function () {
 $(document).ready(function () {
 
     // var img_load = '<center><img src="/loading.gif" alt=""/></center>';
-    $(document).on("change", "#post_category_id", function () {
+    $(document).on("change", "#product_category_id", function () {
         // $('#twocategory').html(img_load);
         $.ajax({
-            url: '/posts/form_render',
+            url: '/products/form_render',
             type: 'POST',
             data: $(this).serialize(),
             success: function (result) {

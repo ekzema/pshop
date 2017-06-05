@@ -12,6 +12,7 @@
 
  *= require adminpanel/elegant-icons-style
  *= require font-awesome
+ *= require parsley
  *= require bootstrap_and_overrides
  *= require adminpanel/style
  *= require adminpanel/style-responsive

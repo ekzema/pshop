@@ -56,7 +56,9 @@ class TwocategoriesController < ApplicationController
   # DELETE /twocategories/1.json
   def destroy
     if @twocategory.destroy
-      render text: 'ok'
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

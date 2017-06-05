@@ -19,6 +19,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @category = @product.twocategory.category.id
+    @twocategories = Twocategory.where(category_id: @product.twocategory.category)
   end
 
   # POST /products

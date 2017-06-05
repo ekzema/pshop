@@ -3,5 +3,5 @@
     <%= label_tag 'twocategory', 'Подкатегория', class:"control-label" %>
    </div>
    <div class="col-sm-10">
-    <%= select_tag 'post[twocategory_id]',  options_for_select(twocategory.collect {|twocategory| [twocategory.name, twocategory.id]}), {:include_blank => '- Подкатегория -', :class => 'form-control form post_twocategory_id'} %>
+    <%= select_tag 'product[twocategory_id]',  options_for_select(twocategory.collect {|twocategory| [twocategory.name, twocategory.id]}), {:include_blank => '- Подкатегория -', :class => 'form-control form product_twocategory_id'} %>
   </div>

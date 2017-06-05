@@ -39,10 +39,10 @@
                     <td><%= product.name %></td>
                     <td><%= truncate(product.description, length: 200) %></td>
                     <td>
-                      <%= product.twocategory.name %>
+                      <%= product.twocategory.category.name %>
                     </td>
                     <td>
-
+                      <%= product.twocategory.name %>
                     </td>
                     <td class="lastTd"><%= product.created_at.strftime('%F') %></td>
                     <td>

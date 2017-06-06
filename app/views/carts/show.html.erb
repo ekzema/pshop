@@ -1,17 +1,138 @@
 
 
-<h2>Your Cart</h2>
-<table>
-  <% @cart.line_items.each do |item| %>
-      <tr>
-        <td><%= item.quantity %>&times;</td>
-        <td><%= item.product.name %></td>
-        <td class="item_price"><%= number_to_currency(item.total_price) %></td>
+<!--<h2>Your Cart</h2>-->
+<!--<table>-->
+  <!--<% @cart.line_items.each do |item| %>-->
+      <!--<tr>-->
+        <!--<td><%= item.quantity %>&times;</td>-->
+        <!--<td><%= item.product.name %></td>-->
+        <!--<td class="item_price"><%= number_to_currency(item.total_price) %></td>-->
+      <!--</tr>-->
+  <!--<% end %>-->
+  <!--<tr class="total_line">-->
+    <!--<td colspan="2">Total</td>-->
+    <!--<td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>-->
+  <!--</tr>-->
+<!--</table>-->
+<!--<%= button_to 'Delete cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>-->
+<div class="container">
+  <div class="row">
+    <h3 class="text-center">Корзина</h3>
+    <table class="table table-hover">
+      <thead>
+      <tr class="info text-center">
+        <th class="text-center">Фото</th>
+        <th class="text-center">Название</th>
+        <th class="text-center">Количество</th>
+        <th class="text-center">Цена</th>
       </tr>
-  <% end %>
-  <tr class="total_line">
-    <td colspan="2">Total</td>
-    <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
-  </tr>
-</table>
-<%= button_to 'Delete cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </thead>
+      <tbody>
+      <tr class="success text-center">
+        <td class="foto text-center"><img src="/assets/02.jpg"></td>
+        <td class="hidden-xs text-center">Название</td>
+        <td class="hidden-xs text-center">Количество</td>
+        <td class="hidden-xs text-center">Цена</td>
+      </tr>
+      </tbody>
+    </table>
+    <h3 class="text-center"><button type="submit" class="btn btn-default">Оформить заказ</button></h3>
+    </form>
+  </div>
+</div>
+<h5 class="text-center">На новой странице</h5>
+<div class="container">
+  <div class="row">
+    <h3 class="text-center">Оформление заказа</h3>
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">ФИО</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail3" placeholder="Иванов Иван Иванович">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="inputPassword3" placeholder="ivanov@gmail.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">Телефон</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail3" placeholder="0501234567">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Город</label>
+        <div class="col-sm-10">
+          <select class="form-control">
+            <option>Выберите свой город</option>
+            <option>Запорожье</option>
+            <option>Другие города Украины</option>
+          </select>
+        </div>
+      </div>
+      <h5 class="text-center">If Запорожье</h5>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Район доставки</label>
+        <div class="col-sm-10">
+          <select class="form-control">
+            <option>Выберите район доставки</option>
+            <option>Доставка по Космосу/Пески</option>
+            <option>Доставка по Центру города</option>
+            <option>Доставка по Шевченковскому</option>
+            <option>Доставка по Правому берегу</option>
+            <option>Самовывоз с Космоса</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Способы оплаты</label>
+        <div class="col-sm-10">
+          <select class="form-control">
+            <option>Выберите способ оплаты</option>
+            <option>Оплата курьеру</option>
+            <option>Расчет по Приват24</option>
+          </select>
+        </div>
+      </div>
+      <h5 class="text-center">Else другой город</h5>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Способ доставки</label>
+        <div class="col-sm-10">
+          <select class="form-control">
+            <option>Выберите способ доставки</option>
+            <option>Новая почта</option>
+            <option>Ин-тайм</option>
+            <option>Другая почта</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Способы оплаты</label>
+        <div class="col-sm-10">
+          <select class="form-control">
+            <option>Выберите способ оплаты</option>
+            <option>Приват24</option>
+            <option>Аваль</option>
+            <option>Другое</option>
+          </select>
+        </div>
+      </div>
+      <h5 class="text-center">End</h5>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Примечание</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-danger">Оформить заказ</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

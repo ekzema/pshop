@@ -1,83 +1,82 @@
-
 /* цвет фона и рамки навигационного меню */
 .navbar-default {
-    background-color: #386ccd;
-    border-color: #1417ae;
+    background: #386ccd!important;
+    border-color: #1417ae!important;
 }
 /* цвет текста, содержащий название сайта или бренда */
 .navbar-default .navbar-brand {
-    color: #bbc6e7;
+    color: #bbc6e7!important;
 }
 /* цвет текста (название сайта или бренда), при поднесении к нему курсора мышки или при его нахождении в фокусе */
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-    color: #fff;
+    color: #fff!important;
 }
 /* Цвет пунктов навигационного меню */
 .navbar-default .navbar-nav > li > a {
-    color: #bbc6e7;
+    color: #bbc6e7!important;
 }
 /* Цвет пункта меню, при поднесении к нему курсора мышки или при его нахождении в фокусе */
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #fff;
+    color: #fff!important;
 }
 /* Цвет и фон активного пункта меню, а также поднесении к нему курсора мышки или при его нахождении в фокусе */
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-    color: #fff;
-    background-color: #1417ae;
+    color: #fff!important;
+    background: #1417ae!important;
 }
 /* Цвет и фон открытого пункта меню, а также поднесении к нему курсора мышки или при его нахождении в фокусе */
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-    color: #fff;
-    background-color: #1417ae;
+    color: #fff!important;
+    background: #1417ae!important;
 }
 /* Цвет стрелочки (треугольничка) у раскрывающихся пунктов меню */
 .navbar-default .navbar-nav > .dropdown > a .caret {
-    border-top-color: #bbc6e7;
-    border-bottom-color: #bbc6e7;
+    border-top-color: #bbc6e7!important;
+    border-bottom-color: #bbc6e7!important;
 }
 /* Цвет стрелочки (треугольничка) при поднесении к нему курсора мышки или при его нахождении в фокусе */
 .navbar-default .navbar-nav > .dropdown > a:hover .caret,
 .navbar-default .navbar-nav > .dropdown > a:focus .caret {
-    border-top-color: #fff;
-    border-bottom-color: #fff;
+    border-top-color: #fff!important;
+    border-bottom-color: #fff!important;
 }
 /* Цвет стрелочки (треугольничка), открывшегося пункта меню */
 .navbar-default .navbar-nav > .open > a .caret,
 .navbar-default .navbar-nav > .open > a:hover .caret,
 .navbar-default .navbar-nav > .open > a:focus .caret {
-    border-top-color: #fff;
-    border-bottom-color: #fff;
+    border-top-color: #fff!important;
+    border-bottom-color: #fff!important;
 }
 /* CSS стили для мобильных устройств */
 /* Цвет рамки у кнопки, которая открывает меню */
 .navbar-default .navbar-toggle {
-    border-color: #1417ae;
+    border-color: #1417ae!important;
 }
 /* Цвет фона кнопки (которая открывает меню) при поднесении к ней курсора мышки или при нахождении её в фокусе */
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #1417ae;
+    background: #1417ae!important;
 }
 /* Цвет полосочек в кнопочке, которая открывает меню */
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: #bbc6e7;
+    background: #bbc6e7!important;
 }
 /* Цвет пунктов меню в раскрывающихся списках */
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-        color: #bbc6e7;
+        color: #bbc6e7!important;
     }
     /* Цвет и фон пункта меню в раскрывающихся списках, при поднесении к нему курсора мышки или при нахождении его в фокусе */
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-        color: #fff;
-        background-color: #1417ae;
+        color: #fff!important;
+        background: #1417ae!important;
     }
 }
 
@@ -86,13 +85,45 @@ body {
     background: #b9c7f6!important;
     font-size: 12px!important;
 }
+a {
+    text-decoration:none!important;
+}
 .color{
     border: 1px solid #1417ae;
     background: #f0f3fb!important;
     padding: 10px;
     margin-bottom: 20px;
+
+}
+.color img{
+    width: 90%;
 }
 
+.color a{
+    color: #333!important;
+}
+.color:hover, .color:focus{
+    background: #e2e7f6!important;
+}
+.color a:hover, .color a:focus{
+    color: #1417ae!important;
+}
+.color2{
+    border: 1px solid #1417ae;
+    background: #f0f3fb!important;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.color3 img{
+    width: 250px;
+}
+.color4 img{
+    width: 50px;
+    margin-bottom: 10px;
+}
+.color4 ul li{
+    list-style-type: none!important;
+}
 .header{
     margin: 15px;
 }
@@ -100,6 +131,9 @@ body {
     margin: 15px auto ;
 }
 .menu1{
+    height: 50px!important;
+}
+.menuniz{
     height: 50px!important;
 }
 @media only screen and (mix-width: 500px) {
@@ -118,16 +152,14 @@ p{
 /*padding-top: 15px!important;*/
 /*padding-bottom: 15px!important;*/
 /*}*/
-.menu ul li{
-    list-style-type: none;
-}
+
 .menu li{
-    list-style-type: none;
+    list-style-type: none!important;
     background: #1417ae;
     padding: 5px 5px 5px 15px;
 }
 .menu ul{
-    list-style-type: none;
+    list-style-type: none!important;
     background: #386ccd;
     padding-bottom: 1px;
 
@@ -171,7 +203,7 @@ ul{
     text-decoration: none;
 }
 .dopmenu >li>a{
-    padding: 5px;
+    padding: 5px!important;
 }
 .dopmenu{
     height: 30px!important;
@@ -190,7 +222,9 @@ ul{
 .cat > .ul{
     border: 1px solid #1417ae;
 }
-
+.cat ul li{
+    list-style-type: none!important;
+}
 .li3{
     padding: 5px 10px;
     background: #e2e7f6!important;
@@ -205,4 +239,27 @@ ul{
 
 .li3{
     border: 1px solid #1417ae!important;
+}
+@media (max-width: 767px) {
+    .dopmenu li {
+        width: auto;
+        display: inline !important;
+    }
+
+    .dopmenu ul {
+        display: inline !important;
+    }
+
+    .dopmenu > li > a {
+        display: inline !important;
+    }
+    .dopmenu {
+        margin: 15px 10px; !important;
+    }
+    .menuniz{
+        height: auto!important;
+    }
+    .paddi p{
+        padding: 2.5px!important;
+    }
 }

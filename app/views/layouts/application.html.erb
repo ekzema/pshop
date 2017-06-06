@@ -1,14 +1,80 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pshop</title>
+    <title>Polsha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
+
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <div class="hidden-xs">
+    <div class=" navbar navbar-default" role="navigation">
+      <div class="container text-center odin">
+
+        <div style="display: inline-block;">
+          <ul class="nav navbar-nav menu5 dopmenu">
+            <li class="li"><a href="#">О нас</a></li>
+            <li class="li"><a href="#"></a></li>
+            <li class="li"><a href="#">Мы в соцсетях</a></li>
+            <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/vk.png" ></a></li>
+            <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/fa.png" ></a></li>
+            <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png" ></a></li>
+            </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="header text-center hidden-xs">
+    <img src="/assets/05-3.jpg" class="img-responsive">
+  </div>
+
+  <div class="navbar navbar-default dva" role="navigation">
+    <div class="container menu1">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <ul class="nav navbar-nav menu5 dopmenu visible-xs">
+          <li class="li"><a href="#">О нас</a></li>
+          <li class="li"><a href="#"></a></li>
+          <li class="li"><a href="#">Мы в соцсетях</a></li>
+          <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/vk.png" ></a></li>
+          <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/fa.png" ></a></li>
+          <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png" ></a></li>
+        </ul>
+      </div>
+      <div class="navbar-collapse collapse text-center">
+        <div style="display: inline-block;">
+          <ul class="nav navbar-nav ">
+            <li class="active"><a href="/">ГЛАВНАЯ</a></li>
+            <li class="li"><a href="#">ОПЛАТА И ДОСТАВКА</a></li>
+            <li class="li"><a href="#">КОНТАКТЫ</a></li>
+            <li class="li"><a href="#">НОВИНКИ</a></li>
+            <li class="li"><a href="#">АКЦИИ</a></li>
+            <li class="li"><%= link_to 'КОРЗИНА', cart_path(@cart) %></li>
+          </ul>
+        </div>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
     <%= yield %>
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container menuniz text-center paddi">
+      <div class="col-sm-6 ">
+        <p class="">Polsha.com.ua © 2017</p>
+      </div>
+      <div class="col-sm-6">
+        <p class="labsites">Сайт разработан<a href="http://labsites.org/en/" target="_blank"> Labsites.org</a></p>
+      </div>
+    </div>
+  </div>
   </body>
 </html>

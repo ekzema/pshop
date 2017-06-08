@@ -226,7 +226,7 @@ ul{
     list-style-type: none!important;
 }
 .li3{
-    padding: 5px 10px;
+    /*padding: 5px 10px;*/
     background: #e2e7f6!important;
 
 }
@@ -262,4 +262,15 @@ ul{
     .paddi p{
         padding: 2.5px!important;
     }
+}
+.punkt>.dropdown-menu{
+    position: relative;
+
+     float: none;
+
+     padding: 0;
+     margin: 0;
+}
+.ul>li>a{
+    color: #333;
 }

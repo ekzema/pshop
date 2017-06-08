@@ -41,81 +41,109 @@
 
 
 
+<div class="col-sm-3 cat">
 
+<ul class="nav navmenu-nav ul">
+  <% @categories.each do |category| %>
+      <li class=" dropdown li3 punkt">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <%= category.name %></a>
+        <ul class="dropdown-menu navmenu-nav ul2" role="menu">
+          <% category.twocategories.each do |twocategory| %>
+              <li class="li2"><%= twocategory.name %></li>
+          <% end %>
+        </ul>
+      </li>
+  <% end %>
+</ul>
 
-    <div class="col-sm-10">
-      <div class="row text-center">
-        <div class="col-xs-6 col-md-4 col-lg-3">
-          <div class="color">
-            <a href="#" >
-              <div><img src="/assets/noimage.jpg"></div>
-              <h3>Порошки</h3>
-            </a>
-          </div>
-        </div><!--/span-->
-        <div class="col-xs-6 col-md-4 col-lg-3">
-          <div class="color">
-            <a href="#" >
-              <div><img src="/assets/noimage.jpg"></div>
-              <h3>Порошки</h3>
-            </a>
-          </div>
-        </div><!--/span-->
-        <div class="col-xs-6 col-md-4 col-lg-3">
-          <div class="color">
-            <a href="#" >
-              <div><img src="/assets/noimage.jpg"></div>
-              <h3>Порошки</h3>
-            </a>
-          </div>
-        </div><!--/span-->
-        <div class="col-xs-6 col-md-4 col-lg-3">
-          <div class="color">
-            <a href="#" >
-              <div><img src="/assets/noimage.jpg"></div>
-              <h3>Порошки</h3>
-            </a>
-          </div>
-        </div><!--/span-->
-        <div class="col-xs-6 col-md-4 col-lg-3">
-          <div class="color">
-            <a href="#" >
-              <div><img src="/assets/noimage.jpg"></div>
-              <h3>Порошки</h3>
-            </a>
-          </div>
-        </div><!--/span-->
-        <div class="col-xs-6 col-md-4 col-lg-3">
-          <div class="color">
-            <a href="#">
-              <div><img src="/assets/noimage.jpg"></div>
-              <h3>Порошки</h3>
-            </a>
-          </div>
-        </div><!--/span-->
-        <div class="col-xs-6 col-md-4 col-lg-3">
-          <div class="color">
-            <a href="#" >
-              <div><img src="/assets/noimage.jpg"></div>
-              <h3>Порошки</h3>
-            </a>
-          </div>
-        </div><!--/span-->
-        <div class="col-xs-6 col-md-4 col-lg-3">
-          <div class="color">
-            <a href="#" >
-              <div><img src="/assets/noimage.jpg"></div>
-              <h3>Порошки</h3>
-            </a>
-          </div>
-        </div><!--/span-->
-        <div class="col-xs-6 col-md-4 col-lg-3">
-          <div class="color">
-            <a href="#" >
-              <div><img src="/assets/noimage.jpg"></div>
-              <h3>Порошки</h3>
-            </a>
-          </div>
-        </div><!--/span-->
+  <!--<ul class="ul">-->
+  <!--<% @categories.each do |category| %>-->
+      <!--<li class="li3"><%= category.name %></li>-->
+      <!--<li class="li">-->
+      <!--<ul class="ul2">-->
+      <!--<% category.twocategories.each do |twocategory| %>-->
+          <!--<li class="li2"><%= twocategory.name %></li>-->
+          <!--<% end %>-->
+      <!--</ul>-->
+      <!--</li>-->
+      <!--<% end %>-->
+  <!--</ul>-->
+</div>
+
+<div class="col-sm-9">
+  <div class="row text-center">
+    <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="color">
+        <a href="#" >
+          <div><img src="/assets/noimage.jpg"></div>
+          <h3>Порошки</h3>
+        </a>
       </div>
-    </div>
+    </div><!--/span-->
+    <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="color">
+        <a href="#" >
+          <div><img src="/assets/noimage.jpg"></div>
+          <h3>Порошки</h3>
+        </a>
+      </div>
+    </div><!--/span-->
+    <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="color">
+        <a href="#" >
+          <div><img src="/assets/noimage.jpg"></div>
+          <h3>Порошки</h3>
+        </a>
+      </div>
+    </div><!--/span-->
+    <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="color">
+        <a href="#" >
+          <div><img src="/assets/noimage.jpg"></div>
+          <h3>Порошки</h3>
+        </a>
+      </div>
+    </div><!--/span-->
+    <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="color">
+        <a href="#" >
+          <div><img src="/assets/noimage.jpg"></div>
+          <h3>Порошки</h3>
+        </a>
+      </div>
+    </div><!--/span-->
+    <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="color">
+        <a href="#">
+          <div><img src="/assets/noimage.jpg"></div>
+          <h3>Порошки</h3>
+        </a>
+      </div>
+    </div><!--/span-->
+    <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="color">
+        <a href="#" >
+          <div><img src="/assets/noimage.jpg"></div>
+          <h3>Порошки</h3>
+        </a>
+      </div>
+    </div><!--/span-->
+    <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="color">
+        <a href="#" >
+          <div><img src="/assets/noimage.jpg"></div>
+          <h3>Порошки</h3>
+        </a>
+      </div>
+    </div><!--/span-->
+    <div class="col-xs-6 col-md-4 col-lg-3">
+      <div class="color">
+        <a href="#" >
+          <div><img src="/assets/noimage.jpg"></div>
+          <h3>Порошки</h3>
+        </a>
+      </div>
+    </div><!--/span-->
+  </div>
+</div>

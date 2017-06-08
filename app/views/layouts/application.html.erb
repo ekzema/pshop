@@ -63,22 +63,14 @@
     </div><!--/.nav-collapse -->
   </div>
 </div>
+
 <div class="container">
   <div class="row">
-    <div class="col-sm-2 cat">
-      <ul class="ul">
-        <% @categories.each do |category| %>
-            <li class="li3"><%= category.name %></li>
-            <li class="li">
-              <ul class="ul2">
-                <% category.twocategories.each do |twocategory| %>
-                    <li class="li2"><%= twocategory.name %></li>
-                <% end %>
-              </ul>
-            </li>
-        <% end %>
-      </ul>
-    </div>
+
+
+
+
+
     <%= yield %>
   </div>
 </div>

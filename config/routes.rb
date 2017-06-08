@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
+  get 'twocat', to: 'welcome#twocat'
+  get 'show', to: 'welcome#show'
+  get 'aboute', to: 'welcome#aboute'
 
   get 'adminpanel', to: 'adminpanel#index'
   namespace :adminpanel do

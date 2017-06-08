@@ -14,6 +14,7 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    @categories = Category.all
     unless @cart.id == session[:cart_id]
       redirect_to :root
     end

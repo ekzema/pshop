@@ -42,33 +42,13 @@
 
 
 <div class="col-sm-3 cat">
-
-<ul class="nav navmenu-nav ul">
+  <ul class="nav navmenu-nav ul">
   <% @categories.each do |category| %>
-      <li class=" dropdown li3 punkt">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <%= category.name %></a>
-        <ul class="dropdown-menu navmenu-nav ul2" role="menu">
-          <% category.twocategories.each do |twocategory| %>
-              <li class="li2"><%= twocategory.name %></li>
-          <% end %>
-        </ul>
-      </li>
-  <% end %>
-</ul>
-
-  <!--<ul class="ul">-->
-  <!--<% @categories.each do |category| %>-->
-      <!--<li class="li3"><%= category.name %></li>-->
-      <!--<li class="li">-->
-      <!--<ul class="ul2">-->
-      <!--<% category.twocategories.each do |twocategory| %>-->
-          <!--<li class="li2"><%= twocategory.name %></li>-->
-          <!--<% end %>-->
-      <!--</ul>-->
-      <!--</li>-->
-      <!--<% end %>-->
-  <!--</ul>-->
+        <li class=" dropdown li3 punkt">
+          <%= link_to category.name, category_path(category) %>
+        </li>
+      <% end %>
+  </ul>
 </div>
 
 <div class="col-sm-9">

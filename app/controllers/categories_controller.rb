@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit]
+  include CurrentCart
+  before_action :set_cart
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_catalog
   # GET /categories
   # GET /categories.json
   def index
@@ -10,6 +13,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @categories = Category.all
   end
 
   # GET /categories/new

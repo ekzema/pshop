@@ -1,0 +1,6 @@
+$('#buttonAddTocart_<%= @product.id %>').html('<span class="inCart">Товар в корзине</span>');
+$('#modalshowCart').modal('show');
+$('.showCartImage').html('<%= image_tag @product.image.url(:admin) %>');
+$('.showCartName').html('<%= @product.name %>');
+$('.showCartPrice').html('<%= @product.price %>грн');
+

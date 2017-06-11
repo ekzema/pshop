@@ -274,3 +274,16 @@ ul{
 .ul>li>a{
     color: #333;
 }
+
+.showCartBasic th{
+padding-bottom: 10px;
+}
+
+.inCart{
+    left: 10px;
+    bottom: 0;
+    margin: 5px 5px 5px 0;
+    padding: 5px 5px 5px 0;
+    color:green;
+    font-weight: bold;
+}

@@ -39,7 +39,7 @@
                     <td><%= product.name %></td>
                     <td><%= truncate(product.description, length: 200) %></td>
                     <td>
-                      <%= product.category.name %>
+                      <%= @category.call(product.category_id).name if product.category_id.present? %>
                     </td>
                     <td>
                       <%= @twocategory.call(product.twocategory_id).name if product.twocategory_id.present? %>

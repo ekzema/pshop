@@ -25,14 +25,20 @@
 
 <div class="col-sm-9">
   <div class="row text-center">
-    <% @category.products.each do |product| %>
+    <% @products.each do |product| %>
         <div class="col-xs-6 col-md-4 col-lg-3">
           <div class="color">
             <%= link_to product do %>
                 <div><%= image_tag product.image, title: product.name, alt: product.name %></div>
                 <h3><%= product.name %></h3>
             <% end %>
-            <%= button_to 'Добавить в корзину', line_items_path(product_id: product) %>
+            <div id="buttonAddTocart_<%= product.id %>">
+              <% if @cart.line_items.find_by_product_id(product).present? %>
+                  <span class="inCart">Товар в корзине</span>
+              <% else %>
+                  <%= button_to 'Добавить в корзину', line_items_path(product_id: product), remote: true %>
+              <% end %>
+            </div>
           </div>
         </div><!--/span-->
     <% end %>

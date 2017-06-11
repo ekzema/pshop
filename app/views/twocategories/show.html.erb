@@ -32,7 +32,13 @@
                 <div><%= image_tag product.image, title: product.name, alt: product.name %></div>
                 <h3><%= product.name %></h3>
             <% end %>
-            <%= button_to 'Добавить в корзину', line_items_path(product_id: product) %>
+            <div id="buttonAddTocart_<%= product.id %>">
+              <% if @cart.line_items.find_by_product_id(product).present? %>
+                  <span class="inCart">Товар в корзине</span>
+              <% else %>
+                  <%= button_to 'Добавить в корзину', line_items_path(product_id: product), remote: true %>
+              <% end %>
+            </div>
           </div>
         </div><!--/span-->
     <% end %>

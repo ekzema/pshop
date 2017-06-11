@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @categories = Category.all
+    @products = Product.where(category_id: @category)
   end
 
   # GET /categories/new
@@ -58,6 +59,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
+    Product.where(category_id: @category.id).update_all(category_id: :null, twocategory_id: :null)
     if @category.destroy
       respond_to do |format|
         format.js

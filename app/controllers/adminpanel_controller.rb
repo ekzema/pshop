@@ -17,6 +17,7 @@ class AdminpanelController < ApplicationController
 
   def products
     @product = Product.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+    @category = Proc.new{|id| Category.find(id)}
     @twocategory = Proc.new{|id| Twocategory.find(id)}
   end
 

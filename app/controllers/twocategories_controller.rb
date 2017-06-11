@@ -61,6 +61,7 @@ class TwocategoriesController < ApplicationController
   # DELETE /twocategories/1
   # DELETE /twocategories/1.json
   def destroy
+    Product.where(twocategory_id: @twocategory.id).update_all(twocategory_id: :null)
     if @twocategory.destroy
       respond_to do |format|
         format.js

@@ -20,8 +20,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @category = @product.category.id
-    @twocategories = Twocategory.where(category_id: @product.category.id)
+    @category = @product.category_id
+    @twocategories = Twocategory.where(category_id: @product.category_id)
   end
 
   # POST /products

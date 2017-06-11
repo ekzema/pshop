@@ -1,11 +1,3 @@
-document.addEventListener("turbolinks:load", function () {
-    // BEGIN
-
-
-
-// END
-
-});
-
-
-
+function hideModalBoot() {
+    $('#modalshowCart').modal('hide');
+}

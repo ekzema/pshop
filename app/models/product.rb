@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   has_many :line_items, :dependent => :destroy
   has_many :product_slide_images, :dependent => :destroy
-  belongs_to :category
+
   before_destroy :ensure_not_referenced_by_any_line_item
 
   has_attached_file :image, :styles => {:admin => "X100", :thumb => "X60" }, :default_url => "NoImage_180X170.jpg"

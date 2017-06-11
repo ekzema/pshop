@@ -1,7 +1,6 @@
 class Category < ApplicationRecord
 
   has_many :twocategories, :dependent => :destroy
-  has_many :products, :dependent => :destroy
   validates :name, :presence => {message: 'Введите название категории'}
   validates :name, :uniqueness => {message: 'Категория с таким именем уже существует'}
   has_attached_file :image, :default_url => "noimage.png"

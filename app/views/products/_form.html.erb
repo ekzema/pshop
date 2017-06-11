@@ -41,7 +41,7 @@
 
 
     <div id="twocategory" class="form-group col-md-offset-2">
-      <% if @twocategories %>
+      <% if @twocategories && @product.category_id.present? %>
           <div class="col-sm-2 ">
             <%= f.label 'Подкатегория', class:"control-label" %>
           </div>

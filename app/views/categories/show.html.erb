@@ -9,13 +9,15 @@
     <% @categories.each do |category| %>
         <li class="dropdown li3 punkt"><%= link_to category.name, category_path(category) %></li>
         <% if category == @category %>
-        <li class="li">
-          <ul class="ul2">
-            <% category.twocategories.each do |twocategory| %>
-                <li class="li2"><%= twocategory.name %></li>
-            <% end %>
-          </ul>
-        </li>
+            <li class="li">
+              <ul class="ul2">
+                <% category.twocategories.each do |twocategory| %>
+                    <%= link_to twocategory do %>
+                        <li class="li2"><%= twocategory.name %></li>
+                    <% end %>
+                <% end %>
+              </ul>
+            </li>
         <% end %>
     <% end %>
   </ul>
@@ -23,77 +25,16 @@
 
 <div class="col-sm-9">
   <div class="row text-center">
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#">
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
+    <% @category.products.each do |product| %>
+        <div class="col-xs-6 col-md-4 col-lg-3">
+          <div class="color">
+            <%= link_to product do %>
+                <div><%= image_tag product.image, title: product.name, alt: product.name %></div>
+                <h3><%= product.name %></h3>
+            <% end %>
+            <%= button_to 'Добавить в корзину', line_items_path(product_id: product) %>
+          </div>
+        </div><!--/span-->
+    <% end %>
   </div>
 </div>

@@ -1,6 +1,9 @@
 class TwocategoriesController < ApplicationController
   before_action :set_twocategory, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit]
+  include CurrentCart
+  before_action :set_cart
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_catalog
 
   # GET /twocategories
   # GET /twocategories.json
@@ -11,6 +14,9 @@ class TwocategoriesController < ApplicationController
   # GET /twocategories/1
   # GET /twocategories/1.json
   def show
+    @categories = Category.all
+    @category = @twocategory.category
+    @products = Product.where(twocategory_id: @twocategory)
   end
 
   # GET /twocategories/new

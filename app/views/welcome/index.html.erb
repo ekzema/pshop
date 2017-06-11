@@ -4,126 +4,66 @@
 
 <!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
 <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">-->
-  <!--Test bootstrap-->
+<!--Test bootstrap-->
 <!--</button>-->
 
 <!--&lt;!&ndash; Modal &ndash;&gt;-->
 <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
-  <!--<div class="modal-dialog" role="document">-->
-    <!--<div class="modal-content">-->
-      <!--<div class="modal-header">-->
-        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-        <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
-      <!--</div>-->
-      <!--<div class="modal-body">-->
-        <!--...-->
-      <!--</div>-->
-      <!--<div class="modal-footer">-->
-        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+<!--<div class="modal-dialog" role="document">-->
+<!--<div class="modal-content">-->
+<!--<div class="modal-header">-->
+<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--...-->
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--<button type="button" class="btn btn-primary">Save changes</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->
 
 <!--<div>-->
-  <!--<% @products.each do |product| %>-->
-          <!--<div class="entry">-->
-            <!--<h3><%= product.name %></h3>-->
-            <!--<%= sanitize(product.description) %>-->
-            <!--<div class="price_line">-->
-              <!--<span class="price"><%= number_to_currency(product.price) %></span>-->
-              <!--<%= button_to 'Add to Cart', line_items_path(product_id: product) %>-->
-            <!--</div>-->
-          <!--</div>-->
-  <!--<% end %>-->
+<!--
+<% @products.each do |product| %>-->
+    <!--<div class="entry">-->
+    <!--<h3><%= product.name %></h3>-->
+    <!--<%= sanitize(product.description) %>-->
+    <!--<div class="price_line">-->
+    <!--<span class="price"><%= number_to_currency(product.price) %></span>-->
+    <!--<%= button_to 'Add to Cart', line_items_path(product_id: product) %>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--
+<% end %>-->
 <!--</div>-->
-
 
 
 <div class="col-sm-3 cat">
   <ul class="nav navmenu-nav ul">
-  <% @categories.each do |category| %>
+    <% @categories.each do |category| %>
         <li class=" dropdown li3 punkt">
           <%= link_to category.name, category_path(category) %>
         </li>
-      <% end %>
+    <% end %>
   </ul>
 </div>
 
 <div class="col-sm-9">
   <div class="row text-center">
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#">
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
-    <div class="col-xs-6 col-md-4 col-lg-3">
-      <div class="color">
-        <a href="#" >
-          <div><img src="/assets/noimage.jpg"></div>
-          <h3>Порошки</h3>
-        </a>
-      </div>
-    </div><!--/span-->
+        <% @products.each do |product| %>
+        <div class="col-xs-6 col-md-4 col-lg-3">
+          <div class="color">
+            <%= link_to product do %>
+                <div><%= image_tag product.image, title: product.name, alt: product.name %></div>
+                <h3><%= product.name %></h3>
+            <% end %>
+            <%= button_to 'Добавить в корзину', line_items_path(product_id: product) %>
+          </div>
+        </div><!--/span-->
+        <% end %>
   </div>
 </div>

@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit, :update, :create]
+  skip_before_action :verify_authenticity_token, only: [:update]
   # GET /products
   # GET /products.json
   def index
@@ -19,8 +20,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @category = @product.twocategory.category.id
-    @twocategories = Twocategory.where(category_id: @product.twocategory.category)
+    @category = @product.category.id
+    @twocategories = Twocategory.where(category_id: @product.category.id)
   end
 
   # POST /products
@@ -47,8 +48,10 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+        @product.product_slide_images.build
+        return redirect_to edit_product_path(@product) if params[:back]
+        format.html { redirect_to adminpanel_products_path, notice: 'Товар успешно обновлён' }
+        format.json { render :show, status: :ok, location: adminpanel_products_path }
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -58,9 +61,9 @@ class ProductsController < ApplicationController
 
 
   def form_render
-    @twocategory = Twocategory.where(category_id: params[:category_id])
-    if params[:category_id]
-      if params[:category_id].blank?
+    @twocategory = Twocategory.where(category_id: params[:product][:category_id])
+    if params[:product][:category_id]
+      if params[:product][:category_id].blank?
         render text: ''
       else
         render :partial => 'twocategory', locals: {twocategory: @twocategory}
@@ -96,6 +99,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:twocategory_id, :name, :description, :price, :visible, :meta_desc, :meta_key, :image, product_slide_images_attributes: [:id, :_destroy, :image])
+      params.require(:product).permit(:twocategory_id, :category_id, :name, :description, :price, :visible, :meta_desc, :meta_key, :image, product_slide_images_attributes: [:id, :_destroy, :image])
     end
 end

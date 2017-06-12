@@ -1,20 +1,6 @@
 
 
-<!--<h2>Your Cart</h2>-->
-<!--<table>-->
-  <!--<% @cart.line_items.each do |item| %>-->
-      <!--<tr>-->
-        <!--<td><%= item.quantity %>&times;</td>-->
-        <!--<td><%= item.product.name %></td>-->
-        <!--<td class="item_price"><%= number_to_currency(item.total_price) %></td>-->
-      <!--</tr>-->
-  <!--<% end %>-->
-  <!--<tr class="total_line">-->
-    <!--<td colspan="2">Total</td>-->
-    <!--<td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>-->
-  <!--</tr>-->
-<!--</table>-->
-<!--<%= button_to 'Delete cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>-->
+
 <div class="container">
   <div class="row">
     <h3 class="text-center">Корзина</h3>
@@ -25,19 +11,35 @@
         <th class="text-center">Название</th>
         <th class="text-center">Количество</th>
         <th class="text-center">Цена</th>
-        <th class="text-center"><button class=" btn btn-danger">Очистить корзину</button></th>
+        <th class="text-center"><%= button_to 'Очистить корзину', @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger clearCart' %></th>
       </tr>
       </thead>
       <tbody>
-      <tr class="success text-center">
-        <td class="foto text-center"><img src="/assets/02.jpg"></td>
-        <td class="hidden-xs text-center">Название</td>
-        <td class="hidden-xs text-center">Количество</td>
-        <td class="hidden-xs text-center">Цена</td>
-        <td class="hidden-xs text-center"><button class=" btn btn-danger">Удалить позицию</button></td>
+      <% @cart.line_items.each do |item| %>
+      <tr class="success text-center" id='cartProductLine_<%= item.id %>'>
+        <td class="foto text-center"><%= image_tag item.product.image.url(:thumb), title: item.product.name, alt: item.product.name %></td>
+        <td class="hidden-xs text-center"><%= item.product.name %></td>
+        <td class="hidden-xs text-center">
+          <%= form_for((item), remote: true, method: "put", action: "update", :html => {id: "cartNum#{item.id}"}) do |f| %>
+
+<div class="input-group spinner" id='spinner_<%= item.id %>'>
+<%= f.text_field :quantity, attrnum: item.id, min: 1, class: 'form-control' %>    <div class="input-group-btn-vertical">
+      <button class="btn btn-default" type="button" attrnum='<%= item.id %>'><i class="fa fa-caret-up"></i></button>
+      <button class="btn btn-default" type="button" attrnum='<%= item.id %>'><i class="fa fa-caret-down"></i></button>
+    </div>
+  </div>
+<%end%>
+
+
+
+        </td>
+        <td class="hidden-xs text-center"><%= item.product.price %></td>
+        <td class="hidden-xs text-center"><%= link_to 'X', item, remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>        
       </tr>
-      </tbody>
+       <% end %>       
+      </tbody>      
     </table>
+    <p class='countProductPrice'><b>Итого:</b> <span><%= number_to_currency(@cart.total_price) %></span></p>
     <h3 class="text-center"><button type="submit" class="btn btn-default">Оформить заказ</button></h3>
     </form>
   </div>
@@ -138,3 +140,25 @@
     </form>
   </div>
 </div>
+
+<script type="text/javascript">
+$(function () {
+$('input[type=number]').change(function () {
+var attrNum = $(this).attr("attrnum");
+$.post($('#cartNum' + attrNum).attr('action'),
+$('#cartNum' + attrNum).serialize(), null, 'script');
+return false;
+});
+});
+
+(function ($) {
+  $('.spinner .btn:first-of-type').on('click', function() {
+    var attrNum = $(this).attr("attrnum");
+    $('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
+  });
+  $('.spinner .btn:last-of-type').on('click', function() {
+    var attrNum = $(this).attr("attrnum");
+    $('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
+  });
+})(jQuery);
+</script>

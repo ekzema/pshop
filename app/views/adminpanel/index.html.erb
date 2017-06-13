@@ -43,6 +43,19 @@
 
 
       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <%= link_to adminpanel_orders_path do %>
+            <div class="info-box blue-bg">
+              <i class="icon_cart" aria-hidden="true"></i>
+              <div class="count"><%= @order %></div>
+              <div class="title">Заказы</div>
+            </div><!--/.info-box-->
+        <% end %>
+      </div><!--/.col-->
+
+    </div><!--/.row-->
+
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
         <a href="#">
             <div class="info-box blue-bg">
               <i class="icon_mail" aria-hidden="true"></i>
@@ -51,8 +64,7 @@
             </div><!--/.info-box-->
         </a>
       </div><!--/.col-->
-
-    </div><!--/.row-->
+    </div>
 
   </section>
 

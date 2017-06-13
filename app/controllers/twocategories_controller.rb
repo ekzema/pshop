@@ -16,7 +16,7 @@ class TwocategoriesController < ApplicationController
   def show
     @categories = Category.all
     @category = @twocategory.category
-    @products = Product.where(twocategory_id: @twocategory)
+    @products = Product.where(twocategory_id: @twocategory, visible: 1).order(created_at: :desc)
   end
 
   # GET /twocategories/new

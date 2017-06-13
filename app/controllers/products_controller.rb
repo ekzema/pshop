@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
       if @product.save
         @product.product_slide_images.build
         return redirect_to edit_product_path(@product) if params[:back]
-        format.html { redirect_to adminpanel_products_path, notice: 'Post was successfully updated.' }
+        format.html { redirect_to adminpanel_products_path, notice: 'Товар успешно добавлен' }
         format.json { render :show, status: :ok, location: adminpanel_products_path }
       else
         format.html { render :edit }

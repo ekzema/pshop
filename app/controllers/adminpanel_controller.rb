@@ -5,6 +5,7 @@ class AdminpanelController < ApplicationController
     @product = Product.count
     @category = Category.count
     @twocategory = Twocategory.count
+    @order = Order.count
   end
 
   def categories
@@ -19,6 +20,16 @@ class AdminpanelController < ApplicationController
     @product = Product.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
     @category = Proc.new{|id| Category.find(id)}
     @twocategory = Proc.new{|id| Twocategory.find(id)}
+  end
+
+  def orders      
+    @orders = Order.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+    @sort = params[:moderation]
+    if @sort == 'all'
+      @orders
+    elsif @sort
+      @orders = Order.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+    end
   end
 
 end

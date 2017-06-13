@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'categories'
     get 'twocategories'
     get 'products'
+    get 'orders'
   end
 
   resources :line_items

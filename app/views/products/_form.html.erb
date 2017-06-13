@@ -1,146 +1,155 @@
 <%= nested_form_for(product, multipart: true, :html => {:class => 'form-horizontal'}) do |f| %>
-    <% if product.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<% if product.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-          <ul>
-            <% product.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
+  <ul>
+    <% product.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
+  </ul>
+</div>
+<% end %>
 
-    <div class="form-group">
-      <div class="col-sm-2 ">
-        <%= f.label 'Основное фото', class: "control-label" %>
-      </div>
-      <div class="col-sm-10">
-        <ul class="sliderImg imgcat">
-          <li><%= image_tag product.image.url(:admin, timestamp: false), title: "#{product.name}", id: 'imagePreload', class: "EditImage", height: 100 %></li>
-          <!-- Trigger -->
-          <li><%= f.file_field :image, id: 'imgInp' %>
-            <% unless product.image_file_name.nil? %></li>
-                <li><%= link_to("Удалить", {action: :delete_attachment, id: product.id}, method: :delete, data: {confirm: 'Вы уверины что хотите удалить?'}) %></li>
-            <% end %>
-            </ul>
-      </div>
-    </div>
-
-
-
-    <div class="form-group col-md-offset-2">
-      <div class="col-sm-2 ">
-        <%= f.label 'Категория', class:"control-label" %>
-      </div>
-      <div class="col-sm-10 ">
-
-        <%= select_tag 'product[category_id]', options_for_select(Category.all.collect{|category| [category.name, category.id]}, @category), {:include_blank => '- Категории -', :class => 'form-control form', :id => 'product_category_id'} %>
-      </div>
-    </div>
-
-
-    <div id="twocategory" class="form-group col-md-offset-2">
-      <% if @twocategories && @product.category_id.present? %>
-          <div class="col-sm-2 ">
-            <%= f.label 'Подкатегория', class:"control-label" %>
-          </div>
-          <div class="col-sm-10">
-            <%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect {|twocategory| [twocategory.name, twocategory.id]}, product.twocategory_id), {:include_blank => '- Подкатегория -', class:"form-control form"}) %>
-          </div>
-      <% end %>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-2 ">
-        <%= f.label 'Название', class: "control-label" %>
-      </div>
-      <div class="col-sm-10 ">
-        <%= f.text_field :name, class: "form-control form" %>
-      </div>
-    </div>
-
-
-    <div class="form-group">
-      <div class="col-sm-2 ">
-        <%= f.label 'Описание', class: "control-label" %>
-      </div>
-      <div class="col-sm-10 ">
-        <%= f.text_area :description, class: "form-control form" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-2 ">
-        <%= f.label 'Цена', class: "control-label" %>
-      </div>
-      <div class="col-sm-10 ">
-        <%= f.text_field :price, class: "form-control form" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-2 ">
-        <%= f.label 'МЕТА описание', class: "control-label" %>
-      </div>
-      <div class="col-sm-10 ">
-        <%= f.text_area :meta_desc, class: "form-control form" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-2 ">
-        <%= f.label 'МЕТА ключи', class: "control-label" %>
-      </div>
-      <div class="col-sm-10 ">
-        <%= f.text_field :meta_key, class: "form-control form" %>
-      </div>
-    </div>
-
-    <h4>Картинки для слайдера</h4>
-
-    <% if params[:action] == 'edit' %>
-    <% @product.product_slide_images.each do |slide_image| %>
-
-        <%= f.fields_for :product_slide_images, slide_image do |slide| %>
-            <div class="form-group rowImageSlide">
-              <div class="col-sm-2"></div>
-              <div class="col-sm-2">
-                <%= slide.file_field :image, class: 'uploadImage' %>
-              </div>
-              <div class="col-sm-8">
-                <%= image_tag slide_image.image, class: 'slideImagePrduct' %>
-                <%= slide.link_to_remove '<i class="icon_close_alt2"></i>'.html_safe, class: 'deleteImageSlide btn btn-danger' %>
-              </div>
-            </div>
+<div class="form-group">
+  <div class="col-sm-2 ">
+    <%= f.label 'Основное фото', class: "control-label" %>
+  </div>
+  <div class="col-sm-10">
+    <ul class="sliderImg imgcat">
+      <li><%= image_tag product.image.url(:admin, timestamp: false), title: "#{product.name}", id: 'imagePreload', class: "EditImage", height: 100 %></li>
+      <!-- Trigger -->
+      <li><%= f.file_field :image, id: 'imgInp' %>
+        <% unless product.image_file_name.nil? %></li>
+        <li><%= link_to("Удалить", {action: :delete_attachment, id: product.id}, method: :delete, data: {confirm: 'Вы уверины что хотите удалить?'}) %></li>
         <% end %>
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div class="form-group col-md-offset-2">
+    <div class="col-sm-2 ">
+      <%= f.label 'Категория', class:"control-label" %>
+    </div>
+    <div class="col-sm-10 ">
+
+      <%= select_tag 'product[category_id]', options_for_select(Category.all.collect{|category| [category.name, category.id]}, @category), {:include_blank => '- Категории -', :class => 'form-control form', :id => 'product_category_id'} %>
+    </div>
+  </div>
+
+
+  <div id="twocategory" class="form-group col-md-offset-2">
+    <% if @twocategories && @product.category_id.present? %>
+    <div class="col-sm-2 ">
+      <%= f.label 'Подкатегория', class:"control-label" %>
+    </div>
+    <div class="col-sm-10">
+      <%= select_tag('product[twocategory_id]', options_for_select(@twocategories.collect {|twocategory| [twocategory.name, twocategory.id]}, product.twocategory_id), {:include_blank => '- Подкатегория -', class:"form-control form"}) %>
+    </div>
     <% end %>
-<% end %>
+  </div>
 
-    <%= nested_form_for Product.new, html: {multipart: true} do |i| %>
-        <%= i.fields_for :product_slide_images do |slide_images| %>
-            <div class="form-group rowImageSlide newRowSlide">
-              <div class="col-sm-2"></div>
-              <div class="col-sm-10">
-                <%= slide_images.file_field :image %><br>
-                <%= slide_images.link_to_remove '<i class="icon_close_alt2"></i>'.html_safe, class: 'deleteImageSlide btn btn-danger' %>
-              </div>
-            </div>
-
-        <% end %>
-        <%= i.link_to_add :product_slide_images do %>
-            <span type="button" class="btn btn-success btn-block addPhohto"><i class="icon_plus"></i> ДОБАВИТЬ КАРТИНКУ</span>
-        <% end %>
-
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10 actions">
-        <br>
-        <%= link_to 'Назад', adminpanel_products_path, class: 'btn btn-primary' %>
-        <button type="submit" class="btn btn-success editSeller">Сохранить и выйти</button>
-        <button type="submit" name="back" class="btn btn-success editSeller">Сохранить и вернуться</button>
-      </div>
+  <div class="form-group">
+    <div class="col-sm-2 ">
+      <%= f.label 'Название', class: "control-label" %>
     </div>
-<% end %>
-<% end %>
+    <div class="col-sm-10 ">
+      <%= f.text_field :name, class: "form-control form" %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-sm-2 ">
+      <%= f.label 'Описание', class: "control-label" %>
+    </div>
+    <div class="col-sm-10 ">
+      <%= f.text_area :description, class: "form-control form" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2 ">
+      <%= f.label 'Цена', class: "control-label" %>
+    </div>
+    <div class="col-sm-10 ">
+      <%= f.text_field :price, class: "form-control form" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2 ">
+      <%= f.label 'МЕТА описание', class: "control-label" %>
+    </div>
+    <div class="col-sm-10 ">
+      <%= f.text_area :meta_desc, class: "form-control form" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2 ">
+      <%= f.label 'МЕТА ключи', class: "control-label" %>
+    </div>
+    <div class="col-sm-10 ">
+      <%= f.text_field :meta_key, class: "form-control form" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2 ">
+      <%= f.label 'Показать товар', for: 'visible' %>
+    </div>
+    <div class="col-sm-10 ">
+      <%= f.check_box :visible, id: 'visible' %>
+    </div>
+  </div>
+
+  <h4>Картинки для слайдера</h4>
+
+  <% if params[:action] == 'edit' %>
+  <% @product.product_slide_images.each do |slide_image| %>
+
+  <%= f.fields_for :product_slide_images, slide_image do |slide| %>
+  <div class="form-group rowImageSlide">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2">
+      <%= slide.file_field :image, class: 'uploadImage' %>
+    </div>
+    <div class="col-sm-8">
+      <%= image_tag slide_image.image, class: 'slideImagePrduct' %>
+      <%= slide.link_to_remove '<i class="icon_close_alt2"></i>'.html_safe, class: 'deleteImageSlide btn btn-danger' %>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+  <% end %>
+
+  <%= nested_form_for Product.new, html: {multipart: true} do |i| %>
+  <%= i.fields_for :product_slide_images do |slide_images| %>
+  <div class="form-group rowImageSlide newRowSlide">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+      <%= slide_images.file_field :image %><br>
+      <%= slide_images.link_to_remove '<i class="icon_close_alt2"></i>'.html_safe, class: 'deleteImageSlide btn btn-danger' %>
+    </div>
+  </div>
+
+  <% end %>
+  <%= i.link_to_add :product_slide_images do %>
+  <span type="button" class="btn btn-success btn-block addPhohto"><i class="icon_plus"></i> ДОБАВИТЬ КАРТИНКУ</span>
+  <% end %>
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10 actions">
+      <br>
+      <%= link_to 'Назад', adminpanel_products_path, class: 'btn btn-primary' %>
+      <button type="submit" class="btn btn-success editSeller">Сохранить и выйти</button>
+      <button type="submit" name="back" class="btn btn-success editSeller">Сохранить и вернуться</button>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
 

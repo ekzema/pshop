@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @categories = Category.all
-    @products = Product.where(category_id: @category)
+    @products = Product.where(category_id: @category, visible: 1).order(created_at: :desc)
   end
 
   # GET /categories/new

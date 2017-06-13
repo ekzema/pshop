@@ -15,8 +15,12 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/new
-  def new
-    @order = Order.new
+   def new
+    if @cart.line_items.count == 0
+      redirect_to :root, :notice => 'Для оформления заказа добавьте товар в корзину!'
+    else
+      @order = Order.new
+    end
   end
 
   # GET /orders/1/edit
@@ -73,10 +77,10 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
-      format.json { head :no_content }
+    if @order.destroy
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
@@ -92,6 +96,6 @@ class OrdersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
-    params.require(:order).permit(:name, :address, :email, :pay_type, :phone, :city, :delivery, :note)
+    params.require(:order).permit(:name, :address, :email, :pay_type, :phone, :city, :delivery, :note, :moderation)
   end
 end

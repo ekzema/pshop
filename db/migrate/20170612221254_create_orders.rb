@@ -9,6 +9,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :city
       t.string :delivery
       t.text :note
+      t.integer :moderation
 
       t.timestamps
     end

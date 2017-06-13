@@ -1,0 +1,63 @@
+
+<div class="container">
+  <div class="row">
+    <h3 class="text-center">Оформление заказа</h3>
+    <%= form_with(model: order, local: true, :html => {class: 'form-horizontal', role: 'form'}) do |form| %>
+        <% if order.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+              <ul>
+                <% order.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :name, 'ФИО:', class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :name, id: :order_name, placeholder: 'Иванов Иван Иванович', class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= form.label :email, 'Email:', class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :email, id: :order_email, placeholder: 'ivanov@gmail.com', class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= form.label :phone, 'Телефон:', class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :phone, id: :order_phone, placeholder: '0501234567', class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="order_city" class="col-sm-2 control-label">Город</label>
+          <div class="col-sm-10">
+            <%= select_tag 'order[city]', options_for_select(['Запорожье', 'Другие города Украины'].collect { |city| [city, city, class: 'inputSelected'] }, @city), {:include_blank => 'Выберите свой город', :class => 'form-control', :id => 'order_city'} %>
+          </div>
+        </div>
+        <div id="deliveryAndPay"></div>
+        <div class="form-group">
+          <%= form.label :address, 'Адрес:', class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :address, id: :order_address, placeholder: 'ул Патриотическая 14, кв(офис) 42', class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= form.label :note, 'Примечание:', class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= form.text_area :note, id: :order_note, class: 'form-control', rows: 3 %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <%= form.submit 'Оформить заказ', class: 'btn btn-danger' %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
+  resources :orders
+  post 'orders/form_render'
   get 'twocat', to: 'welcome#twocat'
   get 'show', to: 'welcome#show'
   get 'aboute', to: 'welcome#aboute'

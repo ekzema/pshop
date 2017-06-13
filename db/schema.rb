@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531233448) do
+ActiveRecord::Schema.define(version: 20170612221414) do
 
   create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -46,8 +46,23 @@ ActiveRecord::Schema.define(version: 20170531233448) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
+    t.bigint "order_id"
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text "address"
+    t.string "email"
+    t.string "pay_type"
+    t.text "phone"
+    t.string "city"
+    t.string "delivery"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "product_slide_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -111,6 +126,7 @@ ActiveRecord::Schema.define(version: 20170531233448) do
   end
 
   add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
   add_foreign_key "twocategories", "categories"
 end

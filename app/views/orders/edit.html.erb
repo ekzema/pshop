@@ -69,6 +69,14 @@
               </tr>
               </tbody>
             </table>
+            <%= form_for(@order, :html => {:class => 'form-horizontal', id: 'formCheckOrder'}) do |f| %>
+                <div class="form-group">
+                  <div class="col-sm-12 ">
+                    <%= f.label 'Отметить как обработанный', for: 'moderationOrder' %>&nbsp;
+                    <%= f.check_box :moderation, id: 'moderationOrder', idOrder: @order.id %>
+                  </div>
+                </div>
+                <% end %>
           </div>
         </section>
       </div>

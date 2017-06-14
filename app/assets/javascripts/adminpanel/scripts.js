@@ -135,7 +135,7 @@ $(document).ready(function () {
             url: '/orders/'+id,
             type: 'PUT',
             dataType: "json",
-            data: $(this).serialize(),
+            data: $('#formCheckOrder').serialize(),
             success: function (result) {
                 console.log(result);
             }

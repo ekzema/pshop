@@ -17,3 +17,28 @@ $(document).ready(function () {
     });
 });
 //    END ajax add city to order
+$(document).on('ready turbolinks:load', function(){
+    $('.autoplay').not('.slick-initialized').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnHover: false,
+        adaptiveHeight: true,
+        arrows: false,
+        autoplaySpeed: 6000
+    });
+
+});
+
+$(document).on('ready turbolinks:load', function(){
+    $('.autoplay2').not('.slick-initialized').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnHover: false,
+        adaptiveHeight: true,
+        arrows: false,
+        autoplaySpeed: 4500
+    });
+
+});

@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag '/slick/css/slick.css' %>
+  <%= stylesheet_link_tag '/slick/css/slick-theme.css' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/slick/js/slick.js' %>
 </head>
 
 <body>
@@ -67,8 +70,29 @@
     </div>
   </div>
 </div>
-<div class="header text-center hidden-xs">
-  <img src="/assets/05-3.jpg" class="img-responsive">
+<!--<div class="header hidden-xs">-->
+  <!--<img src="/assets/logo.png" class="img-responsive vas">-->
+  <!--<section class="autoplay">-->
+    <!--<img src="/assets/sl1.png" class="img-responsive">-->
+    <!--<img src="/assets/sl2.png" class="img-responsive">-->
+    <!--<img src="/assets/sl3.png" class="img-responsive">-->
+  <!--</section>-->
+<!--</div>-->
+
+
+<div class="header hidden-xs">
+  <ul class="saa">
+    <li><img src="/assets/logo.png" class="img-responsive vas"></li>
+    <li>
+      <section class="autoplay">
+      <img src="/assets/sl1.png" class="img-responsive">
+      <img src="/assets/sl2.png" class="img-responsive">
+      <img src="/assets/sl3.png" class="img-responsive">
+      </section>
+    </li>
+    <li class="vas"><h3>099-097-66-44</h3></li>
+    <li class="vas"><h3><%= link_to 'КОРЗИНА', cart_path(@cart) %></h3></li>
+  </ul>
 </div>
 
 <div class="navbar navbar-default dva" role="navigation">
@@ -93,11 +117,11 @@
       <div style="display: inline-block;">
         <ul class="nav navbar-nav ">
           <li class="active"><a href="/">ГЛАВНАЯ</a></li>
-          <li class="li"><a href="#">ОПЛАТА И ДОСТАВКА</a></li>
-          <li class="li"><a href="#">КОНТАКТЫ</a></li>
           <li class="li"><a href="/show">НОВИНКИ</a></li>
           <li class="li"><a href="/twocat">АКЦИИ</a></li>
-          <li class="li"><%= link_to 'КОРЗИНА', cart_path(@cart) %></li>
+          <li class="li"><a href="#">ОПЛАТА И ДОСТАВКА</a></li>
+          <li class="li"><a href="#">КОНТАКТЫ</a></li>
+          <!--<li class="li"><%= link_to 'КОРЗИНА', cart_path(@cart) %></li>-->
         </ul>
       </div>
     </div><!--/.nav-collapse -->
@@ -125,8 +149,11 @@
     <%= yield %>
   </div>
 </div>
+<div class="tofooter">
 
-<div class="navbar navbar-default" role="navigation">
+</div>
+
+<footer class="navbar navbar-default" role="navigation" id="footer">
   <div class="container menuniz text-center paddi">
     <div class="col-sm-6 ">
       <p class="">Polsha.com.ua © 2017</p>
@@ -135,6 +162,6 @@
       <p class="labsites">Сайт разработан<a href="http://labsites.org/en/" target="_blank"> Labsites.org</a></p>
     </div>
   </div>
-</div>
+</footer>
 </body>
 </html>

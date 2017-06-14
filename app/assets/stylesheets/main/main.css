@@ -93,7 +93,7 @@ a {
     background: #f0f3fb!important;
     padding: 10px;
     margin-bottom: 20px;
-
+    border-radius: 10px;
 }
 .color img{
     width: 90%;
@@ -225,20 +225,20 @@ ul{
 .cat ul li{
     list-style-type: none!important;
 }
+
 .li3{
     /*padding: 5px 10px;*/
-    background: #e2e7f6!important;
-
+    background: #386ccd!important;
 }
 .li2{
-    border: 1px solid #1417ae!important;
-    padding: 5px 20px;
-    background: #f0f3fb!important;
+    /*border: 1px solid #1417ae!important;*/
+    padding: 5px 30px;
+    background: #e2e7f6!important;
+
 
 }
-
 .li3{
-    border: 1px solid #1417ae!important;
+    /*border: 1px solid #1417ae!important;*/
 }
 @media (max-width: 767px) {
     .dopmenu li {
@@ -272,8 +272,46 @@ ul{
      margin: 0;
 }
 .ul>li>a{
-    color: #333;
+    color: #fff!important;
+
 }
+.ul>li>a:hover, .ul>li>a:visited {
+    background: #386ccd!important;
+    color: #333;
+
+}
+.ul>li>a:hover {
+
+    color: #1417ae!important;
+
+}
+.sale img{
+    position: absolute;
+
+}
+.sale img{
+    width: 50px!important;
+}
+/*.header>.img-responsive{*/
+    /*display: inline;*/
+/*}*/
+.autoplay{
+    width: 600px!important;
+    /*position: absolute;*/
+    /*left: 130px!important;*/
+}
+.autoplay img{
+    height: 120px!important;
+}
+.header{
+    /*position: relative;*/
+}
+.saa li{
+    display: inline-block!important;
+    vertical-align: middle!important;
+
+}
+
 
 .showCartBasic th{
 padding-bottom: 10px;
@@ -302,3 +340,24 @@ padding-bottom: 10px;
     text-align: center;
     margin: 0;
 }
+
+/*футер вниз страницы*/
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 50px;
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 50px;
+}
+.tofooter{
+    margin-bottom: 65px!important;
+}
+/*футер вниз страницы*/

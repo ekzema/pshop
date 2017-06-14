@@ -31,6 +31,7 @@
             <%= link_to product do %>
                 <div><%= image_tag product.image, title: product.name, alt: product.name %></div>
                 <h3><%= product.name %></h3>
+                <h3><%= product.price %> грн</h3>
             <% end %>
             <div id="buttonAddTocart_<%= product.id %>">
               <% if @cart.line_items.find_by_product_id(product).present? %>

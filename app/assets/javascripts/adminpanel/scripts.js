@@ -126,3 +126,20 @@ $(document).ready(function () {
     });
 });
 //    END ajax add category to ptoduct
+
+// BEGIN ajax moderation order
+$(document).ready(function () {
+    $(document).on("change", "#moderationOrder", function () {
+        var id = $(this).attr('idOrder');
+        $.ajax({
+            url: '/orders/'+id,
+            type: 'PUT',
+            dataType: "json",
+            data: $(this).serialize(),
+            success: function (result) {
+                console.log(result);
+            }
+        });
+    });
+});
+//    BEGIN ajax moderation order

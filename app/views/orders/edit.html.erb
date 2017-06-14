@@ -1,6 +1,78 @@
-<h1>Editing Order</h1>
+<section id="main-content">
+  <section class="wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <section class="panel">
+          <header class="panel-heading">
+            Просмотр заказа
+          </header>
+          <div class="panel-body">
+            <h4>Информазия о покупателе:</h4>
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th class='customIdTh'># id</th>
+                <th><i class="icon_profile"></i> Имя</th>
+                <th><i class="icon_mail"></i> Email</th>
+                <th><i class="icon_phone"></i> Телефон</th>
+                <th><i class="icon_building_alt"></i> Город</th>
+                <th><i class="icon_contacts"></i> Адрес</th>
+                <th><i class="fa fa-truck" aria-hidden="true"></i> Доставка</th>
+                <th><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Оплата</th>
+                <th><i class="icon_mail" aria-hidden="true"></i> Сообщение</th>
+                <th><i class="icon_calendar"></i> Создан</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td><%= @order.id %></td>
+                <td><%= @order.name %></td>
+                <td><%= @order.email %></td>
+                <td><%= @order.phone %></td>
+                <td><%= @order.city %></td>
+                <td><%= @order.address %></td>
+                <td><%= @order.delivery %></td>
+                <td><%= @order.pay_type %></td>
+                <td><%= truncate @order.note, length: 100 %></td>
+                <td class="lastTd"><%= @order.created_at.strftime('%F') %></td>
+              </tr>
+              </tbody>
+            </table>
+            <br>
+            <h4>Товар заказанный покупателем:</h4>
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th class='customIdTh'># id</th>
+                <th><i class="icon_image"></i> Картинка</th>
+                <th><i class="icon_pencil"></i> Название</th>
+                <th><i class="fa fa-align-left" aria-hidden="true"></i> Краткое описание</th>
+                <th><i class="fa fa-money" aria-hidden="true"></i> Цена</th>
+                <th><i class="fa fa-subscript fa-lg" aria-hidden="true"></i> Количество</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @line_item.each do |line_item| %>
+                  <tr>
+                    <td><%= line_item.product.id %></td>
+                    <td><%= image_tag line_item.product.image.url(:thumb) %></td>
+                    <td><%= line_item.product.name %></td>
+                    <td><%= truncate(line_item.product.description, length: 200) %></td>
+                    <td><%= line_item.product.price %></td>
+                    <td>X <%= line_item.quantity %></td>
+                  </tr>
+              <% end %>
+              <tr>
+                <td colspan="6" style="text-align: right">
+                  <b><span style="color: green;">Итого: </span><%= @line_item.to_a.sum { |item| item.total_price.to_i } %>
+                    грн</b></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</section>
 
-<%= render 'form', order: @order %>
-
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>

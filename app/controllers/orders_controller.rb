@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  layout 'adminpanel', only: [:edit, :update]
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
@@ -25,6 +26,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    @line_item = LineItem.where(order_id: @order)
   end
 
   # POST /orders
@@ -55,7 +57,6 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
         format.json { render json: @order.errors, status: :unprocessable_entity }

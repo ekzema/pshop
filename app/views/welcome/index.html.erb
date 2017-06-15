@@ -46,16 +46,27 @@
         </li>
     <% end %>
   </ul>
-  <section class="autoplay2">
-    <img src="/assets/sl1.png" class="img-responsive">
-    <img src="/assets/sl2.png" class="img-responsive">
-    <img src="/assets/sl3.png" class="img-responsive">
-  </section>
-  <section class="autoplay2">
-    <img src="/assets/sl1.png" class="img-responsive">
-    <img src="/assets/sl2.png" class="img-responsive">
-    <img src="/assets/sl3.png" class="img-responsive">
-  </section>
+
+  <div class="col-xs-6 col-sm-12">
+    <h4 class="text-center">Новинки</h4>
+    <div class="color2 text-center autoplay2">
+      <% @products.each do |product| %>
+          <div><%= image_tag product.image, title: product.name, alt: product.name %>
+            <h4><%= product.name %></h4></div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-12">
+  <h4 class="text-center">Акции</h4>
+  <div class="color2 text-center autoplay2">
+    <% @products.each do |product| %>
+        <div><%= image_tag product.image, title: product.name, alt: product.name %>
+        <h4><%= product.name %></h4></div>
+    <% end %>
+  </div>
+  </div>
+
 </div>
 
 <div class="col-sm-9">
@@ -69,7 +80,7 @@
             <% end %>
             <div id="buttonAddTocart_<%= product.id %>">
             <% if @cart.line_items.find_by_product_id(product).present? %>
-                <span class="inCart">Товар в корзине</span>
+                  <span class="inCart"><button>Товар в корзине</button></span>
                 <% else %>
             <%= button_to 'Добавить в корзину', line_items_path(product_id: product), remote: true %>
                 <% end %>

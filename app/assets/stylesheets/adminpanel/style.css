@@ -5145,3 +5145,7 @@ span.customSelect.changed {
     position: relative;
     margin-bottom: 10px;
 }
+
+#bool_0{
+    display: none;
+}

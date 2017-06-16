@@ -73,7 +73,7 @@ class TwocategoriesController < ApplicationController
     twocategory = Twocategory.find(params[:id])
     twocategory.image = nil
     twocategory.save
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   private

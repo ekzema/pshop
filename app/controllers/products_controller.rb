@@ -2,6 +2,10 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit, :update, :create]
   skip_before_action :verify_authenticity_token, only: [:update]
+  include CurrentCart
+  before_action :set_cart, only: [:show]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_catalog
+
   # GET /products
   # GET /products.json
   def index
@@ -87,7 +91,7 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     product.image = nil
     product.save
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
 
@@ -99,6 +103,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:twocategory_id, :category_id, :name, :description, :price, :visible, :meta_desc, :meta_key, :image, product_slide_images_attributes: [:id, :_destroy, :image])
+      params.require(:product).permit(:twocategory_id, :category_id, :name, :description, :price, :visible, :meta_desc, :meta_key, :new, :share, :share_price, :image, product_slide_images_attributes: [:id, :_destroy, :image])
     end
 end

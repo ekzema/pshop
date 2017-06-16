@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20170612221414) do
     t.string "city"
     t.string "delivery"
     t.text "note"
-    t.integer "moderation"
+    t.integer "moderation", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,7 +82,10 @@ ActiveRecord::Schema.define(version: 20170612221414) do
     t.string "name"
     t.text "description"
     t.integer "price"
-    t.integer "visible"
+    t.integer "visible", default: 0
+    t.integer "new", default: 0
+    t.integer "share", default: 0
+    t.integer "share_price"
     t.text "meta_desc"
     t.text "meta_key"
     t.datetime "created_at", null: false

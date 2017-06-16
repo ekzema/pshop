@@ -390,3 +390,27 @@ body {
     margin-bottom: 65px!important;
 }
 /*футер вниз страницы*/
+
+
+.showProductDesc{
+    text-align: left;
+    white-space: pre-wrap;
+}
+
+.newProductLogo{
+    position: absolute;
+    top: 0;
+    right: 15px;
+}
+
+.saleProductLogo{
+    position: absolute;
+    top: 0;
+    left: 15px;
+}
+
+.sharePrice{
+    text-decoration: line-through;
+    font-size: 25px;
+    color: red;
+}

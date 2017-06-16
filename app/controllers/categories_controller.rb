@@ -30,7 +30,6 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-
     respond_to do |format|
       if @category.save
         format.html { redirect_to adminpanel_categories_path, notice: "Категория #{@category.name} успешно создана"  }
@@ -71,7 +70,7 @@ class CategoriesController < ApplicationController
     category = Category.find(params[:id])
     category.image = nil
     category.save
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   private

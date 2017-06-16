@@ -41,6 +41,8 @@
               <% end %>
             </div>
           </div>
+          <%= image_tag 'new.png', class: 'newProductLogo' if product.new == 1 %>
+          <%= image_tag 'sale.png', class: 'saleProductLogo' if product.share == 1 %>
         </div><!--/span-->
     <% end %>
   </div>

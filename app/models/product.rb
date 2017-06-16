@@ -4,7 +4,7 @@ class Product < ApplicationRecord
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
-  has_attached_file :image, :styles => {:admin => "X100", :thumb => "X60" }, :default_url => "NoImage_180X170.jpg"
+  has_attached_file :image, :styles => {:admin => "X100", :thumb => "X60", :showproduct => "250X" }, :default_url => "NoImage_180X170.jpg"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   accepts_nested_attributes_for :product_slide_images,
                                 :allow_destroy => true,

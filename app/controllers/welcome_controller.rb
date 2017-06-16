@@ -6,4 +6,9 @@ class WelcomeController < ApplicationController
     @products = Product.where(visible: 1).order(created_at: :desc)
     @categories = Category.all
   end
+
+  def contacts
+	@feed = Feed.new
+  end
+
 end

@@ -6,6 +6,7 @@ class AdminpanelController < ApplicationController
     @category = Category.count
     @twocategory = Twocategory.count
     @order = Order.count
+    @feed = Feed.count
   end
 
   def categories
@@ -31,5 +32,17 @@ class AdminpanelController < ApplicationController
       @orders = Order.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
     end
   end
+
+
+  def feedback
+    @feed = Feed.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+    @sort = params[:moderation]
+    if @sort == 'all'
+      @feed
+    elsif @sort
+      @feed = Feed.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+    end
+  end
+
 
 end

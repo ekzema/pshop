@@ -82,12 +82,17 @@
             <% end %>
           </li>
           <li class="order">
-          <%= link_to adminpanel_orders_path do %>
+            <%= link_to adminpanel_orders_path do %>
             <i class=" icon_cart_alt" aria-hidden="true"></i>
             <span>Заказы</span>
             <% end %>
           </li>
-
+          <li class="feedback">
+            <%= link_to adminpanel_feedback_path do %>
+            <i class=" icon_mail_alt" aria-hidden="true"></i>
+            <span>Письма</span>
+            <% end %>
+          </li>
         </ul>
         <!-- sidebar menu end-->
       </div>

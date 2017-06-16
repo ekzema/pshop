@@ -56,13 +56,13 @@
 
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-        <a href="#">
+       <%= link_to adminpanel_feedback_path do %>
             <div class="info-box blue-bg">
-              <i class="icon_mail" aria-hidden="true"></i>
-              <div class="count">0</div>
+              <i class="icon_cart" aria-hidden="true"></i>
+              <div class="count"><%= @feed %></div>
               <div class="title">Письма</div>
             </div><!--/.info-box-->
-        </a>
+        <% end %>
       </div><!--/.col-->
     </div>
 

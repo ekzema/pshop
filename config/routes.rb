@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :feeds
   root 'welcome#index'
   resources :orders
   post 'orders/form_render'
   get 'twocat', to: 'welcome#twocat'
   get 'show', to: 'welcome#show'
   get 'aboute', to: 'welcome#aboute'
+  get 'contacts', to: 'welcome#contacts'
 
   get 'adminpanel', to: 'adminpanel#index'
   namespace :adminpanel do
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
     get 'twocategories'
     get 'products'
     get 'orders'
+    get 'feedback'
   end
 
   resources :line_items

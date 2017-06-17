@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: {
+      sessions: 'users/sessions',
+      registrations: 'users/registrations',
+      unlocks: 'users/unlocks',
+      passwords: 'users/passwords',
+      omniauth: 'users/omniauth',
+      confirmations: 'users/confirmations'
+  } do
+
+  end
+
+
+  devise_scope :user do
+    delete 'delete_attachment' => 'users/registrations#delete_attachment'
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   resources :feeds
   root 'welcome#index'
   resources :orders

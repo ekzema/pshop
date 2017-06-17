@@ -38,6 +38,7 @@ gem 'russian', '~> 0.6.0'
 gem 'parsley-rails', '~> 2.7'
 gem 'paperclip', '~> 5.1'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
+gem 'devise', '~> 4.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

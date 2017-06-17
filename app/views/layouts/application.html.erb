@@ -122,6 +122,32 @@
           <li class="li"><a href="#">ОПЛАТА И ДОСТАВКА</a></li>
           <li class="li"><%= link_to 'КОНТАКТЫ', contacts_path %></li>          
           <!--<li class="li"><%= link_to 'КОРЗИНА', cart_path(@cart) %></li>-->
+
+          <li class="dropdown">
+            <a type="button" id="drop001" role="button" class="dropdown-toggle navbar-brand tmenu fotoav"
+               data-toggle="dropdown" href="#">
+              <% if user_signed_in? %>
+                  <%= image_tag current_user.avatar.url(:medium), class: 'fotoava', alt: current_user.name %>
+                  <%= current_user.name %>
+              <% else %>
+                  Личный кабинет
+              <% end %>
+              <b class="caret"></b></a>
+            <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
+              <% if user_signed_in? %>
+                  <li class="xsmenu"><%= link_to 'Редактировать данные', edit_user_registration_path %></li>
+                  <li class="divider hidden-xs"></li>
+                  <li class="xsmenu"><%= link_to('Выйти', destroy_user_session_path, {:tabindex => '-1'}) %></li>
+              <% else %>
+                  <li><%= link_to('Войти', new_user_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
+                  <li class="divider hidden-xs"></li>
+                  <li><%= link_to('Регистрация', new_user_registration_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
+
+              <% end %>
+
+            </ul>
+          </li>
+          
         </ul>
       </div>
     </div><!--/.nav-collapse -->

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
+  layout 'adminpanel'
   # GET /comments
   # GET /comments.json
   def index
@@ -24,17 +24,18 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
+    params[:comment][:name] = current_user.name
+    params[:comment][:phone] = current_user.phone
+    params[:comment][:email] = current_user.email
     @comment = Comment.new(comment_params)
-
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
+        format.js
       else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js
       end
     end
+
   end
 
   # PATCH/PUT /comments/1
@@ -42,8 +43,8 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
+        format.html { redirect_to adminpanel_comments_path, notice: 'Комментарий успешно обновлён' }
+        format.json { render :show, status: :ok, location: adminpanel_comments_path }
       else
         format.html { render :edit }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -54,10 +55,8 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
+    if @comment.destroy
+      render text: 'ok'
     end
   end
 

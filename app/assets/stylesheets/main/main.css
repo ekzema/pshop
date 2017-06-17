@@ -414,3 +414,12 @@ body {
     font-size: 25px;
     color: red;
 }
+
+.parsley-custom-error-message{
+    color: red;
+}
+
+.messageLinkUser a{
+    color: blue !important;
+text-decoration: underline !important;
+}

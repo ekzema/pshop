@@ -64,7 +64,20 @@
             </div><!--/.info-box-->
         <% end %>
       </div><!--/.col-->
+
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <%= link_to adminpanel_comments_path do %>
+            <div class="info-box blue-bg">
+              <i class="icon_comment" aria-hidden="true"></i>
+              <div class="count"><%= @comment %></div>
+              <div class="title">Комментарии</div>
+            </div><!--/.info-box-->
+        <% end %>
+      </div><!--/.col-->
+
     </div>
+
+
 
   </section>
 

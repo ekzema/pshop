@@ -1,0 +1,11 @@
+
+<% if @comment.save %>
+$('.errorFlash').fadeOut();
+    $('form textarea').val(' ');
+    $('.productComments').prepend("<h3 class='commentFlash'>Ваш комментарий будет опубликован после проверки модератормом</h3>");
+    setTimeout(function () {
+    $('.commentFlash').fadeOut();
+    }, 10000);
+<% else %>
+    $('.productComments').prepend("<h3 class='commentFlash errorFlash' style='color: red;'><%= @comment.errors.messages.values.join(', ') %></h3>");
+<% end %>

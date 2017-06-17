@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get 'products'
     get 'orders'
     get 'feedback'
+    get 'comments'
   end
 
   resources :line_items

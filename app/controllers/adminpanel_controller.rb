@@ -7,6 +7,7 @@ class AdminpanelController < ApplicationController
     @twocategory = Twocategory.count
     @order = Order.count
     @feed = Feed.count
+    @comment = Comment.count
   end
 
   def categories
@@ -44,5 +45,14 @@ class AdminpanelController < ApplicationController
     end
   end
 
+  def comments
+    @comment = Comment.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+    @sort = params[:moderation]
+    if @sort == 'all'
+      @comment
+    elsif @sort
+      @comment = Comment.where(moderation: params[:moderation]).paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+    end
+  end
 
 end

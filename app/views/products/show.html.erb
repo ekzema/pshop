@@ -13,7 +13,7 @@
                     <%= link_to slide.image.url(:showproduct), class: 'gallery', rel: 'group', title: @product.name do %>
                         <%= image_tag slide.image.url(:showproduct), alt: @product.name, title: @product.name %>
 
-                  <% end %>
+                    <% end %>
                   </li>
               <% end %>
             </ul>
@@ -23,8 +23,8 @@
         <div class="col-xs-6">
           <h3><%= @product.name %></h3>
           <% if @product.share == 1 %>
-          <p><span class="sharePrice"><%= @product.share_price %></span>грн</p>
-              <% end %>
+              <p><span class="sharePrice"><%= @product.share_price %></span>грн</p>
+          <% end %>
           <p><%= @product.price %>грн</p>
           <div id="buttonAddTocart_<%= @product.id %>">
             <% if @cart.line_items.find_by_product_id(@product).present? %>
@@ -39,8 +39,43 @@
           <h3>Описание</h3>
           <p class="showProductDesc"><%= @product.description %></p>
         </div>
+        <div class="productComments col-xs-12">
+          <% if user_signed_in? %>
+              <%= form_for(Comment.new, remote: true) do |f| %>
+                  <div class="field">
+                    <%= f.hidden_field :product_id, value: @product.id %>
+                  </div>
+                  <div class="field">
+                    <%= f.label 'комментарий', for: :comment_body %>
+                    <%= f.text_area :body, id: :comment_body, 'data-parsley-required' => true, 'data-parsley-error-message' => 'Поле "кооментарий" не может быть пустым' %>
+                  </div>
+
+                  <div class="actions">
+                    <%= f.submit 'Отправить' %>
+                  </div>
+              <% end %>
+          <% else %>
+              <p class="messageLinkUser"><b>Комметарии могут оставлять пользователи которые
+                авторизировались</b>>(<%= link_to 'Войти', new_user_session_path %>
+                /<%= link_to 'Регистрация', new_user_registration_path %>)</p>
+          <% end %>
+        </div>
+        <ul class="col-xs-12">
+          <h3>Комментарии:</h3>
+          <% @comments.each do |comment| %>
+              <li><%= comment.created_at.strftime("%d.%m.%Y") %></li>
+              <li><%= comment.name %></li>
+              <li><%= comment.body %></li>
+              <li><%= comment.body %></li>
+              <li>------------------------------------</li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
 </div>
-
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $('form').parsley();
+    });
+</script>

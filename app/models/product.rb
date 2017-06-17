@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   has_many :line_items, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
   has_many :product_slide_images, :dependent => :destroy
 
   before_destroy :ensure_not_referenced_by_any_line_item

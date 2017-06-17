@@ -76,7 +76,7 @@
           <div class="color">
             <%= link_to category do %>
                 <div><%= image_tag category.image(:thumb), title: category.name, alt: category.name %></div>
-                <h3><%= category.name %></h3>
+                <p class="catname"><%= category.name %></p>
             <% end %>
           </div>
         </div><!--/span-->

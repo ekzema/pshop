@@ -30,14 +30,14 @@
           <div class="color">
             <%= link_to product do %>
                 <div><%= image_tag product.image, title: product.name, alt: product.name %></div>
-                <h3><%= product.name %></h3>
-                <h3><%= product.price %> грн</h3>
+                <p class="proname"><%= product.name %></p>
+                <p class="proprice"><%= product.price %> грн</p>
             <% end %>
             <div id="buttonAddTocart_<%= product.id %>">
               <% if @cart.line_items.find_by_product_id(product).present? %>
-                  <span class="inCart">Товар в корзине</span>
+                  <span class="inCart btn btn-default">Товар в корзине</span>
               <% else %>
-                  <%= button_to 'Добавить в корзину', line_items_path(product_id: product), remote: true %>
+                  <%= button_to 'Добавить в корзину', line_items_path(product_id: product), class: "btn btn-success", remote: true %>
               <% end %>
             </div>
           </div>

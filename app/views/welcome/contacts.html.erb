@@ -2,39 +2,39 @@
 <h4 class="sld01 sh16 text-center">Если у вас возникли вопросы по сайту или есть какие-то предложения, то оставляйте свои отзывы:</h4>
 <%= form_for @feed, :html => {"data-parsley-validate" => true} do |f| %>
 
-<div class="form-group col-md-offset-2">
-<div class="col-sm-2 ">
+<div class="col-md-offset-2">
+<div class="col-sm-2 form-group">
 <%= f.label 'Имя', class: "control-label form", for: :feed_name %><br />
 </div>
-<div class="col-sm-10 ">
+<div class="col-sm-10 form-group">
 <%= f.text_field :name, autofocus: true, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Имя</span>".html_safe %>
 </div>
 </div>
 
-<div class="form-group col-md-offset-2">
-<div class=" col-sm-2 ">
+<div class="col-md-offset-2">
+<div class=" col-sm-2 form-group">
 <%= f.label :email, class:"control-label form" %>
 </div>
-<div class="col-sm-10 ">
+<div class="col-sm-10 form-group">
 <%= f.email_field :email, class:"form-control form", "required" => true, "type" => "email", "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите свой <span style='font-weight: bold;color:#5EBB5E;'>Email</span>".html_safe %>
 </div>
 </div>
 
-<div class="form-group col-md-offset-2">
-<div class="col-sm-2 ">
+<div class="col-md-offset-2">
+<div class="col-sm-2 form-group">
 <%= f.label 'Телефон', class: "control-label form", for: :feed_phone %><br />
 </div>
-<div class="col-sm-10 ">
+<div class="col-sm-10 form-group">
 <%= f.telephone_field :phone, class:"form-control form", "required" => true, "data-parsley-trigger" => "change", "data-parsley-error-message" => "Введите <span style='font-weight: bold;color:#5EBB5E;'>Телфон</span>".html_safe %>
 </div>
 </div>
 
 
-<div class="form-group col-md-offset-2">
-  <div class="col-sm-2 ">
+<div class="col-md-offset-2">
+  <div class="col-sm-2 form-group">
     <%= f.label 'Отзыв', class: "control-label", for: :feed_description  %>
   </div>
-  <div class="col-sm-10 ">
+  <div class="col-sm-10 form-group">
     <%= f.text_area :description, class:"form-control form" %>
   </div>
 </div>

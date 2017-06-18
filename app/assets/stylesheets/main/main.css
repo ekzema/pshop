@@ -116,7 +116,21 @@ a {
 .color2 img{
     width: 100%;
 }
-
+.colorline img{
+    width: 75px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.colorline2 img{
+    width: 75px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.cor{
+    position: relative;
+}
 .color2 a{
     color: #333!important;
 }
@@ -239,6 +253,17 @@ ul{
     border-radius: 2px;
 
 }
+.count{
+    position: relative;
+}
+.count2{
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    font-weight: 700;
+    font-size: 20px;
+    color: #1417ae!important;
+}
 .cat > .ul{
     border: 1px solid #1417ae;
 }
@@ -330,6 +355,10 @@ ul{
     display: inline-block!important;
     vertical-align: middle!important;
 
+}
+.li > p{
+    padding: 6.5px;
+    color: #bbc6e7!important;
 }
 @media (max-width: 767px) {
     .saa1 img {
@@ -462,4 +491,15 @@ text-decoration: underline !important;
 }
 .opisanie{
     margin-top: 15px;
+}
+.pages p{
+    font-size: 14px;
+    padding: 10px;
+    text-align: justify;
+
+}
+.primer img{
+    width: 350px;
+    float: right;
+    margin: 15px;
 }

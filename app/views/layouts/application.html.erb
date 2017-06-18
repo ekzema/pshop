@@ -58,9 +58,9 @@
 
       <div style="display: inline-block;">
         <ul class="nav navbar-nav menu5 dopmenu">
-          <li class="li"><a href="/aboute">О нас</a></li>
+          <li class="li"><a href="/about">О нас</a></li>
           <li class="li"><a href="#"></a></li>
-          <li class="li"><a href="#">Мы в соцсетях</a></li>
+          <li class="li"><p>Мы в соцсетях</p></li>
           <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/vk.png" ></a></li>
           <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/fa.png" ></a></li>
           <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png" ></a></li>
@@ -91,7 +91,10 @@
       </section>
     </li>
     <li class="vas"><h4>099-097-66-44</h4><h4>096-097-66-44</h4></li>
-    <li class=""><h3><%= link_to image_tag("cor.png", :width=> "120px" ), cart_path(@cart) %></h3></li>
+    <li class="count">
+      <p><%= link_to image_tag("cor.png", :width=> "120px" ), cart_path(@cart) %></p>
+      <span class="count2"><%= @cart.line_items.count %></span>
+    </li>
   </ul>
 </div>
 
@@ -107,7 +110,7 @@
       <ul class="nav navbar-nav menu5 dopmenu visible-xs">
         <li class="li"><a href="#">О нас</a></li>
         <li class="li"><a href="#"></a></li>
-        <li class="li"><a href="#">Мы в соцсетях</a></li>
+        <li class="li"><p>Мы в соцсетях</p></li>
         <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/vk.png" ></a></li>
         <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/fa.png" ></a></li>
         <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png" ></a></li>
@@ -116,10 +119,10 @@
     <div class="navbar-collapse collapse text-center">
       <div style="display: inline-block;">
         <ul class="nav navbar-nav ">
-          <li class="active"><a href="/">ГЛАВНАЯ</a></li>
-          <li class="li"><a href="/show">НОВИНКИ</a></li>
-          <li class="li"><a href="/twocat">АКЦИИ</a></li>
-          <li class="li"><a href="#">ОПЛАТА И ДОСТАВКА</a></li>
+          <li class="active"><%= link_to 'ГЛАВНАЯ', root_path %></li>
+          <li class="li"><%= link_to 'НОВИНКИ', new_path %></li>
+          <li class="li"><%= link_to 'АКЦИИ', sale_path %></li>
+          <li class="li"><%= link_to 'ОПЛАТА И ДОСТАВКА', payment_path %></li>
           <li class="li"><%= link_to 'КОНТАКТЫ', contacts_path %></li>          
           <!--<li class="li"><%= link_to 'КОРЗИНА', cart_path(@cart) %></li>-->
 

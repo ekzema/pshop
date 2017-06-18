@@ -50,9 +50,12 @@
   <div class="col-xs-6 col-sm-12">
     <h4 class="text-center">Новинки</h4>
     <div class="color2 text-center autoplay2">
-      <% @products.each do |product| %>
-          <div><%= image_tag product.image, title: product.name, alt: product.name %>
-            <h4><%= product.name %></h4></div>
+      <% @new.each do |product| %>
+          <div class="cor">
+            <span class="colorline"><%= image_tag 'new.png' if product.new == 1 %></span>
+            <%= image_tag product.image, title: product.name, alt: product.name %>
+            <h4><%= product.name %></h4>
+          </div>
       <% end %>
     </div>
   </div>
@@ -60,9 +63,12 @@
   <div class="col-xs-6 col-sm-12">
   <h4 class="text-center">Акции</h4>
   <div class="color2 text-center autoplay2">
-    <% @products.each do |product| %>
-        <div><%= image_tag product.image, title: product.name, alt: product.name %>
-        <h4><%= product.name %></h4></div>
+    <% @share.each do |product| %>
+        <div class="cor">
+          <span class="colorline2"><%= image_tag 'sale.png' if product.share == 1 %></span>
+          <%= image_tag product.image, title: product.name, alt: product.name %>
+          <h4><%= product.name %></h4>
+          </div>
     <% end %>
   </div>
   </div>

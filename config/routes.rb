@@ -20,9 +20,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :orders
   post 'orders/form_render'
-  get 'twocat', to: 'welcome#twocat'
-  get 'show', to: 'welcome#show'
-  get 'aboute', to: 'welcome#aboute'
+  get 'new', to: 'welcome#new'
+  get 'sale', to: 'welcome#sale'
+  get 'payment', to: 'welcome#payment'
+  get 'about', to: 'welcome#about'
   get 'contacts', to: 'welcome#contacts'
 
   get 'adminpanel', to: 'adminpanel#index'

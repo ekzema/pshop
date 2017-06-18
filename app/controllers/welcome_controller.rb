@@ -11,4 +11,23 @@ class WelcomeController < ApplicationController
 	@feed = Feed.new
   end
 
+  def new
+    @products = Product.where(visible: 1).order(created_at: :desc)
+    @categories = Category.all
+  end
+
+  def about
+
+  end
+
+  def sale
+    @products = Product.where(visible: 1).order(created_at: :desc)
+    @categories = Category.all
+  end
+
+  def payment
+
+  end
+
+
 end

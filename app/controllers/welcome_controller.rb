@@ -29,5 +29,9 @@ class WelcomeController < ApplicationController
 
   end
 
+  def back
+
+  end
+
 
 end

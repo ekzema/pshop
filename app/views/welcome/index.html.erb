@@ -54,7 +54,7 @@
           <div class="cor">
             <span class="colorline"><%= image_tag 'new.png' if product.new == 1 %></span>
             <%= image_tag product.image, title: product.name, alt: product.name %>
-            <h4><%= product.name %></h4>
+            <p><%= product.name %></p>
           </div>
       <% end %>
     </div>
@@ -67,7 +67,7 @@
         <div class="cor">
           <span class="colorline2"><%= image_tag 'sale.png' if product.share == 1 %></span>
           <%= image_tag product.image, title: product.name, alt: product.name %>
-          <h4><%= product.name %></h4>
+          <p><%= product.name %></p>
           </div>
     <% end %>
   </div>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'payment', to: 'welcome#payment'
   get 'about', to: 'welcome#about'
   get 'contacts', to: 'welcome#contacts'
+  get 'back', to: 'welcome#back'
 
   get 'adminpanel', to: 'adminpanel#index'
   namespace :adminpanel do

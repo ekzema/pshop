@@ -5,31 +5,30 @@
       <thead>
       <tr class="info text-center">
         <th class="text-center">Фото</th>
-        <th class="text-center">Название</th>
-        <th class="text-center">Количество</th>
+        <th class="text-center hidden-xs">Название</th>
+        <th class="text-center"><span class="hidden-xs">Количество</span><span class="visible-xs">Кол-во</span></th>
         <th class="text-center">Цена</th>
-        <th class="text-center"><%= button_to 'Очистить корзину', @cart, method: :delete, data: {confirm: 'Вы уверены что хотите очистить корзину?'}, class: 'btn btn-danger clearCart' %></th>
+        <th class="text-center"><%= button_to 'Очистить', @cart, method: :delete, data: {confirm: 'Вы уверены что хотите очистить корзину?'}, class: 'btn btn-danger clearCart' %></th>
       </tr>
       </thead>
       <tbody>
       <% @cart.line_items.each do |item| %>
           <tr class="success text-center" id='cartProductLine_<%= item.id %>'>
             <td class="foto text-center"><%= image_tag item.product.image.url(:thumb), title: item.product.name, alt: item.product.name %></td>
-            <td class="hidden-xs text-center"><%= item.product.name %></td>
-            <td class="hidden-xs text-center">
+            <td class="text-center hidden-xs"><%= item.product.name %></td>
+            <td class="text-center">
               <%= form_for((item), remote: true, method: "put", action: "update", :html => {id: "cartNum#{item.id}"}) do |f| %>
                   <%= f.number_field :quantity, attrnum: item.id, min: 1, class: 'form-control' %>
               <% end %>
             </td>
           </div>
           </td>
-          <td class="hidden-xs text-center"><%= item.product.price %></td>
-          <td class="hidden-xs text-center"><%= link_to 'X', item, remote: true, method: :delete, data: {confirm: 'Вы уверены что хотите удалить товар с корзины?'}, class: 'btn btn-danger' %></td>
+          <td class=" text-center"><%= item.product.price %></td>
+          <td class=" text-center"><%= link_to 'X', item, remote: true, method: :delete, data: {confirm: 'Вы уверены что хотите удалить товар с корзины?'}, class: 'btn btn-danger' %></td>
           </tr>
       <% end %>
       </tbody>
-      </table>
-      <p class='countProductPrice'><b>Итого:</b> <span><%= number_to_currency(@cart.total_price) %></span></p>
+      </table><p class='countProductPrice'><b>Итого:</b> <span><%= number_to_currency(@cart.total_price) %></span></p>
       <h3 class="text-center">
         <%= button_to 'Оформить заказ', new_order_path, method: :get, class: 'btn btn-success' %>
       </h3>

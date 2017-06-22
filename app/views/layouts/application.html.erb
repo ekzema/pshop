@@ -9,6 +9,8 @@
   <%= stylesheet_link_tag '/slick/css/slick-theme.css' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag '/slick/js/slick.js' %>
+  <script src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.20/src/jquery.ez-plus.js"></script>
+
 </head>
 
 <body>
@@ -64,70 +66,6 @@
           <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/vk.png" ></a></li>
           <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/fa.png" ></a></li>
           <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png" ></a></li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!--<div class="header hidden-xs">-->
-  <!--<img src="/assets/logo.png" class="img-responsive vas">-->
-  <!--<section class="autoplay">-->
-    <!--<img src="/assets/sl1.png" class="img-responsive">-->
-    <!--<img src="/assets/sl2.png" class="img-responsive">-->
-    <!--<img src="/assets/sl3.png" class="img-responsive">-->
-  <!--</section>-->
-<!--</div>-->
-
-
-<div class="header text-center">
-  <ul class="saa">
-    <li class="saa1"><img src="/assets/logo.png" class="img-responsive"></li>
-    <li>
-      <section class="autoplay hidden-xs">
-      <img src="/assets/sl1.png" class="img-responsive">
-      <img src="/assets/sl2.png" class="img-responsive">
-      <img src="/assets/sl3.png" class="img-responsive">
-      </section>
-    </li>
-    <li class="vas"><h4>099-097-66-44</h4><h4>096-097-66-44</h4></li>
-    <li class="count">
-      <p><%= link_to image_tag("cor.png", :width=> "120px" ), cart_path(@cart) %></p>
-
-      <span class="count2"><span >Количество товаров в козине: </span><%= @cart.line_items.count %></span>
-    </li>
-  </ul>
-</div>
-
-<div class="navbar navbar-default dva" role="navigation">
-  <div class="container menu1">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <ul class="nav navbar-nav menu5 dopmenu visible-xs">
-        <li class="li"><a href="#">О нас</a></li>
-        <li class="li"><a href="#"></a></li>
-        <li class="li"><p>Мы в соцсетях</p></li>
-        <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/vk.png" ></a></li>
-        <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/fa.png" ></a></li>
-        <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png" ></a></li>
-      </ul>
-    </div>
-    <div class="navbar-collapse collapse text-center">
-      <div style="display: inline-block;">
-        <ul class="nav navbar-nav glava">
-          <li class="active"><%= link_to 'ГЛАВНАЯ', root_path %></li>
-          <li class="li"><%= link_to 'НОВИНКИ', new_path %></li>
-          <li class="li"><%= link_to 'АКЦИИ', sale_path %></li>
-          <li class="li"><%= link_to 'ОПЛАТА И ДОСТАВКА', payment_path %></li>
-          <li class="li"><%= link_to 'ОБРАТНАЯ СВЯЗЬ', contacts_path %></li>
-          <li class="li"><%= link_to 'КОНТАКТЫ', back_path %></li>
-          <!--<li class="li"><%= link_to 'КОРЗИНА', cart_path(@cart) %></li>-->
-
           <li class="dropdown">
             <a type="button" id="drop001" role="button" class="dropdown-toggle tmenu fotoav"
                data-toggle="dropdown" href="#">
@@ -135,7 +73,7 @@
                   <%= image_tag current_user.avatar.url(:medium), class: 'fotoava', alt: current_user.name %>
                   <%= current_user.name %>
               <% else %>
-                  ЛИЧНЫЙ КАБИНЕТ
+                  <span class="cabinet">Личный кабинет</span>
               <% end %>
               <b class="caret"></b></a>
             <ul class="dropdown-menu " role="menu" aria-labelledby="drop001">
@@ -152,12 +90,69 @@
 
             </ul>
           </li>
-          
         </ul>
       </div>
-    </div><!--/.nav-collapse -->
+
+    </div>
   </div>
 </div>
+
+<div class="header text-center">
+  <ul class="saa">
+    <li class="saa1"><img src="/assets/logo3.jpg" class="img-responsive"></li>
+    <li>
+      <section class="autoplay hidden-xs">
+      <img src="/assets/logo3.jpg" class="img-responsive">
+      <img src="/assets/logo3.jpg" class="img-responsive">
+      <img src="/assets/logo3.jpg" class="img-responsive">
+      </section>
+    </li>
+    <li class="vas"><p>099-097-66-44</p><p>096-097-66-44</p></li>
+    <li class="count">
+      <p><%= link_to image_tag("cor.png"), cart_path(@cart) %></p>
+
+      <span class="count2"><span >Количество товаров в козине: </span><%= @cart.line_items.count %></span>
+    </li>
+  </ul>
+</div>
+
+
+<div class="navbar navbar-default dva" >
+  <div class="container menu1">
+<div class="navbar-header menu1" >
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
+    <span class="sr-only">open</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand brand visible-xs logo" href="/"><!--<ul class="nav navbar-nav menu5 dopmenu visible-xs">-->
+    <!--<li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/vk.png" ></a></li>-->
+    <!--<li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/fa.png" ></a></li>-->
+    <!--<li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png" ></a></li>-->
+    <!--</ul>--></a>
+</div>
+<div class="collapse navbar-collapse " id="responsive-menu">
+  <ul class="nav navbar-nav glava">
+    <li class="active"><%= link_to 'ГЛАВНАЯ', root_path %></li>
+    <li class="li"><%= link_to 'НОВИНКИ', new_path %></li>
+    <li class="li"><%= link_to 'АКЦИИ', sale_path %></li>
+    <li class="li">
+      <form class="navbar-search navbar-form">
+        <input type="text" class="form-control searchInput" placeholder="Поиск товаров">
+        <%= button_tag 'Найти', class: 'btn btn-info' %>
+      </form>
+    </li>
+
+    <li class="li"><%= link_to 'ОПЛАТА И ДОСТАВКА', payment_path %></li>
+    <li class="li"><%= link_to 'ОБРАТНАЯ СВЯЗЬ', contacts_path %></li>
+    <li class="li"><%= link_to 'КОНТАКТЫ', back_path %></li>
+  </ul>
+ </div>
+  </div>
+</div>
+
+
 <% if flash[:alert] %>
     <div class="alert alert-error" class="text-center">
       <button type="button" class="close" data-dismiss="alert">&times;</button>

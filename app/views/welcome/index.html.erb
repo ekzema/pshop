@@ -47,7 +47,7 @@
     <% end %>
   </ul>
 
-  <div class="col-xs-6 col-sm-12">
+  <div class="hidden-xs col-xs-6 col-sm-12">
     <h4 class="text-center">Новинки</h4>
     <div class="color2 text-center autoplay2">
       <% @new.each do |product| %>
@@ -60,7 +60,7 @@
     </div>
   </div>
 
-  <div class="col-xs-6 col-sm-12">
+  <div class="hidden-xs col-xs-6 col-sm-12">
   <h4 class="text-center">Акции</h4>
   <div class="color2 text-center autoplay2">
     <% @share.each do |product| %>
@@ -78,7 +78,7 @@
 <div class="col-sm-9">
   <div class="row text-center">
         <% @categories.each do |category| %>
-        <div class="col-xs-6 col-md-4 col-lg-3">
+        <div class="col-xs-12  col-sm-6 col-md-4 col-lg-3">
           <div class="color">
             <%= link_to category do %>
                 <div><%= image_tag category.image(:thumb), title: category.name, alt: category.name %></div>

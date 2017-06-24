@@ -73,10 +73,10 @@
             <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png"></a>
           </li>
           <li class="dropdown">
-            <a type="button" id="drop001" role="button" class="dropdown-toggle tmenu fotoav"
+            <a type="button" id="drop001" role="button" class="dropdown-toggle fotoava"
                data-toggle="dropdown" href="#">
               <% if user_signed_in? %>
-                  <%= image_tag current_user.avatar.url(:medium), class: 'fotoava', alt: current_user.name %>
+                  <%= image_tag current_user.avatar.url(:medium), alt: current_user.name %>
                   <%= current_user.name %>
               <% else %>
                   <span class="cabinet">Личный кабинет</span>
@@ -147,8 +147,8 @@
           <% end %>
         </li>
         <li class="li"><%= link_to 'ОПЛАТА И ДОСТАВКА', payment_path %></li>
-        <!--<li class="li"><%= link_to 'ОБРАТНАЯ СВЯЗЬ', contacts_path %></li>-->
-        <li class="li"><%= link_to 'КОНТАКТЫ', back_path %></li>
+        <li class="li"><%= link_to 'КОНТАКТЫ', contacts_path %></li>
+        <!--<li class="li"><%= link_to 'КОНТАКТЫ', back_path %></li>-->
       </ul>
     </div>
   </div>

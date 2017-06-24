@@ -1,4 +1,18 @@
 <div class="container">
+  <div class="row">
+    <div class="container">
+      <div class="color">
+        <div class="pages">
+          <h3 class="text-center">Наши контакты</h3>
+          <p class="primer">
+            Телефон 098-987-66-55
+            скайп fghyhgrtjyit</p>
+          <p class="primer">
+            Телефон 098-987-66-55
+            скайп fghyhgrtjyit</p>
+        </div>
+      </div>
+    </div>
 <h4 class="sld01 sh16 text-center">Если у вас возникли вопросы по сайту или есть какие-то предложения, то оставляйте свои отзывы:</h4>
 <%= form_for @feed, :html => {"data-parsley-validate" => true} do |f| %>
 
@@ -32,7 +46,7 @@
 
 <div class="col-md-offset-2">
   <div class="col-sm-2 form-group">
-    <%= f.label 'Отзыв', class: "control-label", for: :feed_description  %>
+    <%= f.label 'Ваш отзыв', class: "control-label", for: :feed_description  %>
   </div>
   <div class="col-sm-10 form-group">
     <%= f.text_area :description, class:"form-control form" %>
@@ -48,7 +62,7 @@
 <% end %>
 </div>
 
-
+</div>
 
 
 

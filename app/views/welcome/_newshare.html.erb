@@ -3,11 +3,11 @@
   <h4 class="text-center">Новинки</h4>
   <div class="color2 text-center autoplay2">
     <% @new.each do |product| %>
-        <div class="cor">
+        <div>
           <%= link_to product do %>
               <span class="colorline"><%= image_tag 'new.png' if product.new == 1 %></span>
               <%= image_tag product.image, title: product.name, alt: product.name %>
-              <p><%= product.name %></p>
+              <p class="cor"><%= product.name %></p>
           <% end %>
         </div>
     <% end %>
@@ -20,11 +20,11 @@
   <h4 class="text-center">Акции</h4>
   <div class="color2 text-center autoplay2">
     <% @share.each do |product| %>
-        <div class="cor">
+        <div class="">
           <%= link_to product do %>
               <span class="colorline2"><%= image_tag 'sale.png' if product.share == 1 %></span>
               <%= image_tag product.image, title: product.name, alt: product.name %>
-              <p><%= product.name %></p>
+              <p class="cor"><%= product.name %></p>
           <% end %>
         </div>
     <% end %>

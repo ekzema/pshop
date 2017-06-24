@@ -24,7 +24,7 @@ twocategory = {
     value.each {|two| category.twocategories.create(name: two)}
   end
 
-product_img = 'http://fozzyshop.com.ua/84953-thickbox_default/poroshok-stiralnyj-persil-by-silan-avtomat.jpg'
+product_img = 'https://ozon-st.cdn.ngenix.net/multimedia/soft_other/1018022112.jpg'
 
 ptoduct_slide = ['https://img2.zakaz.ua/H2O.1278541827.c9049bad/H2O.1278541827.SNEC1788.obj.40.1.jpg.oe.jpg.pf.jpg.1350x.jpg',
                  'http://plusplus.com.ua/image/cache/import_files/a4/a4f60e41-23a4-11e0-9a1e-6cf04905f7f80-350x350.jpeg',

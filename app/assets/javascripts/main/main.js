@@ -42,3 +42,13 @@ $(document).on('ready turbolinks:load', function(){
     });
 
 });
+
+document.addEventListener("turbolinks:load", function () {
+
+    $('.searchInput').autocomplete({
+        minLength: 3,
+        delay: 600,
+        source: '/search/autocomplete.json'
+    });
+    $('.ui-helper-hidden-accessible').hide(); //hide result message in div classes ui-helper-hidden-accessible
+});

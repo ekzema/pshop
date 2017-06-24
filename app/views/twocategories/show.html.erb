@@ -21,55 +21,37 @@
         <% end %>
     <% end %>
   </ul>
-  <div class="hidden-xs col-xs-6 col-sm-12">
-    <h4 class="text-center">Новинки</h4>
-    <div class="color2 text-center autoplay2">
-      <% @new.each do |product| %>
-          <div class="cor">
-            <span class="colorline"><%= image_tag 'new.png' if product.new == 1 %></span>
-            <%= image_tag product.image, title: product.name, alt: product.name %>
-            <p><%= product.name %></p>
-          </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="hidden-xs col-xs-6 col-sm-12">
-    <h4 class="text-center">Акции</h4>
-    <div class="color2 text-center autoplay2">
-      <% @share.each do |product| %>
-          <div class="cor">
-            <span class="colorline2"><%= image_tag 'sale.png' if product.share == 1 %></span>
-            <%= image_tag product.image, title: product.name, alt: product.name %>
-            <p><%= product.name %></p>
-          </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'welcome/newshare' %>
 </div>
 
 <!--<div class="col-sm-9">-->
-  <!--<div class="row text-center">-->
-    <!--<% @products.each do |product| %>-->
-        <!--<div class="col-xs-6 col-md-4 col-lg-3">-->
-          <!--<div class="color">-->
-            <!--<%= link_to product do %>-->
-                <!--<div><%= image_tag product.image, title: product.name, alt: product.name %></div>-->
-                <!--<h3><%= product.name %></h3>-->
-            <!--<% end %>-->
-            <!--<div id="buttonAddTocart_<%= product.id %>">-->
-              <!--<% if @cart.line_items.find_by_product_id(product).present? %>-->
-                  <!--<span class="inCart">Товар в корзине</span>-->
-              <!--<% else %>-->
-                  <!--<%= button_to 'Добавить в корзину', line_items_path(product_id: product), remote: true %>-->
-              <!--<% end %>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<%= image_tag 'new.png', class: 'newProductLogo' if product.new == 1 %>-->
-          <!--<%= image_tag 'sale.png', class: 'saleProductLogo' if product.share == 1 %>-->
-        <!--</div>&lt;!&ndash;/span&ndash;&gt;-->
-    <!--<% end %>-->
-  <!--</div>-->
+<!--<div class="row text-center">-->
+<!--
+<% @products.each do |product| %>-->
+    <!--<div class="col-xs-6 col-md-4 col-lg-3">-->
+    <!--<div class="color">-->
+    <!--<%= link_to product do %>-->
+        <!--<div><%= image_tag product.image, title: product.name, alt: product.name %></div>-->
+        <!--<h3><%= product.name %></h3>-->
+        <!--
+    <% end %>-->
+    <!--<div id="buttonAddTocart_<%= product.id %>">-->
+    <!--
+    <% if @cart.line_items.find_by_product_id(product).present? %>-->
+        <!--<span class="inCart">Товар в корзине</span>-->
+        <!--
+    <% else %>-->
+        <!--<%= button_to 'Добавить в корзину', line_items_path(product_id: product), remote: true %>-->
+        <!--
+    <% end %>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<%= image_tag 'new.png', class: 'newProductLogo' if product.new == 1 %>-->
+    <!--<%= image_tag 'sale.png', class: 'saleProductLogo' if product.share == 1 %>-->
+    <!--</div>&lt;!&ndash;/span&ndash;&gt;-->
+    <!--
+<% end %>-->
+<!--</div>-->
 <!--</div>-->
 
 <div class="col-sm-9">

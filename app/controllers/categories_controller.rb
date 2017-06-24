@@ -1,9 +1,11 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :cart_quantity, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit]
   include CurrentCart
-  before_action :set_cart
+  before_action :set_cart, :cart_quantity
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_catalog
+
   # GET /categories
   # GET /categories.json
   def index

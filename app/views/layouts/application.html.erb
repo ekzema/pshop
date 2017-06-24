@@ -4,7 +4,7 @@
   <title>Polsha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag '/slick/css/slick.css' %>
   <%= stylesheet_link_tag '/slick/css/slick-theme.css' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -23,9 +23,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Вы добавили в корзину:</h4>
       </div>
-          <div class="modal-body">
-            <div class="container-fluid">
-              <div class="row">
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
             <table class="col-sm-12 showCartBasic">
               <tbody>
               <tr>
@@ -40,13 +40,13 @@
               </tr>
               </tbody>
             </table>
-              </div>
-            </div>
-            </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Продолжить покупки</button>
-            <%= link_to 'Перейти в корзину', cart_path(@cart), class: 'btn btn-success', 'aria-hidden' => 'true', 'onclick' => 'hideModalBoot()' %>
           </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Продолжить покупки</button>
+        <%= link_to 'Перейти в корзину', cart_path(@cart), class: 'btn btn-success', 'aria-hidden' => 'true', 'onclick' => 'hideModalBoot()' %>
+      </div>
 
 
     </div>
@@ -63,9 +63,15 @@
           <li class="li"><a href="/about">О нас</a></li>
           <li class="li"><a href="#"></a></li>
           <li class="li"><p>Мы в соцсетях</p></li>
-          <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/vk.png" ></a></li>
-          <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/fa.png" ></a></li>
-          <li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png" ></a></li>
+          <li class="social">
+            <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/vk.png"></a>
+          </li>
+          <li class="social">
+            <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/fa.png"></a>
+          </li>
+          <li class="social">
+            <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png"></a>
+          </li>
           <li class="dropdown">
             <a type="button" id="drop001" role="button" class="dropdown-toggle tmenu fotoav"
                data-toggle="dropdown" href="#">
@@ -85,9 +91,7 @@
                   <li><%= link_to('Войти', new_user_session_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
                   <li class="divider hidden-xs"></li>
                   <li><%= link_to('Регистрация', new_user_registration_path, {:class => 'xsmenu', :tabindex => '-1'}) %></li>
-
               <% end %>
-
             </ul>
           </li>
         </ul>
@@ -99,18 +103,23 @@
 
 <div class="header text-center">
   <ul class="saa">
-    <li class="saa1"><a href="/" ><img src="/assets/logo3.jpg" class="img-responsive"></a></li>
+    <li class="saa1"><a href="/"><img src="/assets/logo3.jpg" class="img-responsive"></a></li>
     <li>
       <section class="autoplay hidden-xs">
-      <img src="/assets/logo3.jpg" class="img-responsive">
-      <img src="/assets/logo3.jpg" class="img-responsive">
-      <img src="/assets/logo3.jpg" class="img-responsive">
+        <img src="/assets/logo3.jpg" class="img-responsive">
+        <img src="/assets/logo3.jpg" class="img-responsive">
+        <img src="/assets/logo3.jpg" class="img-responsive">
       </section>
     </li>
-    <li class="vas"><p>099-097-66-44</p><p>096-097-66-44</p></li>
+    <li class="vas"><p>099-097-66-44</p>
+      <p>096-097-66-44</p></li>
     <li class="count">
-      <p><%= link_to image_tag("cor.png"), cart_path(@cart) %></p>
-      <span class="count2"><span >Количество товаров в козине: </span><%= @cart.line_items.count %></span>
+      <p>
+        <%= link_to cart_path(@cart) do %>
+            <span class="count2">Количество товаров в козине: <span><%= @cart_quantity %></span></span>
+            <%= image_tag "cor.png", alt: 'Корзина товаров', title: 'Корзина товаров' %>
+        <% end %>
+      </p>
     </li>
   </ul>
 </div>
@@ -131,10 +140,11 @@
         <li class="li"><%= link_to 'НОВИНКИ', new_path %></li>
         <li class="li"><%= link_to 'АКЦИИ', sale_path %></li>
         <li class="li hidden-xs">
+          <%= form_tag({:controller => "/search", :action => "result"}, method: "get", class: "navbar-search navbar-form", "role" => "search") do %>
           <form class="navbar-search navbar-form">
-            <input type="text" class="form-control searchInput" placeholder="Поиск товаров">
+            <%= text_field_tag(:q, nil, placeholder: "Поиск товаров", class: "form-control searchInput") %>
             <%= button_tag 'Найти', class: 'btn btn-info' %>
-          </form>
+          <% end %>
         </li>
         <li class="li"><%= link_to 'ОПЛАТА И ДОСТАВКА', payment_path %></li>
         <!--<li class="li"><%= link_to 'ОБРАТНАЯ СВЯЗЬ', contacts_path %></li>-->
@@ -143,42 +153,6 @@
     </div>
   </div>
 </div>
-
-  <!--<div class="navbar navbar-default dva">-->
-    <!--<div class="container menu1">-->
-      <!--<div class="navbar-header">-->
-  <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">-->
-    <!--<span class="sr-only">open</span>-->
-    <!--<span class="icon-bar"></span>-->
-    <!--<span class="icon-bar"></span>-->
-    <!--<span class="icon-bar"></span>-->
-  <!--</button>-->
-  <!--<a class="navbar-brand brand visible-xs logo" href="/">&lt;!&ndash;<ul class="nav navbar-nav menu5 dopmenu visible-xs">&ndash;&gt;-->
-    <!--&lt;!&ndash;<li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/vk.png" ></a></li>&ndash;&gt;-->
-    <!--&lt;!&ndash;<li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/fa.png" ></a></li>&ndash;&gt;-->
-    <!--&lt;!&ndash;<li class="social"><a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png" ></a></li>&ndash;&gt;-->
-    <!--&lt;!&ndash;</ul>&ndash;&gt;</a>-->
-<!--</div>-->
-<!--<div class="collapse navbar-collapse " id="responsive-menu">-->
-  <!--<ul class="nav navbar-nav glava">-->
-    <!--<li class="active"><%= link_to 'ГЛАВНАЯ', root_path %></li>-->
-    <!--<li class="li"><%= link_to 'НОВИНКИ', new_path %></li>-->
-    <!--<li class="li"><%= link_to 'АКЦИИ', sale_path %></li>-->
-    <!--<li class="li">-->
-      <!--<form class="navbar-search navbar-form">-->
-        <!--<input type="text" class="form-control searchInput" placeholder="Поиск товаров">-->
-        <!--<%= button_tag 'Найти', class: 'btn btn-info' %>-->
-      <!--</form>-->
-    <!--</li>-->
-
-    <!--<li class="li"><%= link_to 'ОПЛАТА И ДОСТАВКА', payment_path %></li>-->
-    <!--<li class="li"><%= link_to 'ОБРАТНАЯ СВЯЗЬ', contacts_path %></li>-->
-    <!--<li class="li"><%= link_to 'КОНТАКТЫ', back_path %></li>-->
-  <!--</ul>-->
- <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-
 
 <% if flash[:alert] %>
     <div class="alert alert-error" class="text-center">
@@ -194,11 +168,6 @@
 <% end %>
 <div class="container">
   <div class="row">
-
-
-
-
-
     <%= yield %>
   </div>
 </div>

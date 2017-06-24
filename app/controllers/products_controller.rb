@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:update]
   include CurrentCart
   before_action :set_cart, only: [:show]
-  rescue_from ActiveRecord::RecordNotFound, with: :invalid_catalog
+  before_action :cart_quantity, only: [:show]
 
   # GET /products
   # GET /products.json

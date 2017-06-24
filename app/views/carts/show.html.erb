@@ -28,7 +28,7 @@
           </tr>
       <% end %>
       </tbody>
-      </table><p class='countProductPrice'><b>Итого:</b> <span><%= number_to_currency(@cart.total_price) %></span></p>
+      </table><p class='countProductPrice'><b>Итого:</b> <span><%= @cart.total_price %> грн</span></p>
       <h3 class="text-center">
         <%= button_to 'Оформить заказ', new_order_path, method: :get, class: 'btn btn-success' %>
       </h3>

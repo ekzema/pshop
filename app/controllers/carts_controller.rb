@@ -2,7 +2,7 @@ class CartsController < ApplicationController
 
   include CurrentCart
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
-
+  before_action :cart_quantity, only: [:show]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   # GET /carts
@@ -33,7 +33,6 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = Cart.new(cart_params)
-
     respond_to do |format|
       if @cart.save
         format.html { redirect_to @cart, notice: 'Cart was successfully created.' }

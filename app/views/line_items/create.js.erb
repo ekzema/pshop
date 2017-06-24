@@ -1,3 +1,4 @@
+$('.count2 > span').html('<%= @cart_quantity %>');
 $('#buttonAddTocart_<%= @product.id %>').html('<button class="btn btn-default">Товар в корзине</button>');
 $('#modalshowCart').modal('show');
 $('.showCartImage').html('<%= image_tag @product.image.url(:admin) %>');

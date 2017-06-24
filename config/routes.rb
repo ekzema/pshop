@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     delete 'delete_attachment' => 'users/registrations#delete_attachment'
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
+
+  namespace :search do
+    get 'autocomplete'
+    get 'result'
+  end
   resources :feeds
   root 'welcome#index'
   resources :orders

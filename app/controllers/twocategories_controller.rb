@@ -2,7 +2,7 @@ class TwocategoriesController < ApplicationController
   before_action :set_twocategory, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit]
   include CurrentCart
-  before_action :set_cart
+  before_action :set_cart, :cart_quantity
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_catalog
 
   # GET /twocategories

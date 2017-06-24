@@ -20,5 +20,5 @@
 //= require adminpanel/dynamic-table
 //= require adminpanel/jquery.autosize.min
 //= require adminpanel/jquery.customSelect.min
-//= require jquery-ui
+//= require jquery-ui/widgets/autocomplete
 //= require adminpanel/scripts

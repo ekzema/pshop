@@ -41,9 +41,9 @@ class SiteSettingsController < ApplicationController
   # PATCH/PUT /site_settings/1.json
   def update
     respond_to do |format|
-      if @site_setting.update(site_setting_params)
-        format.html { redirect_to @site_setting, notice: 'Site setting was successfully updated.' }
-        format.json { render :show, status: :ok, location: @site_setting }
+     if @site_setting.update(site_setting_params)
+        format.html { redirect_to adminpanel_settings_path, notice: "Настройки сайта успешно обновлены" }
+        format.json { render :show, status: :ok, location: adminpanel_settings_path }
       else
         format.html { render :edit }
         format.json { render json: @site_setting.errors, status: :unprocessable_entity }

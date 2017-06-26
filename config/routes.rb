@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   get 'adminpanel', to: 'adminpanel#index'
   namespace :adminpanel do
+    get 'settings'
     get 'categories'
     get 'twocategories'
     get 'products'

@@ -124,8 +124,8 @@ ActiveRecord::Schema.define(version: 20170625222224) do
     t.string "meta_title"
     t.text "meta_desc"
     t.text "meta_key"
-    t.integer "comment_visible"
-    t.integer "sliders_visible"
+    t.integer "comment_visible", default: 1
+    t.integer "sliders_visible", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

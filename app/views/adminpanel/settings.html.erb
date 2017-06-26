@@ -1,0 +1,72 @@
+
+<section id="main-content">
+  <section class="wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <section class="panel">
+          <header class="panel-heading">
+            Изменить категорию
+          </header>
+          <div class="panel-body">
+<%= form_for(@site_setting, multipart: true, :html => { :class => 'form-horizontal'}) do |f| %>
+  <% if @site_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@site_setting.errors.count, "error") %> prohibited this site setting from being saved:</h2>
+
+      <ul>
+      <% @site_setting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'Заголовок сайта', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_area :meta_title, class: "form-control form" %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'МЕТА описание', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_area :meta_desc, class: "form-control form" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class=" col-sm-2">
+        <%= f.label 'МЕТА ключи', class:"control-label" %>
+      </div>
+      <div class="col-sm-10 ">
+        <%= f.text_area :meta_key, class: "form-control form" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10 actions">
+        <br>
+        <button type="submit" class="btn btn-success editSeller">Сохранить</button>
+      </div>
+    </div>
+<% end %>
+
+              </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</section>
+<style>
+  .settings, .settings a{
+    background: #2e3b46;
+    color: white !important;
+  }
+</style>

@@ -10,6 +10,10 @@ class AdminpanelController < ApplicationController
     @comment = Comment.count
   end
 
+  def settings
+    @site_setting = SiteSetting.first
+  end
+
   def categories
     @category = Category.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
   end

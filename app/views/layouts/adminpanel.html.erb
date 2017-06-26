@@ -63,12 +63,18 @@
             <span>Главная</span>
             <% end %>
           </li>
+          <li class="settings">
+            <%= link_to adminpanel_settings_path do %>
+            <i class="icon_cogs" aria-hidden="true"></i>
+            <span>Настройки</span>
+            <% end %>
+          </li>
           <li class="cat">
             <%= link_to adminpanel_categories_path do %>
             <i class="icon_folder-open_alt" aria-hidden="true"></i>
             <span>Категории</span>
             <% end %>
-          </li>
+          </li>     
           <li class="two">
             <%= link_to adminpanel_twocategories_path do %>
             <i class="icon_folder-alt" aria-hidden="true"></i>

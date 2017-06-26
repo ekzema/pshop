@@ -69,6 +69,8 @@ class SiteSettingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_setting_params
-      params.require(:site_setting).permit(:meta_title, :meta_desc, :meta_key, :comment_visible, :sliders_visible)
+      params.require(:site_setting).permit(:meta_title, :meta_desc, :meta_key, :comment_visible, :sliders_visible,
+ site_slide_images_attributes: [:id, :_destroy, :image]
+        )
     end
 end

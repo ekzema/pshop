@@ -3,6 +3,7 @@
 <head>
   <title>Polsha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag '/slick/css/slick.css' %>
@@ -103,7 +104,8 @@
 
 <div class="header text-center">
   <ul class="saa">
-    <li class="saa1"><a href="/"><img src="/assets/logo3.jpg" class="img-responsive"></a></li>
+    <li class="saa1"><a href="/"><%= image_tag 'logo3.jpg', class: 'img-responsive', alt: 'eurohouse' %></a></li>
+    <% if SiteSetting.first.sliders_visible == 1 %>
     <li>
       <section class="autoplay hidden-xs">
         <img src="/assets/logo3.jpg" class="img-responsive">
@@ -111,6 +113,7 @@
         <img src="/assets/logo3.jpg" class="img-responsive">
       </section>
     </li>
+    <% end %>
     <li class="vas"><p>099-097-66-44</p>
       <p>096-097-66-44</p></li>
     <li class="count">

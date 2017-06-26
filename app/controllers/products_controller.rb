@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.friendly.find(params[:id])
+    @pr_cat = Category.find(@product.category_id)
     @comments = @product.comments.where(moderation: 1).order(created_at: :desc)
   end
 

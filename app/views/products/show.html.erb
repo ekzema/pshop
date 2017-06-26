@@ -44,19 +44,22 @@
                <%= button_to 'Добавить в корзину', line_items_path(product_id: @product), class: "btn btn-success", remote: true %>
             <% end %>
           </div>
-          <p><%= button_to 'Вернуться в категорию', category_path(@product.category_id), class: "btn btn-info opisanie", method: :get %></p>
+          <p><%= button_to 'Вернуться в категорию', @pr_cat, class: "btn btn-info opisanie", method: :get %></p>
         </div>
 
 
         <div class="col-xs-12 opisanie">
           <ul class="nav nav-tabs" role="tablist">
             <li class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><p>Описание</p></a></li>
+            <% if SiteSetting.first.comment_visible == 1 %>
             <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><p>Отзывы</p></a></li>
+            <% end %>
           </ul>
           <!-- Содержимое вкладок -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home"><p class="showProductDesc"><%= @product.description %></p>
             </div>
+            <% if SiteSetting.first.comment_visible == 1 %>
             <div role="tabpanel" class="tab-pane" id="profile">
               <div class="productComments col-xs-12">
                 <% if user_signed_in? %>
@@ -97,7 +100,7 @@
               </ul>
               </div>
             </div>
-
+          <% end %>
           </div>
 
         </div>

@@ -27,7 +27,7 @@
         <%= f.label 'Заголовок сайта', class:"control-label" %>
       </div>
       <div class="col-sm-10 ">
-        <%= f.text_area :meta_title, class: "form-control form" %>
+        <%= f.text_field :meta_title, class: "form-control form" %>
       </div>
     </div>
 
@@ -50,6 +50,47 @@
       </div>
     </div>
 
+     <div class="form-group">
+    <div class="col-sm-2 ">
+      <%= f.label 'Показать слайды', for: 'sliders_visible' %>
+    </div>
+    <div class="col-sm-10 ">
+      <%= f.check_box :sliders_visible, id: 'sliders_visible' %>
+    </div>
+  </div>
+
+   <div class="form-group">
+    <div class="col-sm-2 ">
+      <%= f.label 'Показать комментарии', for: 'comment_visible' %>
+    </div>
+    <div class="col-sm-10 ">
+      <%= f.check_box :comment_visible, id: 'comment_visible' %>
+    </div>
+  </div>
+SiteSetting site_slide_images
+
+
+
+
+
+
+  <%= nested_form_for SiteSetting.new, html: {multipart: true} do |i| %>
+  <%= i.fields_for :site_slide_images do |slide_images| %>
+  <div class="form-group rowImageSlide newRowSlide">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+      <%= slide_images.file_field :image %><br>
+      <%= slide_images.link_to_remove '<i class="icon_close_alt2"></i>'.html_safe, class: 'deleteImageSlide btn btn-danger' %>
+    </div>
+  </div>
+<% end %>
+
+  <%= i.link_to_add :site_slide_images do %>
+  <span type="button" class="btn btn-success btn-block addPhohto"><i class="icon_plus"></i> ДОБАВИТЬ КАРТИНКУ</span>
+  <% end %>
+
+
+
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10 actions">
         <br>
@@ -57,7 +98,7 @@
       </div>
     </div>
 <% end %>
-
+ <% end %>
               </div>
         </section>
       </div>

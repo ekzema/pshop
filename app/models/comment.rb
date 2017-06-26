@@ -1,4 +1,4 @@
 class Comment < ApplicationRecord
   belongs_to :product
-  validates :body, :presence => {message: 'Поле кооментарий не может быть пустым'}
+  validates :body, :presence => {message: 'Поле комментарий не может быть пустым'}
 end

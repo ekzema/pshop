@@ -15,6 +15,9 @@ class TwocategoriesController < ApplicationController
   # GET /twocategories/1.json
   def show
     @twocategory = Twocategory.friendly.find(params[:id])
+    @title = @twocategory.name
+    @description = @twocategory.meta_desc if @twocategory.meta_desc.present?
+    @keywords = @twocategory.meta_key if @twocategory.meta_key.present?
     @categories = Category.all
     @category = @twocategory.category
     @products = Product.where(twocategory_id: @twocategory, visible: 1).order(created_at: :desc)

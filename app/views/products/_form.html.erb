@@ -1,3 +1,8 @@
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $('form').parsley();
+    });
+</script>
 <%= nested_form_for(product, multipart: true, :html => {:class => 'form-horizontal'}) do |f| %>
 <% if product.errors.any? %>
 <div id="error_explanation">
@@ -35,7 +40,7 @@
     </div>
     <div class="col-sm-10 ">
 
-      <%= select_tag 'product[category_id]', options_for_select(Category.all.collect{|category| [category.name, category.id]}, @category), {:include_blank => '- Категории -', :class => 'form-control form', :id => 'product_category_id'} %>
+      <%= select_tag 'product[category_id]', options_for_select(Category.all.collect{|category| [category.name, category.id]}, @category), {:include_blank => '- Категории -', :class => 'form-control form', :id => 'product_category_id', 'data-parsley-required' => true, 'data-parsley-error-message' => 'Выберете категорию'} %>
     </div>
   </div>
 
@@ -56,7 +61,7 @@
       <%= f.label 'Название', class: "control-label" %>
     </div>
     <div class="col-sm-10 ">
-      <%= f.text_field :name, class: "form-control form" %>
+      <%= f.text_field :name, class: "form-control form", 'data-parsley-required' => true, 'data-parsley-error-message' => 'Введите имя товара' %>
     </div>
   </div>
 
@@ -74,7 +79,7 @@
       <%= f.label 'Описание', class: "control-label" %>
     </div>
     <div class="col-sm-10 ">
-      <%= f.text_area :description, class: "form-control form" %>
+      <%= f.text_area :description, class: "form-control form", 'data-parsley-required' => true, 'data-parsley-error-message' => 'Введите описание товара' %>
     </div>
   </div>
 
@@ -83,7 +88,7 @@
       <%= f.label 'Цена', class: "control-label" %>
     </div>
     <div class="col-sm-10 ">
-      <%= f.text_field :price, class: "form-control form" %>
+      <%= f.text_field :price, class: "form-control form", 'data-parsley-type' => 'number', 'data-parsley-required' => true, 'data-parsley-error-message' => 'Введите цену товара' %>
     </div>
   </div>
 
@@ -101,7 +106,7 @@
         <%= f.label 'Введите старую цену товара', for: 'share_price', style: 'color: green;' %>
       </div>
       <div class="col-sm-10 ">
-        <%= f.text_field :share_price, id: 'share_price', class: "form-control form" %>
+        <%= f.text_field :share_price, id: 'share_price', class: "form-control form", 'data-parsley-type' => 'number', 'data-parsley-error-message' => 'Введите старую цену товара' %>
       </div>
     </div>
 

@@ -1,5 +1,8 @@
 class FeedsController < ApplicationController
   # before_action :authenticate_rootadmin!, except: [:create]
+  include CurrentCart
+  before_action :set_cart, :cart_quantity
+
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:edit]
 
@@ -32,7 +35,7 @@ class FeedsController < ApplicationController
       if @feed.save
         format.html { redirect_to :root, notice: "#{@feed.name} Спасибо за ваше сообщение. В самые ближайшие сроки администраор его прочитает и ответит вам "}
       else
-        format.html { render 'welcome/feedback' }
+        format.html { render  template: 'welcome/contacts' }
         format.json { render json: @feed.errors, status: :unprocessable_entity }
       end
     end

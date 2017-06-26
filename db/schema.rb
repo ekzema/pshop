@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20170625222224) do
   end
 
   create_table "site_slide_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "site_setting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_file_name"

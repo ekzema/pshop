@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit, :update, :create]
   skip_before_action :verify_authenticity_token, only: [:update]
   include CurrentCart
@@ -16,6 +16,9 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.friendly.find(params[:id])
+    @title = @product.name
+    @description = @product.meta_desc
+    @keywords = @product.meta_key
     @pr_cat = Category.find(@product.category_id)
     @comments = @product.comments.where(moderation: 1).order(created_at: :desc)
   end
@@ -39,7 +42,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         @product.product_slide_images.build
-        return redirect_to edit_product_path(@product) if params[:back]
+        return redirect_to edit_product_path(@product.id) if params[:back]
         format.html { redirect_to adminpanel_products_path, notice: 'Товар успешно добавлен' }
         format.json { render :show, status: :ok, location: adminpanel_products_path }
       else
@@ -56,7 +59,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         @product.product_slide_images.build
-        return redirect_to edit_product_path(@product) if params[:back]
+        return redirect_to edit_product_path(@product.id) if params[:back]
         format.html { redirect_to adminpanel_products_path, notice: 'Товар успешно обновлён' }
         format.json { render :show, status: :ok, location: adminpanel_products_path }
       else
@@ -101,7 +104,7 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

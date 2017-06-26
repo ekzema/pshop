@@ -1,4 +1,5 @@
 class AdminpanelController < ApplicationController
+  skip_before_action :slaiders, :main_setting_site
   layout 'adminpanel'
 
   def index
@@ -12,6 +13,7 @@ class AdminpanelController < ApplicationController
 
   def settings
     @site_setting = SiteSetting.first
+    @site_setting.site_slide_images.build
   end
 
   def categories

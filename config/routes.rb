@@ -62,8 +62,7 @@ Rails.application.routes.draw do
       delete 'delete_attachment'
     end
   end
-  get 'categories/:category/:id', to: 'twocategories#show', as: 'showtwocategory'
-
+  get 'category/:category_name/:id', to: 'twocategories#show', as: 'showtwocategory'
   resources :categories, except: [:index] do
     collection do
       delete 'delete_attachment'

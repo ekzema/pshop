@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  validates :name, :presence => {message: 'Введите ваше имя'}
+  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "doesn't look like an email address"
   # Include default devise modules. Others available are:
   #  and :omniauthable , :confirmable
   devise :database_authenticatable, :registerable,

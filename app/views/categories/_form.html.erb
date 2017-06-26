@@ -3,7 +3,7 @@
         $('form').parsley();
     } );
 </script>
-<%= form_for(category, multipart: true, :html => { :class => 'form-horizontal'}) do |f| %>
+<%= form_for((category), multipart: true, :html => { :class => 'form-horizontal'}) do |f| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>

@@ -16,6 +16,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @category = Category.friendly.find(params[:id])
+    @title = @category.name
+    @description = @category.meta_desc if @category.meta_desc.present?
+    @keywords = @category.meta_key if @category.meta_key.present?
     @categories = Category.all
     @products = Product.where(category_id: @category, visible: 1).order(created_at: :desc)
   end

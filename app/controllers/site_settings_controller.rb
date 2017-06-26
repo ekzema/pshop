@@ -1,5 +1,6 @@
 class SiteSettingsController < ApplicationController
   before_action :set_site_setting, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:update]
 
   # GET /site_settings
   # GET /site_settings.json
@@ -42,6 +43,7 @@ class SiteSettingsController < ApplicationController
   def update
     respond_to do |format|
      if @site_setting.update(site_setting_params)
+       @site_setting.site_slide_images.build
         format.html { redirect_to adminpanel_settings_path, notice: "Настройки сайта успешно обновлены" }
         format.json { render :show, status: :ok, location: adminpanel_settings_path }
       else
@@ -69,8 +71,7 @@ class SiteSettingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_setting_params
-      params.require(:site_setting).permit(:meta_title, :meta_desc, :meta_key, :comment_visible, :sliders_visible,
- site_slide_images_attributes: [:id, :_destroy, :image]
+      params.require(:site_setting).permit(:meta_title, :meta_desc, :meta_key, :comment_visible, :sliders_visible, site_slide_images_attributes: [:id, :_destroy, :image]
         )
     end
 end

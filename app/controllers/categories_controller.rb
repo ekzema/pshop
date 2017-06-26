@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:edit, :update, :destroy]
   before_action :cart_quantity, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit]
   include CurrentCart
@@ -15,6 +15,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @category = Category.friendly.find(params[:id])
     @categories = Category.all
     @products = Product.where(category_id: @category, visible: 1).order(created_at: :desc)
   end

@@ -2,7 +2,7 @@
 <% if @comment.save %>
 $('.errorFlash').fadeOut();
     $('form textarea').val(' ');
-    $('.productComments').prepend("<h3 class='commentFlash'>Ваш комментарий будет опубликован после проверки модератормом</h3>");
+    $('.productComments').prepend("<h3 class='commentFlash'>Ваш отзыв будет опубликован после проверки модератором</h3>");
     setTimeout(function () {
     $('.commentFlash').fadeOut();
     }, 10000);

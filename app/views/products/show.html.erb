@@ -44,7 +44,7 @@
                <%= button_to 'Добавить в корзину', line_items_path(product_id: @product), class: "btn btn-success", remote: true %>
             <% end %>
           </div>
-          <p><%= button_to 'Вернуться в категорию', category_path(@product.category_id), class: "btn btn-info opisanie" %></p>
+          <p><%= button_to 'Вернуться в категорию', category_path(@product.category_id), class: "btn btn-info opisanie", method: :get %></p>
         </div>
 
 
@@ -82,8 +82,8 @@
 
                     <% end %>
                 <% else %>
-                    <p class="messageLinkUser">Чтобы оставить отзыв <%= link_to 'Войти', new_user_session_path %> или
-                      <%= link_to 'Зарегистрируйся', new_user_registration_path %></p>
+                    <p class="messageLinkUser">Чтобы оставить отзыв <%= link_to 'Войти', new_user_session_path(continue: product_path(@product.id)) %> или
+                      <%= link_to 'Зарегистрируйся', new_user_registration_path(continue: product_path(@product.id)) %></p>
                 <% end %>
               </div>
               <div class="comment">

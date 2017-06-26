@@ -1,5 +1,5 @@
 class TwocategoriesController < ApplicationController
-  before_action :set_twocategory, only: [:show, :edit, :update, :destroy]
+  before_action :set_twocategory, only: [:edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit]
   include CurrentCart
   before_action :set_cart, :cart_quantity
@@ -14,6 +14,7 @@ class TwocategoriesController < ApplicationController
   # GET /twocategories/1
   # GET /twocategories/1.json
   def show
+    @twocategory = Twocategory.friendly.find(params[:id])
     @categories = Category.all
     @category = @twocategory.category
     @products = Product.where(twocategory_id: @twocategory, visible: 1).order(created_at: :desc)

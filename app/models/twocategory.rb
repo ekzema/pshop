@@ -5,4 +5,6 @@ class Twocategory < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates_attachment_file_name :image, matches: [/png\z/, /jpe?g\z/, /gif\z/]
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 end

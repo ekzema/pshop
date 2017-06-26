@@ -50,17 +50,18 @@ Rails.application.routes.draw do
   resources :comments
   get 'product_slide_images/create'
 
-  resources :products do
+  resources :products, except: [:index] do
     collection do
       delete 'delete_attachment'
     end
   end
 
-  resources :twocategories, except: [:index] do
+  resources :twocategories, except: [:index, :show] do
     collection do
       delete 'delete_attachment'
     end
   end
+  get 'categories/:category/:id', to: 'twocategories#show', as: 'showtwocategory'
 
   resources :categories, except: [:index] do
     collection do

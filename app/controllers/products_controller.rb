@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit, :update, :create]
   skip_before_action :verify_authenticity_token, only: [:update]
   include CurrentCart
@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @product = Product.friendly.find(params[:id])
     @comments = @product.comments.where(moderation: 1).order(created_at: :desc)
   end
 

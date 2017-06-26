@@ -12,7 +12,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.integer :share_price
       t.text :meta_desc
       t.text :meta_key
-
+      t.string :slug, :unique => true
       t.timestamps
     end
   end

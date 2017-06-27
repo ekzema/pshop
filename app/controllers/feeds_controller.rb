@@ -1,8 +1,7 @@
 class FeedsController < ApplicationController
-  # before_action :authenticate_rootadmin!, except: [:create]
+  before_action :authenticate_rootadmin!, except: [:create]
   include CurrentCart
   before_action :set_cart, :cart_quantity
-
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:edit]
 

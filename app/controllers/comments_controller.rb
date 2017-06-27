@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_rootadmin!, except: [:create]
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel'
   # GET /comments

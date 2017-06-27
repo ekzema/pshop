@@ -1,4 +1,5 @@
 class AdminpanelController < ApplicationController
+  before_action :authenticate_rootadmin!
   skip_before_action :slaiders, :main_setting_site
   layout 'adminpanel'
 

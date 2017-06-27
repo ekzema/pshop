@@ -1,0 +1,27 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'login-form'}) do |f| %>
+
+    <div class="login-wrap">
+      <p class="login-img"><i class="icon_lock_alt"></i></p>
+      <span>Логин:</span>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="icon_profile"></i></span>
+        <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Имя' %>
+      </div>
+      <span>Пароль:</span>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Пароль' %>
+      </div>
+      <label class="checkbox">
+        <%= f.check_box :remember_me, class: 'cheAdmin' %> <%= f.label 'Запомнить', for: :rootadmin_remember_me %>
+        <span class="pull-right"> <%= link_to 'Забыли пароль?', new_rootadmin_password_path %></span>
+      </label>
+      <%= f.submit "Войти", class: 'btn btn-primary btn-lg btn-block' %>
+      <% if Rails.env == 'development' %>
+          <%= link_to new_rootadmin_registration_path, class: 'btn btn-info btn-lg btn-block rootReg' do %>
+              <span>Регистрация</span>
+          <% end %>
+      <% end %>
+    </div>
+
+<% end %>

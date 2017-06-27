@@ -67,13 +67,13 @@
           <li class="li"><a href="#"></a></li>
           <li class="li"><p>Мы в соцсетях</p></li>
           <li class="social">
-            <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/vk.png"></a>
+            <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><%= image_tag 'vk.png' %></a>
           </li>
           <li class="social">
-            <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/fa.png"></a>
+            <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><%= image_tag 'fa.png' %></a>
           </li>
           <li class="social">
-            <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><img src="/assets/In.png"></a>
+            <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><%= image_tag 'In.png' %></a>
           </li>
           <li class="dropdown">
             <a type="button" id="drop001" role="button" class="dropdown-toggle fotoava"
@@ -186,7 +186,21 @@
       <p class="">Polsha.com.ua © 2017</p>
     </div>
     <div class="col-sm-6">
-      <p class="labsites">Сайт разработан<a href="http://labsites.org/en/" target="_blank"> Labsites.org</a></p>
+      <p class="labsites">
+        <% if Rails.env.production? %>
+        <span class="livCount"></span>
+        <!--LiveInternet counter--><script type="text/javascript">
+          $('.labsites > .livCount').after("<a href='//www.liveinternet.ru/click' "+
+              "target=_blank><img src='//counter.yadro.ru/hit?t44.6;r"+
+              escape(document.referrer)+((typeof(screen)=="undefined")?"":
+                  ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+                      screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+              ";"+Math.random()+
+              "' alt='' title='LiveInternet' "+
+              "border='0' width='15' height='15'><\/a>");
+      </script><!--/LiveInternet-->
+        <% end %>
+        Сайт разработан<a href="http://labsites.org/en/" target="_blank"> Labsites.org</a></p>
     </div>
   </div>
 </footer>

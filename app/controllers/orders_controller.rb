@@ -1,8 +1,10 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_rootadmin!, except: [:new, :form_render, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:edit, :update]
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
+  before_action :cart_quantity, only: [:new]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
   # GET /orders
   # GET /orders.json

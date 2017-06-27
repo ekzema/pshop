@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_rootadmin!, except: [:show]
   before_action :set_category, only: [:edit, :update, :destroy]
   before_action :cart_quantity, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit]

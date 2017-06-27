@@ -1,4 +1,5 @@
 class SiteSettingsController < ApplicationController
+  before_action :authenticate_rootadmin!
   before_action :set_site_setting, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, only: [:update]
 

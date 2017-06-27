@@ -1,4 +1,5 @@
 class TwocategoriesController < ApplicationController
+  before_action :authenticate_rootadmin!, except: [:show]
   before_action :set_twocategory, only: [:edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit]
   include CurrentCart

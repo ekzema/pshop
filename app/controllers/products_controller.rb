@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_rootadmin!, except: [:show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   layout 'adminpanel', only: [:new, :edit, :update, :create]
   skip_before_action :verify_authenticity_token, only: [:update]

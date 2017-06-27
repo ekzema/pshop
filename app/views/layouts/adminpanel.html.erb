@@ -29,19 +29,21 @@
           <!-- user login dropdown start-->
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-              <span class="profile-ava">
-                <!--<img alt="" src="img/avatar1_small.jpg">-->
-              </span>
-              <span class="username">Вася</span>
+                            <span class="profile-ava">
+                                <!--<img alt="" src="img/avatar1_small.jpg">-->
+                            </span>
+              <span class="username"><%= current_rootadmin.name %></span>
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Изменить профиль</a>
+                <%= link_to edit_rootadmin_registration_path do %>
+                    <i class="fa fa-user" aria-hidden="true"></i> Изменить профиль
+                <% end %>
               </li>
               <li>
-                <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Выход</a>
+                <%= link_to '<i class="fa fa-sign-out" aria-hidden="true"></i> Выход'.html_safe,  destroy_rootadmin_session_path %>
               </li>
             </ul>
           </li>

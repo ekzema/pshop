@@ -1,4 +1,5 @@
 $('#cartProductLine_<%= @line_item.id %>').remove();
+$('.count2 > span').html('<%= @cart_quantity %>');
 $('.countProductPrice span').html('<%= number_to_currency(@cart.total_price) %>');
 <% if @cart.line_items.count == 0 %>
 	$('.countProductPrice').hide();

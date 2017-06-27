@@ -1,5 +1,22 @@
 Rails.application.routes.draw do
 
+  devise_for :rootadmins, controllers: {
+      sessions: "rootadmins/sessions",
+      registrations: "rootadmins/registrations",
+      unlocks: "rootadmins/unlocks",
+      passwords: "rootadmins/passwords",
+      omniauth: "rootadmins/omniauth",
+      confirmations: "rootadmins/confirmations"
+  } do
+  end
+
+  devise_scope :rootadmin do
+    get "/rootadmins" => "rootadmins/sessions#new"
+    get "/rootadmins/sign_out" => "rootadmins/sessions#destroy"
+  end
+
+
+
   devise_for :users, controllers: {
       sessions: 'users/sessions',
       registrations: 'users/registrations',

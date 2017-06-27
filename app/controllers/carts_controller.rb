@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-
+  before_action :authenticate_rootadmin!, except: [:show, :destroy]
   include CurrentCart
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
   before_action :cart_quantity, only: [:show]

@@ -13,7 +13,6 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag '/slick/js/slick.js' %>
   <script src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.20/src/jquery.ez-plus.js"></script>
-
 </head>
 
 <body>
@@ -50,8 +49,6 @@
         <button type="button" class="btn btn-primary" data-dismiss="modal">Продолжить покупки</button>
         <%= link_to 'Перейти в корзину', cart_path(@cart), class: 'btn btn-success', 'aria-hidden' => 'true', 'onclick' => 'hideModalBoot()' %>
       </div>
-
-
     </div>
   </div>
 </div>

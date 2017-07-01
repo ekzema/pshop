@@ -94,6 +94,12 @@
               <% end %>
             </ul>
           </li>
+          <li class="count">
+                  <%= link_to cart_path(@cart) do %>
+                  <span class="count2">Количество товаров в козине: <span><%= @cart_quantity %></span></span>
+                  <%= image_tag "cor.png", alt: 'Корзина товаров', title: 'Корзина товаров' %>
+              <% end %>
+          </li>
         </ul>
       </div>
     </div>
@@ -102,26 +108,23 @@
 
 <div class="header text-center">
   <ul class="saa">
-    <li class="saa1"><a href="/"><%= image_tag 'logo3.jpg', class: 'img-responsive', alt: 'eurohouse' %></a></li>
+    <li class="saa1"><a href="/"><%= image_tag 'logo3.png', alt: 'eurohouse' %></a></li>
     <% if @site_setting.sliders_visible == 1 %>
     <li>
       <section class="autoplay hidden-xs">
         <% @site_setting.site_slide_images.each do |slide| %>
-            <%= image_tag slide.image.url(:mainslide), class: 'img-responsive' %>
+            <%= image_tag slide.image.url(:mainslide) %>
         <% end %>
       </section>
     </li>
     <% end %>
-    <li class="vas"><p>099-097-66-44</p>
-      <p>096-097-66-44</p></li>
-    <li class="count">
-      <p>
-        <%= link_to cart_path(@cart) do %>
-            <span class="count2">Количество товаров в козине: <span><%= @cart_quantity %></span></span>
-            <%= image_tag "cor.png", alt: 'Корзина товаров', title: 'Корзина товаров' %>
-        <% end %>
-      </p>
+    <li class="vas1">
+      <span class="vas"><%= image_tag "delivery.png", alt: 'Корзина товаров', title: 'Корзина товаров' %></span>
+      <p><span class="mobail"><%= image_tag "01.png" %></span>099-097-66-44</p>
+      <p><span class="mobail"><%= image_tag "02.png" %></span>096-097-66-44</p>
+      <p><span class="mobail"><%= image_tag "03.png" %></span><%= link_to 'Написать нам', contacts_path %></p>
     </li>
+
   </ul>
 </div>
 
@@ -148,8 +151,8 @@
           <% end %>
         </li>
         <li class="li"><%= link_to 'ОПЛАТА И ДОСТАВКА', payment_path %></li>
-        <li class="li"><%= link_to 'КОНТАКТЫ', contacts_path %></li>
-        <!--<li class="li"><%= link_to 'КОНТАКТЫ', back_path %></li>-->
+        <!--<li class="li"><%= link_to 'КОНТАКТЫ', contacts_path %></li>-->
+        <li class="li"><%= link_to 'КОНТАКТЫ', back_path %></li>
       </ul>
     </div>
   </div>
@@ -179,7 +182,7 @@
 <footer class="navbar navbar-default" role="navigation" id="footer">
   <div class="container menuniz text-center paddi">
     <div class="col-sm-6 ">
-      <p class="">Polsha.com.ua © 2017</p>
+      <p class="">Eurohouse.zp.ua © 2017</p>
     </div>
     <div class="col-sm-6">
       <p class="labsites">

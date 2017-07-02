@@ -64,13 +64,13 @@
           <li class="li"><a href="#"></a></li>
           <li class="li"><p>Мы в соцсетях</p></li>
           <li class="social">
-            <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><%= image_tag 'vk.png' %></a>
+            <a href="https://vk.com/dada_cien" target="_blank"><%= image_tag 'vk.png' %></a>
           </li>
           <li class="social">
             <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><%= image_tag 'fa.png' %></a>
           </li>
           <li class="social">
-            <a href="https://www.facebook.com/profile.php?id=100010864456981&hc_ref=NEWSFEED" target="_blank"><%= image_tag 'In.png' %></a>
+            <a href="https://www.instagram.com/eurohouse_zp_ua/" target="_blank"><%= image_tag 'In.png' %></a>
           </li>
           <li class="dropdown">
             <a type="button" id="drop001" role="button" class="dropdown-toggle fotoava"
@@ -108,7 +108,7 @@
 
 <div class="header text-center">
   <ul class="saa">
-    <li class="saa1"><a href="/"><%= image_tag 'logo3.png', alt: 'eurohouse' %></a></li>
+    <li class="saa1 "><a href="/"><%= image_tag 'logo3.png', alt: 'eurohouse' %></a></li>
     <% if @site_setting.sliders_visible == 1 %>
     <li>
       <section class="autoplay hidden-xs">
@@ -119,10 +119,10 @@
     </li>
     <% end %>
     <li class="vas1">
-      <span class="vas"><%= image_tag "delivery.png", alt: 'Корзина товаров', title: 'Корзина товаров' %></span>
-      <p><span class="mobail"><%= image_tag "01.png" %></span>099-097-66-44</p>
-      <p><span class="mobail"><%= image_tag "02.png" %></span>096-097-66-44</p>
-      <p><span class="mobail"><%= image_tag "03.png" %></span><%= link_to 'Написать нам', contacts_path %></p>
+      <span class="vas hidden-xs"><%= image_tag "delivery.png", alt: 'Корзина товаров', title: 'Корзина товаров' %></span>
+      <p><span class="mobail"><%= image_tag "01.png" %></span>066-923-59-56</p>
+      <p><span class="mobail"><%= image_tag "02.png" %></span>067-273-80-72</p>
+      <p class="hidden-xs mobail"><span class="mobail"><%= image_tag "03.png" %></span><%= link_to 'Написать нам', contacts_path %></p>
     </li>
 
   </ul>
@@ -137,10 +137,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <span class=" visible-xs count">
+      <%= link_to cart_path(@cart) do %>
+          <span class="count2">Товары: <span><%= @cart_quantity %></span></span>
+          <%= image_tag "cor.png", alt: 'Корзина товаров', title: 'Корзина товаров' %>
+      <% end %>
+    </span>
     </div>
     <div class="collapse navbar-collapse text-center" id="responsive-menu">
       <ul class="nav navbar-nav glava">
-        <li class="active"><%= link_to 'ГЛАВНАЯ', root_path %></li>
+        <li class=""><%= link_to 'ГЛАВНАЯ', root_path %></li>
         <li class="li"><%= link_to 'НОВИНКИ', new_path %></li>
         <li class="li"><%= link_to 'АКЦИИ', sale_path %></li>
         <li class="li hidden-xs">

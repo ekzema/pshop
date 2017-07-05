@@ -120,9 +120,17 @@
     <% end %>
     <li class="vas1">
       <span class="vas hidden-xs"><%= image_tag "delivery.png", alt: 'Корзина товаров', title: 'Корзина товаров' %></span>
-      <p><span class="mobail"><%= image_tag "01.png" %></span>066-923-59-56</p>
-      <p><span class="mobail"><%= image_tag "02.png" %></span>067-273-80-72</p>
-      <p class="hidden-xs mobail"><span class="mobail"><%= image_tag "03.png" %></span><%= link_to 'Написать нам', contacts_path %></p>
+      <ul>
+        <li>
+          <p><span class="mobail"><%= image_tag "01.png" %></span>067-273-80-72</p>
+          <p><span class="mobail"><%= image_tag "02.png" %></span>066-923-59-56</p>
+          <p><span class="mobail"><%= image_tag "04.png" %></span>067-273-80-72</p>
+          <p class="hidden-xs mobail"><span class="mobail"><%= image_tag "03.png" %></span><%= link_to 'Написать нам', contacts_path %></p>
+        </li>
+        <li class="hidden-xs vas2"><span class="mobail2 hidden-xs"><%= image_tag "05.png" %></span>
+          <p class="hidden-xs">пн-сб</p><p class="hidden-xs">09-00 - 19-00</p><p class="hidden-xs">вс - выходной</p>
+        </li>
+      </ul>
     </li>
 
   </ul>
@@ -146,9 +154,9 @@
     </div>
     <div class="collapse navbar-collapse text-center" id="responsive-menu">
       <ul class="nav navbar-nav glava">
-        <li class=""><%= link_to 'ГЛАВНАЯ', root_path %></li>
-        <li class="li"><%= link_to 'НОВИНКИ', new_path %></li>
-        <li class="li"><%= link_to 'АКЦИИ', sale_path %></li>
+        <li class="fone"><%= link_to 'ГЛАВНАЯ', root_path %></li>
+        <li class="li fone1"><%= link_to 'НОВИНКИ', new_path %></li>
+        <li class="li fone2"><%= link_to 'АКЦИИ', sale_path %></li>
         <li class="li hidden-xs">
           <%= form_tag({:controller => "/search", :action => "result"}, method: "get", class: "navbar-search navbar-form", "role" => "search") do %>
           <form class="navbar-search navbar-form">
@@ -156,9 +164,9 @@
             <%= button_tag 'Найти', class: 'btn btn-info' %>
           <% end %>
         </li>
-        <li class="li"><%= link_to 'ОПЛАТА И ДОСТАВКА', payment_path %></li>
+        <li class="li fone3"><%= link_to 'ОПЛАТА И ДОСТАВКА', payment_path %></li>
         <!--<li class="li"><%= link_to 'КОНТАКТЫ', contacts_path %></li>-->
-        <li class="li"><%= link_to 'КОНТАКТЫ', back_path %></li>
+        <li class="li fone4"><%= link_to 'КОНТАКТЫ', back_path %></li>
       </ul>
     </div>
   </div>

@@ -30,7 +30,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
           <div class="color">
             <%= link_to product do %>
-                <div><%= image_tag product.image, title: product.name, alt: product.name %></div>
+                <div><%= image_tag product.image(:showproduct), title: product.name, alt: product.name %></div>
                 <p class="proname"><%= product.name %></p>
 
                 <p class="proprice">

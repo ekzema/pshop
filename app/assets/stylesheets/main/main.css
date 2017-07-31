@@ -1,3 +1,54 @@
+
+/*Paginate BEGIN*/
+.pagination{
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+}
+
+.pagination:before{
+    content: "";
+    display: block;
+    height: 10px;
+}
+
+
+.pagination > .previous_page, .pagination > .next_page{
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.pagination > .current{
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    background-color: #386ccd;
+    padding: 5px 10px;
+    color: white;
+}
+
+.pagination a{
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #386ccd;
+}
+
+.pagination a:hover{
+    background: none;
+    border-color: #386ccd;
+}
+
+.pagination .adminPag{
+    color: #394a59;
+}
+
+.pagination .disabled i{
+    color: silver;
+}
+/*Paginate END*/
+
+
 /* цвет фона и рамки навигационного меню */
 .navbar-default {
     background: #386ccd!important;

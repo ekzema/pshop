@@ -74,6 +74,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'products/sort_top'
+
   resources :twocategories, except: [:index, :show] do
     collection do
       delete 'delete_attachment'

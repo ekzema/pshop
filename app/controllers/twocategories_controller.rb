@@ -21,7 +21,7 @@ class TwocategoriesController < ApplicationController
     @keywords = @twocategory.meta_key if @twocategory.meta_key.present?
     @categories = Category.all
     @category = @twocategory.category
-    @products = Product.where(twocategory_id: @twocategory, visible: 1).order(created_at: :desc)
+    @products = Product.where(twocategory_id: @twocategory, visible: 1).paginate(:page => params[:page], :per_page => 12).order("sort_top = 1 DESC").order(name: :asc)
   end
 
   # GET /twocategories/new

@@ -31,6 +31,7 @@
                 <th><i class="icon_folder-open_alt"></i> Категории</th>
                 <th class="customPodcatTh"><i class="icon_folder-alt"></i> Подкатегории</th>
                 <th><i class="icon_calendar"></i> Создан</th>
+                <th><i class="arrow_triangle-up"></i> Вверх</th>
               </tr>
               <% @product.each do |product| %>
                   <tr id="product_<%= product.id %>">
@@ -45,6 +46,15 @@
                       <%= @twocategory.call(product.twocategory_id).name if product.twocategory_id.present? %>
                     </td>
                     <td class="lastTd"><%= product.created_at.strftime('%F') %></td>
+
+                    <td>
+                      <%= form_tag(products_sort_top_path, method: :post,  class: "product_info", id: "sort_top#{product.id}") do %>
+                          <%= hidden_field_tag 'product_id', product.id %>
+                          <%= check_box_tag 'sort_top', 1, product.sort_top == 1, {id: "product#{product.id}", pr_id: product.id }  %>
+                          <%= label_tag "product#{product.id}", '<span></span>'.html_safe %>
+                      <% end %>
+                    </td>
+
                     <td>
                       <div class="btn-group tableTools">
                         <%= link_to '<i class="icon_pencil"></i>'.html_safe, edit_product_path(product.id), class: 'btn btn-success' %>
@@ -68,3 +78,18 @@
     color: white !important;
   }
 </style>
+
+<script type="text/javascript">
+
+    $(function () {
+        $('input[type=checkbox]').change(function () {
+            var check_id = $(this).attr('pr_id');
+            $.ajax({
+                url: '/products/sort_top',
+                type: 'POST',
+                data: $('#sort_top'+check_id).serialize()
+            });
+        });
+    });
+
+</script>

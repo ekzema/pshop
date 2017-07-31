@@ -83,6 +83,17 @@ class ProductsController < ApplicationController
 
   end
 
+  def sort_top
+    if params[:product_id]
+      @pr = Product.find(params[:product_id])
+      @pr.update(:sort_top => params[:sort_top])
+      head :ok
+    else
+      head :error
+    end
+
+  end
+
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
@@ -110,6 +121,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:twocategory_id, :category_id, :name, :description, :price, :visible, :meta_desc, :meta_key, :new, :share, :share_price, :image, product_slide_images_attributes: [:id, :_destroy, :image])
+      params.require(:product).permit(:twocategory_id, :category_id, :name, :description, :price, :visible, :meta_desc, :meta_key, :new, :share, :share_price, :image, :sort_top, product_slide_images_attributes: [:id, :_destroy, :image])
     end
 end

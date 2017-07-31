@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
     @description = @category.meta_desc if @category.meta_desc.present?
     @keywords = @category.meta_key if @category.meta_key.present?
     @categories = Category.all
-    @products = Product.where(category_id: @category, visible: 1).order(created_at: :desc)
+    @products = Product.where(category_id: @category, visible: 1).paginate(:page => params[:page], :per_page => 2).order("sort_top = 1 DESC").order(name: :asc)
   end
 
   # GET /categories/new

@@ -51,4 +51,6 @@
         </div><!--/span-->
     <% end %>
   </div>
+  <%= will_paginate @products, previous_label: '<i class="fa fa-chevron-circle-left fa-lg adminPag"></i>'.html_safe, next_label: '<i class="fa fa-chevron-circle-right fa-lg adminPag"></i>'.html_safe %>
 </div>
+

@@ -391,7 +391,7 @@ ul{
     vertical-align: middle!important;
  }
 .saa1{
-    margin-left: 20px;
+    /*margin-left: 20px;*/
     margin-right: 20px;
 }
 .saa1 img {
@@ -879,7 +879,7 @@ text-decoration: underline !important;
 
 @media only screen and (min-width: 768px) {
     .count{
-        width: 280px!important;
+        /*width: 280px!important;*/
     }
     .count img{
         float: left!important;

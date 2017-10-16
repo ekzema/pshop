@@ -143,3 +143,19 @@ $(document).ready(function () {
     });
 });
 //    BEGIN ajax moderation order
+
+document.addEventListener("turbolinks:load", function () {
+    $('.searchFull').on('input',function(e){
+        var textFind = $(this).val();
+        if(textFind.length > 2 || textFind.length < 1) {
+            $.ajax({
+                url: '/adminpanel/products',
+                type: 'GET',
+                data: $(this).serialize(),
+                success: function (result) {
+                    console.log(result);
+                }
+            });
+        }
+    });
+});

@@ -13,67 +13,92 @@
           </div>
       <% end %>
 
+
+
       <div class="row">
+
         <div class="col-lg-12">
-          <center><%= link_to 'Добавить товар', new_product_path, class: 'btn btn-info btn-lg buttonNew' %></center>
-          <section class="panel">
-            <header class="panel-heading">
-              Таблица товаров
-            </header>
+          <nav class="navbar navbar-default" role="navigation">
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    <% case @sort %>
+                    <% when 'visible1' %>
+                        <%= 'Не скрытые' %>
+                    <% when 'visible0' %>
+                        <%= 'Скрытые' %>
+                    <% when 'sort_top1' %>
+                        <%= 'Вверх' %>
+                    <% when 'sort_top0' %>
+                        <%= 'Не вверх' %>
+                    <% when 'all' %>
+                        <%= 'Все товары' %>
+                    <% else %>
+                        <%= 'Сртировать товары по:' %>
+                    <% end %>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="people_btn">
+                    <li>
+                      <%= link_to 'Скрытые', adminpanel_products_path(column: 'visible', sort: 0) %>
+                    </li>
+                    <li>
+                      <%= link_to 'Не скрытые', adminpanel_products_path(column: 'visible', sort: 1) %>
+                    </li>
+                    <li>
+                      <%= link_to 'Вверх', adminpanel_products_path(column: 'sort_top', sort: '1') %>
+                    </li>
+                    <li>
+                      <%= link_to 'Не вверх', adminpanel_products_path(column: 'sort_top', sort: '0') %>
+                    </li>
+                    <li>
+                      <%= link_to '<b>Все товары</b>'.html_safe, adminpanel_products_path(sort: 'all') %>
+                    </li>
+                  </ul>
+                </li>
 
-            <table class="table table-striped table-advance table-hover">
-              <tbody>
-              <tr>
-                <th class='customIdTh'># id</th>
-                <th><i class="icon_image"></i> Картинка</th>
-                <th><i class="icon_pencil"></i> Название</th>
-                <th><i class="fa fa-align-left" aria-hidden="true"></i> Краткое описание</th>
-                <th><i class="icon_folder-open_alt"></i> Категории</th>
-                <th class="customPodcatTh"><i class="icon_folder-alt"></i> Подкатегории</th>
-                <th><i class="icon_calendar"></i> Создан</th>
-                <th><i class="arrow_triangle-up"></i> Вверх</th>
-              </tr>
-              <% @product.each do |product| %>
-                  <tr id="product_<%= product.id %>">
-                    <td><%= product.id %></td>
-                    <td class="customTd"><span class="profile-ava sellerAvatar"><%= image_tag product.image.url(:thumb) %></span></td>
-                    <td><%= product.name %></td>
-                    <td><%= truncate(product.description, length: 200) %></td>
-                    <td>
-                      <%= @category.call(product.category_id).name if product.category_id.present? %>
-                    </td>
-                    <td>
-                      <%= @twocategory.call(product.twocategory_id).name if product.twocategory_id.present? %>
-                    </td>
-                    <td class="lastTd"><%= product.created_at.strftime('%F') %></td>
-
-                    <td>
-                      <%= form_tag(products_sort_top_path, method: :post,  class: "product_info", id: "sort_top#{product.id}") do %>
-                          <%= hidden_field_tag 'product_id', product.id %>
-                          <%= check_box_tag 'sort_top', 1, product.sort_top == 1, {id: "product#{product.id}", pr_id: product.id }  %>
-                          <%= label_tag "product#{product.id}", '<span></span>'.html_safe %>
-                      <% end %>
-                    </td>
-
-                    <td>
-                      <div class="btn-group tableTools">
-                        <%= link_to '<i class="icon_pencil"></i>'.html_safe, edit_product_path(product.id), class: 'btn btn-success' %>
-                        <span class='btn btn-danger deleteMessage2' onclick="messageDelete(<%= product.id %>, 'products')"><i class="icon_close_alt2"></i></span>
-                      </div>
-                    </td>
-                  </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </section>
-          <p><%= will_paginate @product, previous_label: '<i class="fa fa-chevron-circle-left fa-lg adminPag"></i>'.html_safe, next_label: '<i class="fa fa-chevron-circle-right fa-lg adminPag"></i>'.html_safe %></p>
+                <li class="dropdown">
+                  <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    <%= @cat.name if @cat && @sort == "category_id#{@cat.id}" %>
+                    <%= 'Все товары' if @sort == 'all_cat' %>
+                    <%= 'Выбрать категорию:' if params[:sort] != 'all_cat' && params['column'] != 'category_id' %>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="people_btn">
+                    <% @categories.each do |category| %>
+                        <li>
+                          <%= link_to category.name, adminpanel_products_path(column: 'category_id', sort: category.id) %>
+                        </li>
+                    <% end %>
+                    <li>
+                      <%= link_to '<b>Все товары</b>'.html_safe, adminpanel_products_path(sort: 'all_cat') %>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav costumFormS">
+                <li>
+                  <div class="navbar-form">
+                    <%= text_field_tag(:q, nil, :value => params[:q], placeholder: "Поиск товаров", class: "form-control round-input searchFull") %>
+                  </div>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to 'Добавить товар', new_product_path, class: 'navbar-brand btn btn-info' %></li>
+              </ul>
+            </div>
+          </nav>
+          <div class="prod">
+            <%= render 'prod' %>
+          </div>
         </div>
       </div>
   </section>
 </section>
 
 <style>
-  .product, .product a{
+  .product, .product a {
     background: #2e3b46;
     color: white !important;
   }
@@ -87,7 +112,7 @@
             $.ajax({
                 url: '/products/sort_top',
                 type: 'POST',
-                data: $('#sort_top'+check_id).serialize()
+                data: $('#sort_top' + check_id).serialize()
             });
         });
     });

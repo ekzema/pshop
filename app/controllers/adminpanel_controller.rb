@@ -27,11 +27,37 @@ class AdminpanelController < ApplicationController
 
   def products
     @product = Product.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
-    @category = Proc.new{|id| Category.find(id)}
-    @twocategory = Proc.new{|id| Twocategory.find(id)}
+    @category = Proc.new { |id| Category.find(id) }
+    @categories = Category.all
+    @twocategory = Proc.new { |id| Twocategory.find(id) }
+    @sort = params[:sort]
+    @cat = Category.find(params[:sort]) if params[:column] == 'category_id'
+    if @sort == 'all' || @sort == 'all_cat'
+      @product
+    elsif @sort
+      @product = Product.where(params[:column] => params[:sort]).paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+      @sort = params[:column] + params[:sort]
+    end
+    if params[:q]
+      if params[:q] == ''
+        @product = Product.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+        unless params[:page].present?
+          respond_to do |format|
+            format.js
+          end
+        end
+      else
+        @product = Product.where("name LIKE ?", "%#{params[:q]}%").paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
+        unless params[:page].present?
+          respond_to do |format|
+            format.js
+          end
+        end
+      end
+    end
   end
 
-  def orders      
+  def orders
     @orders = Order.paginate(:page => params[:page], :per_page => 20).order(created_at: :desc)
     @sort = params[:moderation]
     if @sort == 'all'

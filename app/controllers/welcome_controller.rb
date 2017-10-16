@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
   end
 
   def new
-    @products = Product.where(visible: 1).order(created_at: :desc)
+    @products = Product.where(visible: 1, new: 1).order(created_at: :desc).paginate(:page => params[:page], :per_page => 12).order(created_at: :desc)
     @categories = Category.all
   end
 
@@ -21,7 +21,7 @@ class WelcomeController < ApplicationController
   end
 
   def sale
-    @products = Product.where(visible: 1).order(created_at: :desc)
+    @products = Product.where(visible: 1, share: 1).order(created_at: :desc).paginate(:page => params[:page], :per_page => 12).order(created_at: :desc)
     @categories = Category.all
   end
 

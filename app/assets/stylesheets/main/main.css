@@ -917,3 +917,13 @@ text-decoration: underline !important;
     color: #1417ae!important;
 
 }
+
+.editProductCat{
+    position: absolute;
+    right: 15px;
+    top: 5px;
+}
+
+.colEdit{
+    color: #6d6;
+}

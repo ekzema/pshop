@@ -52,6 +52,11 @@
             <% end %>
           </div>
           <p><%= button_to 'Вернуться в категорию', @pr_cat, class: "btn btn-info opisanie", method: :get %></p>
+          <p><br>
+            <% if rootadmin_signed_in? %>
+                <%= link_to 'Редактировать товар',  edit_product_path(@product.id), class: 'btn btn-danger', title: 'Редактировать' %>
+            <% end %>
+          </p>
         </div>
 
 

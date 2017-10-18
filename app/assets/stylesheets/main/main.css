@@ -1,4 +1,8 @@
 
+.slick-track img{
+    display: none;
+}
+
 /*Paginate BEGIN*/
 .pagination{
     width: 100%;

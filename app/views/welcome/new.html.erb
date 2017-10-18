@@ -12,13 +12,15 @@
 
     <div class="col-sm-9">
       <div class="row text-center">
-        <% @new.each do |product| %>
+        <% @products.each do |product| %>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
               <div class="color">
+                <% if rootadmin_signed_in? %>
+                    <%= link_to '<i class="fa fa-pencil fa-2x colEdit" aria-hidden="true"></i>'.html_safe,  edit_product_path(product.id), class: 'editProductCat', title: 'Редактировать' %>
+                <% end %>
                 <%= link_to product do %>
                     <div><%= image_tag product.image, title: product.name, alt: product.name %></div>
                     <p class="proname"><%= product.name %></p>
-
                     <p class="proprice">
                       <span class="proprice" style='color:red;text-decoration:line-through'><span style='color:#333;'><%= "#{product.share_price} грн" if product.share == 1 %></span></span>
                       <%= product.price %> грн</p>
@@ -40,6 +42,7 @@
     </div>
 
   </div>
+  <%= will_paginate @products, previous_label: '<i class="fa fa-chevron-circle-left fa-lg adminPag"></i>'.html_safe, next_label: '<i class="fa fa-chevron-circle-right fa-lg adminPag"></i>'.html_safe %>
 </div>
 <style>
   .fone1{background: #1417ae;}

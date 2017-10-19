@@ -13,9 +13,9 @@
  *= require main/reset
  *= require font-awesome
  *= require jquery-ui
+ *= require parsley
  *= require bootstrap_and_overrides
  *= require main/main
- *= require parsley
  */
 
 

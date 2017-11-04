@@ -13,6 +13,8 @@
 /tmp/*
 /public/system/*
 /public/assets/*
+/public/sitemap.xml
+/public/sitemap.xml.gz
 !/log/.keep
 !/tmp/.keep
 

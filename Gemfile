@@ -40,6 +40,8 @@ gem 'paperclip', '~> 5.1'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 gem 'devise', '~> 4.3'
 gem 'friendly_id', '~> 5.2', '>= 5.2.1'
+gem 'sitemap_generator', '~> 6.0'
+gem 'whenever', :require => false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

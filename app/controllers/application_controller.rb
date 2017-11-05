@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :store_current_location, :unless => :devise_controller?
 
   def slaiders
-    @share = Product.where(share: 1, visible: 1)
-    @new = Product.where(new: 1, visible: 1)
+    @share = Product.where(share: 1, visible: 1).limit(5)
+    @new = Product.where(new: 1, visible: 1).limit(5)
   end
 
   def main_setting_site

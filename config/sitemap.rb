@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://www.example.com"
+SitemapGenerator::Sitemap.default_host = "http://eurohouse.zp.ua"
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
@@ -24,4 +24,16 @@ SitemapGenerator::Sitemap.create do
   #   Article.find_each do |article|
   #     add article_path(article), :lastmod => article.updated_at
   #   end
+
+  Category.find_each do |category|
+    add category_path(category), :changefreq => 'daily', :priority => 0.8, :lastmod => category.updated_at
+    category.twocategories.each do |twocategory|
+      add showtwocategory_path(category, twocategory), :changefreq => 'daily', :priority => 0.8, :lastmod => twocategory.updated_at
+    end
+  end
+
+  products = Product.where(visible: 1)
+  products.find_each do |product|
+    add product_path(product.slug), :changefreq => 'daily', :lastmod => product.updated_at
+  end
 end

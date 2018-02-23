@@ -947,3 +947,19 @@ text-decoration: underline !important;
     bottom: 0;
     right: 0;
 }
+.foto-2ok{
+    height: 200px;
+    position: relative;
+}
+.foto-2ok img{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    margin: auto!important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}

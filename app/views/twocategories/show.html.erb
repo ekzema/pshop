@@ -33,7 +33,7 @@
                 <%= link_to '<i class="fa fa-pencil fa-2x colEdit" aria-hidden="true"></i>'.html_safe,  edit_product_path(product.id), class: 'editProductCat', title: 'Редактировать' %>
             <% end %>
             <%= link_to product do %>
-                <div><%= image_tag product.image, title: product.name, alt: product.name %></div>
+                <div class="foto-ok"><%= image_tag product.image, title: product.name, alt: product.name %></div>
                 <p class="proname"><%= product.name %></p>
                 <p class="proprice">
                   <span class="proprice" style='color:red;text-decoration:line-through'><span style='color:#333;'><%= "#{product.share_price} грн" if product.share == 1 %></span></span>
